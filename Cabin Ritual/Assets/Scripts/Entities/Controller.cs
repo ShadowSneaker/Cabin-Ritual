@@ -96,7 +96,8 @@ public class Controller : MonoBehaviour
 
             if(Input.GetButtonDown("Inventory"))
             {
-                inventoryUI.Close_OpenUI();
+                
+                 inventoryUI.Close_OpenUI();
             }
 
             if (Input.GetButtonDown("Crouch"))

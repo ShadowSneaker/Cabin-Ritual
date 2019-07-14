@@ -48,7 +48,7 @@ public class InventorySlot : MonoBehaviour
     public void UseItem()
     {
         //player equips the item so...
-
+        Debug.Log("Button Working");
         // when the player clicks on the item a image pops up asking do they want to equip item
         //two buttons appear saying yes or no
         //if the player presses no the button prompts go away
