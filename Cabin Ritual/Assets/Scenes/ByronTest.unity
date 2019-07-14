@@ -477,8 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: Mouse X
+  m_VerticalAxis: Mouse Y
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -904,11 +904,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8074189572039642407, guid: a53b5d32788f83449865ace862370cc4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1419939648447232704, guid: a53b5d32788f83449865ace862370cc4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1012,6 +1007,11 @@ PrefabInstance:
     - target: {fileID: 1419939648447232704, guid: a53b5d32788f83449865ace862370cc4,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074189572039642407, guid: a53b5d32788f83449865ace862370cc4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3505618602271173798, guid: a53b5d32788f83449865ace862370cc4,
