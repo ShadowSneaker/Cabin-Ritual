@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -10,12 +11,22 @@ public class InventorySlot : MonoBehaviour
     // the icon that the Item has
     public Image Icon;
 
-    //the images that the 
+    //the images tfor equipslot
+    public Image Equipslot;
 
     // texts needed to display information about the item
     public Text Name;
     public Text Description;
-    
+
+    // buttons to determine what to do with the selected item
+    public Image EquipButton;
+    public Image CancelButton;
+
+    public void Start()
+    {
+        EquipButton.gameObject.SetActive(false);
+        CancelButton.gameObject.SetActive(false);
+    }
 
     //this will need to take an item and adds it to the inventory this inventory slot
     public void AddItemToSlot(Item NewItem)
@@ -47,24 +58,28 @@ public class InventorySlot : MonoBehaviour
     //uses the item currently held in the slot. and removes it   
     public void UseItem()
     {
-        //player equips the item so...
-        Debug.Log("Button Working");
-        // when the player clicks on the item a image pops up asking do they want to equip item
-        //two buttons appear saying yes or no
-        //if the player presses no the button prompts go away
-        // if yes the item is then move to the equiped section
-        // so these next functions should be easy for now
+        //sets the buttons to decide to equip item or not on.
+        EquipButton.gameObject.SetActive(true);
+        CancelButton.gameObject.SetActive(true);
 
     }
 
     public void EquipButtonYes()
     {
-        // have this put the equiped item in the equip slot
+        // have this put the equiped item in the equip slot then removes buttons from screen
+
+        Equipslot.sprite = item.Icon;
+
+        EquipButton.gameObject.SetActive(false);
+        CancelButton.gameObject.SetActive(false);
+
     }
 
     public void EquipButtonNo()
     {
         // have this remove the button prompts to equit the item
+        EquipButton.gameObject.SetActive(false);
+        CancelButton.gameObject.SetActive(false);
     }
 
 
