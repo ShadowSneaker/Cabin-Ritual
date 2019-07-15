@@ -267,6 +267,9 @@ public class Entity : MonoBehaviour
 
     // A reference to the Audio Source component.
     private AudioSource Audio;
+
+    // When true. Tries to stand every fixed frame until space above entity is clear.
+    private bool AttemptStand = false;
     
 
 
@@ -318,6 +321,12 @@ public class Entity : MonoBehaviour
         if (Health.IsRegenerating)
         {
             Health.RegenFrame();
+        }
+
+
+        if (AttemptStand)
+        {
+            UnCrouch();
         }
 
 
@@ -580,7 +589,7 @@ public class Entity : MonoBehaviour
             StopSprinting();
             StopWalking();
             CurrentSpeed = CrouchSpeed;
-
+            AttemptStand = false;
         }
     }
 
@@ -590,11 +599,17 @@ public class Entity : MonoBehaviour
         if (Crouching)
         {
             // Do raycast up to see if the entity can stand up
+            if (!Physics.Raycast(transform.position, Vector3.up, Character.height + CrouchHeight / 2.0f))
             {
                 Character.height += CrouchHeight;
                 Character.center += new Vector3(0.0f, CrouchHeight / 2.0f, 0.0f);
                 Crouching = false;
                 CurrentSpeed = RunSpeed;
+                AttemptStand = false;
+            }
+            else
+            {
+                AttemptStand = true;
             }
         }
     }
