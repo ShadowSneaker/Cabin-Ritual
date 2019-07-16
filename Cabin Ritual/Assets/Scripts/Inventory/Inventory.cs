@@ -78,6 +78,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(Item item)
     {
+
         // items is the list this simply removes it from the list
         Items.Remove(item);
 

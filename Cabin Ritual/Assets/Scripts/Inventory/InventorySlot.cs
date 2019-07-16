@@ -10,6 +10,8 @@ public class InventorySlot : MonoBehaviour
     Item item;
     // the icon that the Item has
     public Image Icon;
+    //the inventory slot empyt image
+    public Sprite Emptyslot;
 
     //the images tfor equipslot
     public Image Equipslot;
@@ -21,6 +23,14 @@ public class InventorySlot : MonoBehaviour
     // buttons to determine what to do with the selected item
     public Image EquipButton;
     public Image CancelButton;
+
+    // a bool to determine wether this slot is linked to the equipment slot
+    public bool Equiped;
+
+    //Enum Used to determine what inventory slot it is (may be needed for equipment later)
+    // this commment is here to say it hasnt been used yet (delete below code if never used)
+    public enum InventoryslotEnum { SlotOne, SlotTwo, SlotThree, SlotFour};
+    public InventoryslotEnum Slot;
 
     public void Start()
     {
@@ -44,15 +54,22 @@ public class InventorySlot : MonoBehaviour
     //removes the item held within this slot
     public void RemoveItemFromSlot()
     {
-        // this will be changed to display an actual image of just a clear slot
-        item = null;
-        Icon.sprite = null;
-        Icon.enabled = false;
-
-        Name.text = null;
-        Description.text = null;
 
         Inventory.Instance.RemoveItem(item);
+
+        item = null;
+        Icon.sprite = Emptyslot;
+        
+
+        Name.text = "Name";
+        Description.text = "Description";
+
+        if(Equiped)
+        {
+            Equipslot.sprite = null;
+            Equiped = false;
+        }
+        
     }
 
     //uses the item currently held in the slot. and removes it   
@@ -62,6 +79,8 @@ public class InventorySlot : MonoBehaviour
         EquipButton.gameObject.SetActive(true);
         CancelButton.gameObject.SetActive(true);
 
+        
+
     }
 
     public void EquipButtonYes()
@@ -69,7 +88,7 @@ public class InventorySlot : MonoBehaviour
         // have this put the equiped item in the equip slot then removes buttons from screen
 
         Equipslot.sprite = item.Icon;
-
+        Equiped = true;
         EquipButton.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(false);
 
