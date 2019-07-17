@@ -9,4 +9,12 @@ public class Item : ScriptableObject
     public Sprite Icon = null;
     // the description given to the item when it is found in the players inventory
     public string Description;
+    //durability of the item
+    public int Durability;
+    // a bool to determine if its a weapon
+    public bool Weapon;
+    // a bool to determoine if its a ritual item
+    public bool RitualItem;
+
+
 }
