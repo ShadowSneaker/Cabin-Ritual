@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
@@ -38,6 +39,10 @@ public class Controller : MonoBehaviour
 
     // The hit information for the interaction raycast.
     private RaycastHit Hit;
+
+    // the Flavour text that displays to the screen
+    public Text FlavourText;
+
 
     // A reference to the camera transform
     [Tooltip("A reference to the camera's transform, used to calculate the interaction raycast.")]
@@ -91,7 +96,9 @@ public class Controller : MonoBehaviour
 
             if (Input.GetButtonDown("Interact"))
             {
+
                 Interact();
+                FlavourText.enabled = false;
             }
 
             if(Input.GetButtonDown("Inventory"))
@@ -149,11 +156,16 @@ public class Controller : MonoBehaviour
                 if (LookingAt && DisplayInteractable)
                 {
                     // Place code to draw to the screen.
+                    FlavourText.text = LookingAt.ScreenText;
+
+                    FlavourText.enabled = true;
                 }
             }
             else
             {
                 LookingAt = null;
+
+                FlavourText.enabled = false;
             }
         }
     }
