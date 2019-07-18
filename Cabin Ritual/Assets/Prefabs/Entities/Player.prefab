@@ -96,11 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b0292aa694f4a4ea69e0ed87249855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowCursor: 0
+  ShowCursor: 1
   ToggleCrouch: 0
   AllowInteraction: 1
   DisplayInteractable: 1
   RaycastLength: 100
+  inventoryUI: {fileID: 0}
   Cam: {fileID: 6166952392262319254}
 --- !u!114 &2638123060191589426
 MonoBehaviour:
@@ -133,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1587bfa63530a345a4d439f6bbd2e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotsPrefab: {fileID: 0}
+  SlotsPrefab: {fileID: 835528763997378151, guid: 72064542deecd4d48b5446e4f0b5ef5b,
+    type: 3}
   InventorySpace: 4
   Items: []
 --- !u!114 &8506502409483348510

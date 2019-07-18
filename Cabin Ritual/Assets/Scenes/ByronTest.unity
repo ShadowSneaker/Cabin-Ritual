@@ -577,24 +577,8 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 1192726392}
-    - target: {fileID: 8914420701164569630, guid: 524abd89e20ea714fa7d9c2afadfe985,
-        type: 3}
-      propertyPath: ShowCursor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7459487082312702275, guid: 524abd89e20ea714fa7d9c2afadfe985,
-        type: 3}
-      propertyPath: SlotsPrefab
-      value: 
-      objectReference: {fileID: 835528763997378151}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 524abd89e20ea714fa7d9c2afadfe985, type: 3}
---- !u!224 &835528763997378151 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8074189572039642407, guid: a53b5d32788f83449865ace862370cc4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1419939648548763804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1419939648548763804
 PrefabInstance:
   m_ObjectHideFlags: 0
