@@ -294,7 +294,7 @@ public class Entity : MonoBehaviour
         if (!Character) Debug.LogError("Error: Could not find the CharacterController component!");
 
         Audio = GetComponent<AudioSource>();
-        if (!Audio) Debug.LogError("Error: Could not find the AudioSource component!");
+        //if (!Audio) Debug.LogError("Error: Could not find the AudioSource component!");
 
 
         // Initialise startup values.
@@ -643,6 +643,7 @@ public class Entity : MonoBehaviour
     }
 
 
+    // Returns true if this entity is currently crouching.
     public bool IsCrouching
     {
         get
@@ -652,6 +653,7 @@ public class Entity : MonoBehaviour
     }
 
 
+    // Returns true if this entity is currently sprinting.
     public bool IsSprinting
     {
         get
@@ -661,11 +663,22 @@ public class Entity : MonoBehaviour
     }
 
 
+    // Returns true if this entity is currently walking.
     public bool IsWalking
     {
         get
         {
             return Walking;
+        }
+    }
+
+
+    // Returns the current speed of this entity.
+    public float GetSpeed
+    {
+        get
+        {
+            return CurrentSpeed;
         }
     }
 
