@@ -294,7 +294,7 @@ public class Entity : MonoBehaviour
         if (!Character) Debug.LogError("Error: Could not find the CharacterController component!");
 
         Audio = GetComponent<AudioSource>();
-        if (!Audio) Debug.LogError("Error: Could not find the CharacterController component!");
+        if (!Audio) Debug.LogError("Error: Could not find the AudioSource component!");
 
 
         // Initialise startup values.
