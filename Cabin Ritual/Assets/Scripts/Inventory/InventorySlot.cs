@@ -89,6 +89,7 @@ public class InventorySlot : MonoBehaviour
 
         Equipslot.sprite = item.Icon;
         Equiped = true;
+        Inventory.Instance.EquipItem(item);
         EquipButton.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(false);
 

@@ -7,8 +7,8 @@ public class Inventory : MonoBehaviour
   
     //stores the information of the players four inventory slots
     InventorySlot[] Slots;
-    //Transoform that is the parent to all of the inventory slots
-    public Transform SlotsPrefab;
+    // the item that is in the equipment slot
+    public Item EquipedItem;
 
     public void Start()
     {
@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
         OnitemChangedCallBack += UpdateUI;
 
         //gets all of the inventory slots and puts them in the needed array
-        Slots = SlotsPrefab.GetComponentsInChildren<InventorySlot>();
+        Slots = GameObject.Find("InventoryUI").GetComponentsInChildren<InventorySlot>();
     }
 
     //function to update the UI displays to the screen
@@ -87,4 +87,9 @@ public class Inventory : MonoBehaviour
             OnitemChangedCallBack.Invoke();
     }
    
+
+    public void EquipItem(Item item)
+    {
+        EquipedItem = item;
+    }
 }

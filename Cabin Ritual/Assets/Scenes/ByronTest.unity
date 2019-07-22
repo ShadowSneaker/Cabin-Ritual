@@ -370,8 +370,8 @@ GameObject:
   - component: {fileID: 467304148}
   - component: {fileID: 467304147}
   - component: {fileID: 467304146}
-  - component: {fileID: 467304145}
   - component: {fileID: 467304144}
+  - component: {fileID: 467304145}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -388,12 +388,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 467304143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6986ff64592df4e40a86f9dabc6e5810, type: 3}
+  m_Script: {fileID: 11500000, guid: 02c5a92c049f7b34e847fe6cbe1bffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Behaviour: 0
   Activated: 0
-  Events: []
+  Events:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Door: 0
+  locked: 1
+  ItemRequired: TestItem
 --- !u!114 &467304145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,9 +414,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactable: 1
-  BoundObjects: []
+  BoundObjects:
+  - {fileID: 467304144}
   DeactivateOnInteraction: 0
-  ScreenText: Press E to interact
+  ScreenText: Press E to open
   ObjectInfo: 
 --- !u!65 &467304146
 BoxCollider:
