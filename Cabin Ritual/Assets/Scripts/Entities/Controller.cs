@@ -164,7 +164,6 @@ public class Controller : MonoBehaviour
             else
             {
                 LookingAt = null;
-
                 FlavourText.enabled = false;
             }
         }
