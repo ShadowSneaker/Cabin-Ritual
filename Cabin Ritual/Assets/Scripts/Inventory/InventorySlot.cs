@@ -32,10 +32,14 @@ public class InventorySlot : MonoBehaviour
     public enum InventoryslotEnum { SlotOne, SlotTwo, SlotThree, SlotFour};
     public InventoryslotEnum Slot;
 
+    //this is the players inventory
+    private Inventory PlayerInventory;
+
     public void Start()
     {
         EquipButton.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(false);
+        PlayerInventory = FindObjectOfType<Inventory>();
     }
 
     //this will need to take an item and adds it to the inventory this inventory slot
@@ -55,7 +59,7 @@ public class InventorySlot : MonoBehaviour
     public void RemoveItemFromSlot()
     {
 
-        Inventory.Instance.RemoveItem(item);
+        PlayerInventory.RemoveItem(item);
 
         item = null;
         Icon.sprite = Emptyslot;
@@ -89,7 +93,7 @@ public class InventorySlot : MonoBehaviour
 
         Equipslot.sprite = item.Icon;
         Equiped = true;
-        Inventory.Instance.EquipItem(item);
+        PlayerInventory.EquipItem(item);
         EquipButton.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(false);
 

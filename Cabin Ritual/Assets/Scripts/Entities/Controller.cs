@@ -43,6 +43,8 @@ public class Controller : MonoBehaviour
     // the Flavour text that displays to the screen
     public Text FlavourText;
 
+    // this is the players inventory that is on this object
+    private Inventory PlayerInv;
 
     // A reference to the camera transform
     [Tooltip("A reference to the camera's transform, used to calculate the interaction raycast.")]
@@ -57,7 +59,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         Player = GetComponent<Entity>();
-        
+        PlayerInv = GetComponent<Inventory>();
         if (!Player) Debug.LogError("Error: Could not find the Entity component!");
         
     }
@@ -167,5 +169,17 @@ public class Controller : MonoBehaviour
                 FlavourText.enabled = false;
             }
         }
+    }
+
+    // a simple getter to get the players inventory for the use in the item pick up script
+    public Inventory GetPlayerInv()
+    {
+        return PlayerInv;
+    }
+
+    // a function to return the looking at object
+    public InteractableObject ReturnLookingAt()
+    {
+        return LookingAt;
     }
 }

@@ -14,16 +14,24 @@ public class ItemPickUp : MonoBehaviour
     public Item item;
 
 
+
+
     public void Pickup()
     {
         // adds the item that has been picked up to the inventory
         // if statement check if the item is added. if so it is destroyed.
         // if it isnt then its left within the world
-        if(Inventory.Instance.AddItem(item))
+        Controller temp = FindObjectOfType<Controller>();
+        if(temp.ReturnLookingAt())
         {
-            Debug.Log("Entered destroy");
-            Destroy(gameObject);
+            if (temp.GetPlayerInv().AddItem(item))
+            {
+
+                Debug.Log("Entered destroy");
+                Destroy(gameObject);
+            }
         }
+        
         
     }
 

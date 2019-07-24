@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-  
-    //stores the information of the players four inventory slots
+
+    
+    [Tooltip("an array of the inventory slots on the players canvas")]
+    [SerializeField]
     InventorySlot[] Slots;
-    // the item that is in the equipment slot
+    
+    [Tooltip("the item in the players equiped slot")]
     public Item EquipedItem;
+
+    // the amount of items a player can have in there inventory at one time
+    [Tooltip("the amount of slots you want in the players inventory")]
+    public int InventorySpace = 4;
+
+    [Tooltip("the lost of items within the players inventory")]
+    public List<Item> Items = new List<Item>();
+
+    //creating an item delegate so that everytime its called the inventory is updated. this is used for the ui which is why it does nothing now
+    public delegate void OnItemChanged();
+    public OnItemChanged OnitemChangedCallBack;
+
 
     public void Start()
     {
@@ -33,30 +48,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // this is the singlton used to so you dont have to use find object in item pick up script
-    public static Inventory Instance;
-
-    private void Awake()
-    {
-        // when the game starts sets the inventory for the player to this inventory 
-        if(Instance != null)
-        {
-            Debug.LogWarning(" more then one inventory active");
-            return;
-        }
-
-        Instance = this;
-    }
-
-    // the amount of items a player can have in there inventory at one time
-    public int InventorySpace = 4;
-
-    //creating an item delegate so that everytime its called the inventory is updated. this is used for the ui which is why it does nothing now
-    public delegate void OnItemChanged();
-    public OnItemChanged OnitemChangedCallBack;
-
-    // the list of items within the players inventory
-    public List<Item> Items = new List<Item>();
+    
 
     public bool AddItem(Item item)
     {
