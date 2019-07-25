@@ -11,6 +11,7 @@ public class ItemPickUp : MonoBehaviour
 
     // item that the player is picking up
     // the item that is attached to the object this script is on
+    [Tooltip("the item that you want this script to work with")]
     public Item item;
 
 

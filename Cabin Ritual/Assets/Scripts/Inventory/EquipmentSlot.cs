@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class EquipmentSlot : MonoBehaviour
 {
-    // the slot that this is attached to
+    
+    [Tooltip("the image of the players equip slot")]
     public Image EquipSlot;
-    // the empty Equipslot Image
+
+    
+    [Tooltip("the images for thre equip slot when its empty")]
     public Sprite EmptyEquipSlot;
 
     // the inventory slots

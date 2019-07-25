@@ -21,13 +21,16 @@ public class ActivatableObject : MonoBehaviour
         Reset
     }
 
-    // the enum to say how this object will be activated
+
+    [Tooltip("what behaviour does this object fall under")]
     public ActivationBehaviour Behaviour;
 
-    //has this object already been activated?
+
+    [Tooltip("Has this object been activated")]
     public bool Activated;
 
-    // what events need to be activated when interacted with
+    
+    [Tooltip("the events of the object that need to activate when interacted with")]
     public UnityEvent[] Events;
 
 

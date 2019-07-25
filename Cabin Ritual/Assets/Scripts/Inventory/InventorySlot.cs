@@ -8,23 +8,34 @@ public class InventorySlot : MonoBehaviour
 {
     // the item that is held within the inventory slot
     Item item;
-    // the icon that the Item has
+
+    [Tooltip("the icon the item displays")]
     public Image Icon;
-    //the inventory slot empyt image
+    
+  
+    [Tooltip("the sprite that displays when the slot is empty")]
     public Sprite Emptyslot;
 
-    //the images tfor equipslot
+   
+    [Tooltip("the equip slot images")]
     public Image Equipslot;
 
-    // texts needed to display information about the item
+ 
+    [Tooltip("the text that displays the name of the item of this slot")]
     public Text Name;
+
+    [Tooltip("the text that displays the discription of the item in this slot")]
     public Text Description;
 
-    // buttons to determine what to do with the selected item
+    
+    [Tooltip("the equip button image")]
     public Image EquipButton;
+
+    [Tooltip("the cancel button image")]
     public Image CancelButton;
 
     // a bool to determine wether this slot is linked to the equipment slot
+    [Tooltip("is this item equiped to the player")]
     public bool Equiped;
 
     //Enum Used to determine what inventory slot it is (may be needed for equipment later)

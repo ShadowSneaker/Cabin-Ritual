@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    //Determines if this object can be interacted with
+    
+    [Tooltip("is this object able to be interacted with")]
     public bool Interactable = true;
 
-    // A list of objects that this object activates
+    
+    [Tooltip("a list of objects that this object activates")]
     public ActivatableObject[] BoundObjects;
 
-    // a bool to determine if the object deactivates on interaction with this object
+    
+    [Tooltip("does this object deactivate on interaction")]
     public bool DeactivateOnInteraction;
 
-    // test that shows up on the screen to inform the player how to interact with the object
+    
+    [Tooltip("the text you want appearing on the screen when the player goes to interact with something")]
     public string ScreenText = "Press E to interact";
 
     // Test that shows up on the screen to inform the player about the object
