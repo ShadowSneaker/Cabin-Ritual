@@ -9,6 +9,8 @@ public class InventorySlot : MonoBehaviour
     // the item that is held within the inventory slot
     Item item;
 
+    ItemDrop itemdrop;
+
     [Tooltip("the icon the item displays")]
     public Image Icon;
     
@@ -51,18 +53,34 @@ public class InventorySlot : MonoBehaviour
         EquipButton.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(false);
         PlayerInventory = FindObjectOfType<Inventory>();
+        
     }
 
     //this will need to take an item and adds it to the inventory this inventory slot
     public void AddItemToSlot(Item NewItem)
     {
-        item = NewItem;
-        Icon.sprite = item.Icon;
-        Icon.enabled = true;
+        if(NewItem.use)
+        {
+            itemdrop = NewItem as ItemDrop;
+            Icon.sprite = itemdrop.Icon;
+            Icon.enabled = true;
 
 
-        Name.text = item.name;
-        Description.text = item.Description;
+            Name.text = itemdrop.name;
+            Description.text = itemdrop.Description;
+        }
+        else
+        {
+            item = NewItem;
+            Icon.sprite = item.Icon;
+            Icon.enabled = true;
+
+
+            Name.text = item.name;
+            Description.text = item.Description;
+        }
+        
+        
         
     }
 
@@ -101,13 +119,39 @@ public class InventorySlot : MonoBehaviour
     public void EquipButtonYes()
     {
         // have this put the equiped item in the equip slot then removes buttons from screen
-
-        Equipslot.sprite = item.Icon;
-        Equiped = true;
-        PlayerInventory.EquipItem(item);
-        EquipButton.gameObject.SetActive(false);
-        CancelButton.gameObject.SetActive(false);
-
+        // this needs changing as it does not work for items
+        if(item)
+        {
+            if (!item.use)
+            {
+                Equipslot.sprite = item.Icon;
+                Equiped = true;
+                PlayerInventory.EquipItem(item);
+                EquipButton.gameObject.SetActive(false);
+                CancelButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                //dose nothing for now
+            }
+        }
+        else if(itemdrop)
+        {
+            if (!itemdrop.use)
+            {
+                Equipslot.sprite = item.Icon;
+                Equiped = true;
+                PlayerInventory.EquipItem(item);
+                EquipButton.gameObject.SetActive(false);
+                CancelButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                // i will have a way that determines what function to use like checking the name or something
+                itemdrop.CabinLetter();
+            }
+        }
+        
     }
 
     public void EquipButtonNo()

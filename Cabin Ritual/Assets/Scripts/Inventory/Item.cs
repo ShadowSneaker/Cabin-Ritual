@@ -17,4 +17,10 @@ public class Item : ScriptableObject
     public bool RitualItem;
 
 
+    [Header("if this item to be used instead of equiped then have this bool set true")]
+    public bool use = false;
+
+
+
+    
 }
