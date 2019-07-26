@@ -90,11 +90,9 @@ public class Controller : MonoBehaviour
             {
                 Player.StopSprinting();
             }
-
-            if (Input.GetAxis("MoveForward") != 0.0f || Input.GetAxis("MoveSideways") != 0.0f)
-            {
-                Player.Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveSideways"), Input.GetButtonDown("Jump"));
-            }
+            
+            Player.Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveSideways"), Input.GetButtonDown("Jump"));
+            
 
             if (Input.GetButtonDown("Interact"))
             {
