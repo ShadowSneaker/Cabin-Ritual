@@ -24,19 +24,37 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged OnitemChangedCallBack;
 
+    // the UI that displays the inventory
+    public GameObject inventoryUI;
 
     public void Start()
     {
         // this adds a function to the item change call back
         OnitemChangedCallBack += UpdateUI;
 
-        //gets all of the inventory slots and puts them in the needed array
-        Slots = GameObject.Find("InventoryUI").GetComponentsInChildren<InventorySlot>();
+        
+
+        
     }
 
+    private void FixedUpdate()
+    {
+        if(inventoryUI.activeSelf)
+        {
+            if (Slots.Length == 0)
+            {
+                //gets all of the inventory slots and puts them in the needed array
+                Slots = GameObject.Find("InventoryUI").GetComponentsInChildren<InventorySlot>();
+            }
+        }
+
+        
+    }
     //function to update the UI displays to the screen
     void UpdateUI()
     {
+        
+
         for(int i = 0; i < Slots.Length; ++i)
         {
             if(i < Items.Count)
