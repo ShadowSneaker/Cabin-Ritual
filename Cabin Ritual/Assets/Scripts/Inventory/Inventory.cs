@@ -70,27 +70,41 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
-        if(Items.Count >= InventorySpace)
+        if (Slots.Length != 0)
         {
-            Debug.Log(" not enough room");
-            return false;
+
+
+            if (Items.Count >= InventorySpace)
+            {
+                Debug.Log(" not enough room");
+                return false;
+            }
+
+            // items is the list this simple adds it to the list
+            Items.Add(item);
+
+            // if the callback has functions attached to it. when this command is done it will call those functions
+            if (OnitemChangedCallBack != null)
+                OnitemChangedCallBack.Invoke();
+
+            return true;
         }
+        return false;
 
-        // items is the list this simple adds it to the list
-        Items.Add(item);
-
-        // if the callback has functions attached to it. when this command is done it will call those functions
-        if (OnitemChangedCallBack != null)
-            OnitemChangedCallBack.Invoke();
-
-        return true;
+      
+        
     }
 
     public void RemoveItem(Item item)
     {
-
+        Debug.Log("Removed");
         // items is the list this simply removes it from the list
-        Items.Remove(item);
+       
+        
+           
+            Items.Remove(item);
+        
+        
 
         // if the callback has functions attached to it. when this command is done it will call those functions
         if (OnitemChangedCallBack != null)

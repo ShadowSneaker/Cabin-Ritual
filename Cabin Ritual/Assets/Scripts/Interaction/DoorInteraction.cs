@@ -41,8 +41,9 @@ public class DoorInteraction : MonoBehaviour
                         {
                            if( temp.GetPlayerInv().EquipedItem == ItemRequired)
                            {
-                                locked = false;
-                                GetComponent<InteractableObject>().ScreenText = "Door has been unlocked";
+                                locked = true;
+                                GetComponent<InteractableObject>().ScreenText = "the Key has broken";
+                                temp.GetPlayerInv().RemoveItem(ItemRequired);
                            }
                            else
                            {

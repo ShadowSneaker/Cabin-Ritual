@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4f32ac3293d674bb6331f2b45583bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 2e5a2e783a92c614dafb1390a5f87fea, type: 2}
+  item: {fileID: 11400000, guid: e9647fc78dc43de4a94a36223a392b3d, type: 2}
 --- !u!114 &403895120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: 1
   locked: 1
-  ItemRequired: {fileID: 11400000, guid: 2811af216c58fcd4bb3adbf5c15c9153, type: 2}
+  ItemRequired: {fileID: 11400000, guid: 4fd612f82fbb47c4396118c70945a5af, type: 2}
 --- !u!114 &467304145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -979,6 +979,11 @@ PrefabInstance:
     - target: {fileID: 6293813381906100678, guid: 524abd89e20ea714fa7d9c2afadfe985,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084110544346416360, guid: 524abd89e20ea714fa7d9c2afadfe985,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

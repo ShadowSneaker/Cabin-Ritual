@@ -18,9 +18,18 @@ public class ItemDrop : Item
     [Tooltip("The Z position you want the Key dropped at")]
     public int DropZpos;
 
+    [SerializeField]
+    //this is so that items can only be used once
+    bool used = false;
+
     // this function will spawn a specific item where the player stands
     public void CabinLetter()
     {
-        Instantiate(ItemDropped, new Vector3(DropXPos, DropYPos, DropZpos), Quaternion.identity);
+        if(!used)
+        {
+            Instantiate(ItemDropped, new Vector3(DropXPos, DropYPos, DropZpos), Quaternion.identity);
+        }
+
+        used = true;
     }
 }
