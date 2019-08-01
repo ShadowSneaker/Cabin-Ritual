@@ -109,7 +109,7 @@ public class InventorySlot : MonoBehaviour
         EquipButton.gameObject.SetActive(true);
         CancelButton.gameObject.SetActive(true);
 
-        
+       
 
     }
 

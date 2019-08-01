@@ -21,6 +21,6 @@ MonoBehaviour:
   use: 1
   ItemDropped: {fileID: 2167472487077528140, guid: 82ed5b73b87994d43be7638876fab64a,
     type: 3}
-  DropXPos: 329
-  DropYPos: 139
-  DropZpos: -243
+  DropXPos: 66
+  DropYPos: 1
+  DropZpos: 25
