@@ -30,6 +30,7 @@ public class DoorInteraction : MonoBehaviour
                 {
                     // this is where the animation for the door to open will happen for now a debug log will be displayed
                     Debug.Log("standard door has been activated");
+                    GetComponent<Animation>().Play();
                     break;
                 }
             case (DoorType.CabinDoorLocked):

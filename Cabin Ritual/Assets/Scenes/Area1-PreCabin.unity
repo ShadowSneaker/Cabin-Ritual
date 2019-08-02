@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c5a92c049f7b34e847fe6cbe1bffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: 1
+  Door: 0
   locked: 1
   ItemRequired: {fileID: 11400000, guid: 4fd612f82fbb47c4396118c70945a5af, type: 2}
 --- !u!4 &9935178 stripped
@@ -355,7 +355,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 5aa691fec1dbdcf41a6926ae1bd4f29f, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &9935180
@@ -406,6 +406,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!65 &9935183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9935176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.4733124, z: 1.994072}
+  m_Center: {x: 0, y: -0.56537294, z: 0.007884979}
 --- !u!1001 &12751138
 PrefabInstance:
   m_ObjectHideFlags: 0
