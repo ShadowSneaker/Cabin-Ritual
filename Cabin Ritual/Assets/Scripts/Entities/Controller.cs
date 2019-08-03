@@ -96,14 +96,12 @@ public class Controller : MonoBehaviour
 
             if (Input.GetButtonDown("Interact"))
             {
-
                 Interact();
                 FlavourText.enabled = false;
             }
 
             if(Input.GetButtonDown("Inventory"))
             {
-                
                  inventoryUI.Close_OpenUI();
             }
 
