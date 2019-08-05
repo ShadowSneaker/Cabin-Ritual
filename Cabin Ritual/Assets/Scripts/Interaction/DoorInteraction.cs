@@ -5,10 +5,16 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     // with this you can pick the door type in the inspector and the event will change depending on it
-    public enum DoorType { StandardDoor, CabinDoorLocked };
+    public enum DoorType { StandardDoor, CabinDoorLocked, StandardLockedDoor};
 
+    // the state in which the door is in
+    public enum DoorState { open, closed };
+    
     //the actual enum for the person to edit
     public DoorType Door;
+
+    // the actual enum
+    public DoorState doorState;
 
     //bool to determine if door is locked
     public bool locked;
@@ -17,7 +23,7 @@ public class DoorInteraction : MonoBehaviour
     public Item ItemRequired;
 
 
-
+    
 
 
     // the function that determines the event that will happen depening on the type of door it is
@@ -30,7 +36,23 @@ public class DoorInteraction : MonoBehaviour
                 {
                     // this is where the animation for the door to open will happen for now a debug log will be displayed
                     Debug.Log("standard door has been activated");
-                    GetComponent<Animation>().Play();
+                    switch(doorState)
+                    {
+                        case (DoorState.open):
+                            {
+                                GetComponent<Animation>().Play("close");
+                                doorState = DoorState.closed;
+                                break;
+                            }
+                        case (DoorState.closed):
+                            {
+                                GetComponent<Animation>().Play("open");
+                                doorState = DoorState.open;
+                                break;
+                            }
+                    }
+                    
+                    
                     break;
                 }
             case (DoorType.CabinDoorLocked):
@@ -62,6 +84,46 @@ public class DoorInteraction : MonoBehaviour
 
 
 
+
+                    break;
+                }
+            case (DoorType.StandardLockedDoor):
+                {
+                    if(locked)
+                    {
+                        Controller temp = FindObjectOfType<Controller>();
+                        if(temp.ReturnLookingAt())
+                        {
+                            if(temp.GetPlayerInv().EquipedItem == ItemRequired)
+                            {
+                                locked = false;
+                                GetComponent<InteractableObject>().ScreenText = "Unlocked";
+                                temp.GetPlayerInv().RemoveItem(ItemRequired);
+                            }
+                            else
+                            {
+                                GetComponent<InteractableObject>().ScreenText = "locked needs " + ItemRequired.name;
+                            }
+                        }
+                    }
+                    else if (!locked)
+                    {
+                        switch (doorState)
+                        {
+                            case (DoorState.open):
+                                {
+                                    GetComponent<Animation>().Play("close");
+                                    doorState = DoorState.closed;
+                                    break;
+                                }
+                            case (DoorState.closed):
+                                {
+                                    GetComponent<Animation>().Play("open");
+                                    doorState = DoorState.open;
+                                    break;
+                                }
+                        }
+                    }
 
                     break;
                 }
