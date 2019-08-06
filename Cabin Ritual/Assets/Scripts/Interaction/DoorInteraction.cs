@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     // with this you can pick the door type in the inspector and the event will change depending on it
-    public enum DoorType { StandardDoor, CabinDoorLocked, StandardLockedDoor};
+    public enum DoorType { StandardDoor, CabinDoorLocked, StandardLockedDoor, GardenShedDoor};
 
     // the state in which the door is in
     public enum DoorState { open, closed };
@@ -125,6 +125,45 @@ public class DoorInteraction : MonoBehaviour
                         }
                     }
 
+                    break;
+                }
+            case (DoorType.GardenShedDoor):
+                {
+                    if (locked)
+                    {
+                        Controller temp = FindObjectOfType<Controller>();
+                        if (temp.ReturnLookingAt())
+                        {
+                            if (temp.GetPlayerInv().EquipedItem == ItemRequired)
+                            {
+                                locked = false;
+                                GetComponent<InteractableObject>().ScreenText = "the vines have been cut off";
+                                temp.GetPlayerInv().RemoveItem(ItemRequired);
+                            }
+                            else
+                            {
+                                GetComponent<InteractableObject>().ScreenText = "the door is covered in vines and needs a " + ItemRequired.name;
+                            }
+                        }
+                    }
+                    else if (!locked)
+                    {
+                        switch (doorState)
+                        {
+                            case (DoorState.open):
+                                {
+                                    GetComponent<Animation>().Play("close");
+                                    doorState = DoorState.closed;
+                                    break;
+                                }
+                            case (DoorState.closed):
+                                {
+                                    GetComponent<Animation>().Play("open");
+                                    doorState = DoorState.open;
+                                    break;
+                                }
+                        }
+                    }
                     break;
                 }
         }
