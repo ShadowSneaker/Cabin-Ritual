@@ -18,3 +18,9 @@ MonoBehaviour:
   Durability: 10
   Weapon: 0
   RitualItem: 0
+  use: 0
+  ItemDropped: {fileID: 5295134432412866097, guid: a5127738dbdba6f40819564752ffa29d,
+    type: 3}
+  DropXPos: 8
+  DropYPos: 5
+  DropZpos: 70
