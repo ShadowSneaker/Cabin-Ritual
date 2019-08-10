@@ -103,6 +103,7 @@ public class Controller : MonoBehaviour
             if(Input.GetButtonDown("Inventory"))
             {
                  inventoryUI.Close_OpenUI();
+                 PlayerInv.ChangeInventoryOpen();
             }
 
             if (Input.GetButtonDown("Crouch"))

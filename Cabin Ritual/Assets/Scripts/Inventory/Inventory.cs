@@ -27,12 +27,15 @@ public class Inventory : MonoBehaviour
     // the UI that displays the inventory
     public GameObject inventoryUI;
 
+    // to determine wether the inventory is open or not
+    private bool InventoryOpen;
+
     public void Start()
     {
         // this adds a function to the item change call back
         OnitemChangedCallBack += UpdateUI;
 
-        
+        InventoryOpen = false;
 
         
     }
@@ -115,5 +118,15 @@ public class Inventory : MonoBehaviour
     public void EquipItem(Item item)
     {
         EquipedItem = item;
+    }
+
+    public bool IsInventoryOpen()
+    {
+        return InventoryOpen;
+    }
+
+    public void ChangeInventoryOpen()
+    {
+        InventoryOpen = !InventoryOpen;
     }
 }
