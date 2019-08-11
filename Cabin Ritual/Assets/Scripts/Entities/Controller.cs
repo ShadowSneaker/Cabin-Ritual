@@ -5,6 +5,10 @@ public class Controller : MonoBehaviour
 {
     ///  Properties
 
+    [Tooltip("Allows the user to input keys.")]
+    [SerializeField]
+    private bool AllowInputs = true;
+
     [Tooltip("Should the cursor be shown in game?")]
     [SerializeField]
     private bool ShowCursor = false;
@@ -32,7 +36,7 @@ public class Controller : MonoBehaviour
     private Entity Player;
 
     //a refernce to the InventoryUI script
-    public InventoryUI inventoryUI;
+    public InventoryUI InventoryUI;
 
     // The interactable objec the player is looking at.
     private InteractableObject LookingAt;
@@ -40,16 +44,20 @@ public class Controller : MonoBehaviour
     // The hit information for the interaction raycast.
     private RaycastHit Hit;
 
-    // the Flavour text that displays to the screen
+    // The Flavour text that displays to the screen.
     public Text FlavourText;
 
-    // this is the players inventory that is on this object
+    // This is the players inventory that is on this object.
     private Inventory PlayerInv;
+
+    // A reference to the camera controller.
+    private CameraController CamController;
 
     // A reference to the camera transform
     [Tooltip("A reference to the camera's transform, used to calculate the interaction raycast.")]
     [SerializeField]
     private Transform Cam = null;
+
 
     
 
@@ -61,6 +69,8 @@ public class Controller : MonoBehaviour
         Player = GetComponent<Entity>();
         PlayerInv = GetComponent<Inventory>();
         if (!Player) Debug.LogError("Error: Could not find the Entity component!");
+
+        CamController = GetComponent<CameraController>();
         
     }
 
@@ -81,49 +91,61 @@ public class Controller : MonoBehaviour
     {
         if (Player)
         {
-            if (Input.GetButtonDown("Sprint"))
+            if (AllowInputs)
             {
-                Player.Sprint();
-            }
-
-            if (Input.GetButtonUp("Sprint"))
-            {
-                Player.StopSprinting();
-            }
-            
-            Player.Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveSideways"), Input.GetButtonDown("Jump"));
-            
-
-            if (Input.GetButtonDown("Interact"))
-            {
-                Interact();
-                FlavourText.enabled = false;
-            }
-
-            if(Input.GetButtonDown("Inventory"))
-            {
-                 inventoryUI.Close_OpenUI();
-                 PlayerInv.ChangeInventoryOpen();
-            }
-
-            if (Input.GetButtonDown("Crouch"))
-            {
-                if (ToggleCrouch && Player.IsCrouching)
+                if (Input.GetButtonDown("Sprint"))
                 {
-                    Player.UnCrouch();
+                    Player.Sprint();
                 }
-                else
+
+                if (Input.GetButtonUp("Sprint"))
                 {
-                    Player.Crouch();
+                    Player.StopSprinting();
+                }
+
+                Player.Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveSideways"), Input.GetButtonDown("Jump"));
+
+
+                if (Input.GetButtonDown("Interact"))
+                {
+                    Interact();
+                    FlavourText.enabled = false;
+                }
+
+                if (Input.GetButtonDown("Inventory"))
+                {
+                    InventoryUI.Close_OpenUI();
+                    PlayerInv.ChangeInventoryOpen();
+                }
+
+                if (Input.GetButtonDown("Crouch"))
+                {
+                    if (ToggleCrouch && Player.IsCrouching)
+                    {
+                        Player.UnCrouch();
+                    }
+                    else
+                    {
+                        Player.Crouch();
+                    }
+                }
+
+                if (Input.GetButtonUp("Crouch"))
+                {
+                    if (!ToggleCrouch)
+                    {
+                        Player.UnCrouch();
+                    }
                 }
             }
-
-            if (Input.GetButtonUp("Crouch"))
+            else
             {
-                if (!ToggleCrouch)
-                {
-                    Player.UnCrouch();
-                }
+                Player.Move(0.0f, 0.0f, false);
+            }
+
+            if (CamController.enabled != AllowInputs)
+            {
+                CamController.enabled = AllowInputs;
             }
         }
     }
