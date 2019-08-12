@@ -44,9 +44,6 @@ public class Controller : MonoBehaviour
     // The hit information for the interaction raycast.
     private RaycastHit Hit;
 
-    // The Flavour text that displays to the screen.
-    public Text FlavourText;
-
     // This is the players inventory that is on this object.
     private Inventory PlayerInv;
 
@@ -109,7 +106,7 @@ public class Controller : MonoBehaviour
                 if (Input.GetButtonDown("Interact"))
                 {
                     Interact();
-                    FlavourText.enabled = false;
+                    InventoryUI.DisableFlavourText();
                 }
 
                 if (Input.GetButtonDown("Inventory"))
@@ -177,15 +174,14 @@ public class Controller : MonoBehaviour
                 if (LookingAt && DisplayInteractable)
                 {
                     // Place code to draw to the screen.
-                    FlavourText.text = LookingAt.ScreenText;
-
-                    FlavourText.enabled = true;
+                    InventoryUI.ChangeFlavourText(LookingAt.ScreenText);
+                    InventoryUI.EnableFlavourText();
                 }
             }
             else
             {
                 LookingAt = null;
-                FlavourText.enabled = false;
+                InventoryUI.DisableFlavourText();
             }
         }
     }

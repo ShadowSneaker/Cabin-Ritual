@@ -36,6 +36,13 @@ public class InventorySlot : MonoBehaviour
     [Tooltip("the cancel button image")]
     public Image CancelButton;
 
+    [Tooltip("the name box")]
+    public Image NameBox;
+
+    [Tooltip("the description box")]
+    public Image DescriptionBox;
+
+
     // a bool to determine wether this slot is linked to the equipment slot
     [Tooltip("is this item equiped to the player")]
     public bool Equiped;
@@ -56,6 +63,9 @@ public class InventorySlot : MonoBehaviour
     {
         EquipButton.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(false);
+        NameBox.gameObject.SetActive(false);
+        DescriptionBox.gameObject.SetActive(false);
+
         PlayerInventory = FindObjectOfType<Inventory>();
         Used = false;
         
@@ -108,8 +118,9 @@ public class InventorySlot : MonoBehaviour
         //sets the buttons to decide to equip item or not on.
         EquipButton.gameObject.SetActive(true);
         CancelButton.gameObject.SetActive(true);
+        NameBox.gameObject.SetActive(true);
+        DescriptionBox.gameObject.SetActive(true);
 
-       
 
     }
 
@@ -126,6 +137,8 @@ public class InventorySlot : MonoBehaviour
                 PlayerInventory.EquipItem(item);
                 EquipButton.gameObject.SetActive(false);
                 CancelButton.gameObject.SetActive(false);
+                NameBox.gameObject.SetActive(false);
+                DescriptionBox.gameObject.SetActive(false);
             }
             else
             {
@@ -168,6 +181,8 @@ public class InventorySlot : MonoBehaviour
         // have this remove the button prompts to equit the item
         EquipButton.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(false);
+        NameBox.gameObject.SetActive(false);
+        DescriptionBox.gameObject.SetActive(false);
     }
 
 
