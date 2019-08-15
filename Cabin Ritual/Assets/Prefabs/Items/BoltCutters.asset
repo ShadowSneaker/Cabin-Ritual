@@ -18,3 +18,10 @@ MonoBehaviour:
   Durability: 10
   Weapon: 0
   RitualItem: 0
+  LetterItem: 0
+  LetterText: 
+  use: 0
+  ItemDropped: {fileID: 0}
+  DropXPos: 0
+  DropYPos: 0
+  DropZpos: 0

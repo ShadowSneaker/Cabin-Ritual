@@ -147,6 +147,10 @@ public class InventorySlot : MonoBehaviour
                     // i will have a way that determines what function to use like checking the name or something
                     item.CabinLetter();
                     Used = true;
+                    Debug.Log("Entered used");
+                    Equipslot.sprite = item.Icon;
+                    Equiped = true;
+                    PlayerInventory.EquipItem(item);
                 }
             }
 
@@ -185,6 +189,9 @@ public class InventorySlot : MonoBehaviour
         DescriptionBox.gameObject.SetActive(false);
     }
 
-
+    public Item GetItem()
+    {
+        return item;
+    }
 
 }

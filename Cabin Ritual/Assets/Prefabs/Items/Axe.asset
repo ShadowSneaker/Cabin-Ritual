@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bff39e8a36e64834b9fcba1eaf2091b8, type: 3}
-  m_Name: Letter
+  m_Name: Axe
   m_EditorClassIdentifier: 
-  name: Letter
+  name: Axe
   Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  Description: a letter attached to the front door of the cabin
+  Description: A sharp axe that can cut down trees
   Durability: 1
   Weapon: 0
   RitualItem: 0
-  LetterItem: 1
-  LetterText: Testing
-  use: 1
-  ItemDropped: {fileID: 2167472487077528140, guid: 82ed5b73b87994d43be7638876fab64a,
-    type: 3}
-  DropXPos: 66
-  DropYPos: 1
-  DropZpos: 25
+  LetterItem: 0
+  LetterText: 
+  use: 0
+  ItemDropped: {fileID: 0}
+  DropXPos: 0
+  DropYPos: 0
+  DropZpos: 0

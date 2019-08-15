@@ -16,9 +16,17 @@ public class EquipmentSlot : MonoBehaviour
     // the inventory slots
     private InventorySlot[] Slots;
 
+    public Image LetterPanel;
+
+    
+
+    public Text LetterPanelText;
+
     private void Start()
     {
         Slots = FindObjectsOfType<InventorySlot>();
+        LetterPanel.gameObject.SetActive(false);
+        
     }
 
     //Unequip button
@@ -34,6 +42,32 @@ public class EquipmentSlot : MonoBehaviour
                 i.Equiped = false;
             }
         }
+    }
+
+    public void Inspect()
+    {
+        foreach(InventorySlot i in Slots)
+        {
+            if(i.Equiped)
+            {
+                Debug.Log("equipped registered");
+                if(i.GetItem().LetterItem)
+                {
+
+                    LetterPanelText.text = i.GetItem().LetterText;
+                    LetterPanel.gameObject.SetActive(true);
+                    
+                }
+            
+            }
+        }
+    
+    }
+
+    public void Close()
+    {
+        LetterPanel.gameObject.SetActive(false);
+        
     }
 
 }

@@ -16,7 +16,11 @@ public class Item : ScriptableObject
     public bool Weapon;
     // a bool to determoine if its a ritual item
     public bool RitualItem;
-
+    // a bool to determine if the item is a letter item
+    public bool LetterItem;
+    // this is th etext that will be found in the letter 
+    [TextArea]
+    public string LetterText;
 
     [Header("if this item to be used instead of equiped then have this bool set true")]
     public bool use = false;
@@ -40,8 +44,7 @@ public class Item : ScriptableObject
     [Tooltip("The Z position you want the Key dropped at")]
     public int DropZpos;
 
-    [SerializeField]
-    //this is so that items can only be used once
+    
     
 
     // this function will spawn a specific item where the player stands
