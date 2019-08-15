@@ -4,8 +4,6 @@ using UnityEngine;
 
 
 
-
-
 // An object that handles spawning and despawning objects in the game.
 public class ObjectPool : MonoBehaviour
 {
@@ -50,7 +48,15 @@ public class ObjectPool : MonoBehaviour
 
     /// Properties
 
-    [Tooltip("A list of object that should be created and how much should be created.")]
+    [Tooltip("Should the count of objects be scaled up to how many players there are?")]
+    [SerializeField]
+    private bool ShouldScaleSpawns = true;
+
+    [Tooltip("The multiplier on how many objects should be created per player.")]
+    [SerializeField]
+    private float ObjectMultiplier = 1.0f;
+
+    [Tooltip("A list of objects that should be created and how much should be created.")]
     [SerializeField]
     private DisplayObject[] CreateObjects = new DisplayObject[1];
 
@@ -65,11 +71,15 @@ public class ObjectPool : MonoBehaviour
     {
         // Spawn all objects
 
+        GameMode GM = FindObjectOfType<GameMode>();
+
         for (int i = 0; i < CreateObjects.Length; ++i)
         {
-            ObjectTypes.Add(CreateObjects[i].Key, new ObjectType[CreateObjects[i].InstanceCount]);
+            int SpawnCount = Mathf.RoundToInt(CreateObjects[i].InstanceCount * ObjectMultiplier * ((GM) ? (ShouldScaleSpawns) ? GM.GetPlayerCount() : 1 : 1));
 
-            for (int j = 0; j < CreateObjects[i].InstanceCount; j++)
+            ObjectTypes.Add(CreateObjects[i].Key, new ObjectType[SpawnCount]);
+
+            for (int j = 0; j < SpawnCount; j++)
             {
                 ObjectTypes[CreateObjects[i].Key][j].SetInstance(Instantiate(CreateObjects[i].Prefab));
                 ObjectTypes[CreateObjects[i].Key][j].GetInstance.SetActive(false);
@@ -123,5 +133,26 @@ public class ObjectPool : MonoBehaviour
         {
             Debug.LogWarning("Warning: Inputted key does not exist.");
         }
+    }
+
+
+    // Returns a reference of all the objects that are checked out of a specified type.
+    // @param Key - The object type to retreieve.
+    // @return - A list of all active objects.
+    public List<GameObject> GetAllActiveObjects(string Key)
+    {
+        List<GameObject> FoundObjects = new List<GameObject>();
+
+        if (ObjectTypes.ContainsKey(Key))
+        {
+            for (int i = 0; i < ObjectTypes[Key].Length; ++i)
+            {
+                if (ObjectTypes[Key][i].GetInstance.activeSelf)
+                {
+                    FoundObjects.Add(ObjectTypes[Key][i].GetInstance);
+                }
+            }
+        }
+        return FoundObjects;
     }
 }

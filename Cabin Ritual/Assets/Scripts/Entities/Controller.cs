@@ -186,13 +186,25 @@ public class Controller : MonoBehaviour
         }
     }
 
-    // a simple getter to get the players inventory for the use in the item pick up script
+    // Applies any effects that the player has from being damaged.
+    public void ApplyPlayerEffects()
+    {
+        // UI.HurtImage.alpha = Player.Health / Player.MaxHealh;
+
+        if (Player.Health == 1)
+        {
+            // Apply cripple debuff to the player.
+        }
+    }
+
+
+    // A simple getter to get the players inventory for the use in the item pick up script
     public Inventory GetPlayerInv()
     {
         return PlayerInv;
     }
 
-    // a function to return the looking at object
+    // A function to return the looking at object
     public InteractableObject ReturnLookingAt()
     {
         return LookingAt;

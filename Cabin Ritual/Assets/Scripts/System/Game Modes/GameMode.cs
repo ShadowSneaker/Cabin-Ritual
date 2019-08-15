@@ -74,6 +74,11 @@ public class GameMode : MonoBehaviour
         }
     }
 
+
+    virtual public void PlayerDown(Controller Player) { }
+
+
+
     
     /// Functions
 

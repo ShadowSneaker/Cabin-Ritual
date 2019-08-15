@@ -11,8 +11,8 @@ public struct Stat
 
     //[Header("Stat")]
 
-    [Tooltip("Updates the value of this stat to equal the maximum value.")]
-    public bool UpdateStat;
+    [Tooltip("Forces the Value and MaxValue to equal the same thing (Prioritieses MaxValue).")]
+    public bool MatchValues;
 
     [Tooltip("The current value of this stat.")]
     public float Value;
@@ -46,9 +46,8 @@ public struct Stat
     // Note, this is only used in OnValidate().
     public void Update()
     {
-        if (UpdateStat)
+        if (MatchValues)
         {
-            UpdateStat = false;
             Value = MaxValue;
 
             
@@ -91,11 +90,26 @@ public class Entity : MonoBehaviour
     [DisplayWithoutEdit()]
     public bool IsDead;
 
+    [DisplayWithoutEdit()]
+    public bool IsDown;
+
+    [DisplayWithoutEdit()]
+    public int DownCount;
+
+    [Tooltip("Should this entity be allowed to get knocked down.")]
+    [SerializeField]
+    private bool HasDownState = false;
+    
+
     [Tooltip("Should this entity be allowed to be damaged?")]
     public bool Invulnerable;
 
-    [Tooltip("This entity's health value.")]
-    public Stat Health;
+    [Tooltip("Represents how often this entity can be hit.")]
+    public int Health = 3;
+
+    [Tooltip("The maximum amount of health this entity has.")]
+    [SerializeField]
+    private int MaxHealth = 3;
 
     [Tooltip("How long this entity is immune from damage when attacked.")]
     public float ImmunityFrames = 0.5f;
@@ -236,8 +250,14 @@ public class Entity : MonoBehaviour
 
     [Header("Events")]
 
-    [Tooltip("Runs when the entity dies")]
+    [Tooltip("Runs when the entity dies.")]
     public UnityEvent OnDeath;
+
+    [Tooltip("Runs when the entity gets hit.")]
+    public UnityEvent OnHurt;
+
+    [Tooltip("Runs when the entity is healed.")]
+    public UnityEvent OnHeal;
 
 
     [Header("Other")]
@@ -270,19 +290,21 @@ public class Entity : MonoBehaviour
 
     // When true. Tries to stand every fixed frame until space above entity is clear.
     private bool AttemptStand = false;
-    
+
+    // Allows movement functions to work.
+    private bool CanMove = true;
+
 
 
 
     /// Overridables
 
-    
+
     // Updates values in editor.
     public void OnValidate()
     {
         CurrentSpeed = RunSpeed;
-
-        Health.Update();
+        
         Stamina.Update();
     }
 
@@ -316,11 +338,6 @@ public class Entity : MonoBehaviour
         if (Stamina.IsRegenerating)
         {
             Stamina.RegenFrame();
-        }
-
-        if (Health.IsRegenerating)
-        {
-            Health.RegenFrame();
         }
 
 
@@ -377,107 +394,110 @@ public class Entity : MonoBehaviour
     // @param Direction - The X, Y, Z direction this entity should move in.
     public void Move(float InputX, float InputY, bool Jump)
     {
-        if (Sprinting && ConsumeStamina)
+        if (CanMove && !IsDead)
         {
-            Stamina.Value = Mathf.Clamp(Stamina.Value - SprintDecay * Time.deltaTime, 0.0f, Stamina.MaxValue);
-
-            if (Stamina.Value <= 0.0f)
+            if (Sprinting && ConsumeStamina)
             {
-                StopSprinting();
-            }
-        }
+                Stamina.Value = Mathf.Clamp(Stamina.Value - SprintDecay * Time.deltaTime, 0.0f, Stamina.MaxValue);
 
-        float InputModifyFactor = (InputX != 0.0f && InputY != 0.0f) ? 0.7071f : 1.0f;
-
-        if (Grounded)
-        {
-            bool Sliding = false;
-
-            if (Physics.Raycast(transform.position, Vector3.down, out Hit, RayDistance))
-            {
-                if (Vector3.Angle(Hit.normal, Vector3.up) > SlideLimit)
+                if (Stamina.Value <= 0.0f)
                 {
-                    Sliding = true;
+                    StopSprinting();
                 }
             }
-            // Sometimes the raycast stright down from the center can faile on steep slopes
-            // So if the above raycast didn't catch anything, raycast down from the stored ControllerCollideHit point instead.
+
+            float InputModifyFactor = (InputX != 0.0f && InputY != 0.0f) ? 0.7071f : 1.0f;
+
+            if (Grounded)
+            {
+                bool Sliding = false;
+
+                if (Physics.Raycast(transform.position, Vector3.down, out Hit, RayDistance))
+                {
+                    if (Vector3.Angle(Hit.normal, Vector3.up) > SlideLimit)
+                    {
+                        Sliding = true;
+                    }
+                }
+                // Sometimes the raycast stright down from the center can faile on steep slopes
+                // So if the above raycast didn't catch anything, raycast down from the stored ControllerCollideHit point instead.
+                else
+                {
+                    Physics.Raycast(ContactPoint + Vector3.up, Vector3.down, out Hit);
+                    if (Vector3.Angle(Hit.normal, Vector3.up) > SlideLimit)
+                    {
+                        Sliding = true;
+                    }
+                }
+
+
+                if (Falling)
+                {
+                    Falling = false;
+                    if (transform.position.y < FallStartLevel - FallingThreshold)
+                    {
+                        OnGroundHit(FallStartLevel - transform.position.y);
+                    }
+                }
+
+
+                if ((Sliding && SlideWhenOverSlopeLimit) || (SlideOnTaggedObjects && Hit.collider.tag == "Slide"))
+                {
+                    Vector3 HitNormal = Hit.normal;
+                    MoveDirection = new Vector3(HitNormal.x, -HitNormal.y, HitNormal.z);
+                    Vector3.OrthoNormalize(ref HitNormal, ref MoveDirection);
+                    MoveDirection *= SlideSpeed;
+                    AllowControl = false;
+                }
+                else
+                {
+                    MoveDirection = new Vector3(InputX * InputModifyFactor, -AntiBumpFactor, InputY * InputModifyFactor);
+                    MoveDirection = transform.TransformDirection(MoveDirection) * CurrentSpeed;
+                    AllowControl = true;
+                }
+
+                // Jump only when the button has been released and the player has been grounded for a given number of frames.
+                if (!Jump)
+                {
+                    ++JumpTimer;
+                }
+                else if (JumpTimer >= AntiBunnyHopFactor)
+                {
+                    MoveDirection.y = JumpStrength;
+                    JumpTimer = 0;
+                }
+            }
             else
             {
-                Physics.Raycast(ContactPoint + Vector3.up, Vector3.down, out Hit);
-                if (Vector3.Angle(Hit.normal, Vector3.up) > SlideLimit)
+                // If this entity stepped over a cliff or something, set the height at which we started falling.
+                if (!Falling)
                 {
-                    Sliding = true;
-                }
-            }
-
-
-            if (Falling)
-            {
-                Falling = false;
-                if (transform.position.y < FallStartLevel - FallingThreshold)
-                {
-                    OnGroundHit(FallStartLevel - transform.position.y);
-                }
-            }
-
-
-            if ((Sliding && SlideWhenOverSlopeLimit) || (SlideOnTaggedObjects && Hit.collider.tag == "Slide"))
-            {
-                Vector3 HitNormal = Hit.normal;
-                MoveDirection = new Vector3(HitNormal.x, -HitNormal.y, HitNormal.z);
-                Vector3.OrthoNormalize(ref HitNormal, ref MoveDirection);
-                MoveDirection *= SlideSpeed;
-                AllowControl = false;
-            }
-            else
-            {
-                MoveDirection = new Vector3(InputX * InputModifyFactor, -AntiBumpFactor, InputY * InputModifyFactor);
-                MoveDirection = transform.TransformDirection(MoveDirection) * CurrentSpeed;
-                AllowControl = true;
-            }
-
-            // Jump only when the button has been released and the player has been grounded for a given number of frames.
-            if (!Jump)
-            {
-                ++JumpTimer;
-            }
-            else if (JumpTimer >= AntiBunnyHopFactor)
-            {
-                MoveDirection.y = JumpStrength;
-                JumpTimer = 0;
-            }
-        }
-        else
-        {
-            // If this entity stepped over a cliff or something, set the height at which we started falling.
-            if (!Falling)
-            {
-                Falling = true;
-                FallStartLevel = transform.position.y;
-            }
-
-            // If air controll is allowed, check movement but don't touch the y component.
-            if (AirControl && AllowControl)
-            {
-                // TODO: So the problem here is because I don't have any velocity value to add the percentile movement input to. At the moment it's the Inputted speed added by the percentile which means at a minimum it's 100% Speed.
-                // Changing this will forcably slow the character to the percentile which is also wrong.
-                // What I need to do is have a constant velocity that gets raised/lowered while in air that is changed by the input speed percentile.
-
-                // Something Like:
-                // MoveDirection = Mathf.Camp(Velocity + (InputX * (CurrentSpeed * AirControlScale) * InputModifyFactor, -MaxVel, MaxVel);
-
-                // However I'm not sure this is possible with this current setup. I will investigate this solution more in the future.
-
-                // This is just here to remove the warning that this variable isn't being used.
-                if (AirControlScale > 0.0f)
-                {
-
+                    Falling = true;
+                    FallStartLevel = transform.position.y;
                 }
 
-                MoveDirection.x = InputX * CurrentSpeed * InputModifyFactor;
-                MoveDirection.z = InputY * CurrentSpeed * InputModifyFactor;
-                MoveDirection = transform.TransformDirection(MoveDirection);
+                // If air controll is allowed, check movement but don't touch the y component.
+                if (AirControl && AllowControl)
+                {
+                    // TODO: So the problem here is because I don't have any velocity value to add the percentile movement input to. At the moment it's the Inputted speed added by the percentile which means at a minimum it's 100% Speed.
+                    // Changing this will forcably slow the character to the percentile which is also wrong.
+                    // What I need to do is have a constant velocity that gets raised/lowered while in air that is changed by the input speed percentile.
+
+                    // Something Like:
+                    // MoveDirection = Mathf.Camp(Velocity + (InputX * (CurrentSpeed * AirControlScale) * InputModifyFactor, -MaxVel, MaxVel);
+
+                    // However I'm not sure this is possible with this current setup. I will investigate this solution more in the future.
+
+                    // This is just here to remove the warning that this variable isn't being used.
+                    if (AirControlScale > 0.0f)
+                    {
+
+                    }
+
+                    MoveDirection.x = InputX * CurrentSpeed * InputModifyFactor;
+                    MoveDirection.z = InputY * CurrentSpeed * InputModifyFactor;
+                    MoveDirection = transform.TransformDirection(MoveDirection);
+                }
             }
         }
 
@@ -497,42 +517,95 @@ public class Entity : MonoBehaviour
 
         if (AllowFallDamage)
         {
-            TakeDamage(Health.MaxValue * ((FallDistance - MinVelocity) / (TerminalVelocity - MinVelocity)));
+            TakeDamage(Health * Mathf.RoundToInt((FallDistance - MinVelocity) / (TerminalVelocity - MinVelocity)));
         }
     }
 
 
     // Applies damage to this entity.
     // @param Damage - The amount of damage this entity will take.
-    public void TakeDamage(float Damage)
+    public void TakeDamage(int Damage = 1)
     {
-        if (!IsDead && !Invulnerable && !IsImmune)
+        if (!IsDead && !Invulnerable && !IsImmune && Damage != 0)
         {
-            Health.IsRegenerating = false;
-            StopCoroutine(StartHealthRegen());
-            Health.Value -= Damage;
-            Health.Value = Mathf.Clamp(Health.Value, 0.0f, Health.MaxValue);
+            Health = Mathf.Clamp(Health - Damage, 0, MaxHealth);
 
-            if (Health.Value <= 0.0f)
+            if (Health <= 0)
             {
-                IsDead = true;
-                
-                Audio.clip = DeathSound;
-                Audio.Play();
-
-                if (OnDeath != null)
+                if (HasDownState)
                 {
-                    OnDeath.Invoke();
+                    if (DownCount > 0)
+                    {
+                        Die();
+                    }
+                    else
+                    {
+                        IsDown = true;
+                        CanMove = false;
+                        // TODO: Set to down animation.
+                    }
+                }
+                else
+                {
+                    Die();
                 }
             }
             else
             {
+                if (OnHurt != null)
+                {
+                    OnHurt.Invoke();
+                }
+
                 Audio.clip = HurtSound;
                 Audio.Play();
-
-                StartCoroutine(StartHealthRegen());
             }
         }
+    }
+
+
+    // Kills this entity.
+    private void Die()
+    {
+        IsDead = true;
+
+        Audio.clip = DeathSound;
+        Audio.Play();
+
+        if (OnDeath != null)
+        {
+            OnDeath.Invoke();
+        }
+    }
+
+
+    public void Heal(int Amount = 1)
+    {
+        if (!IsDead && Amount != 0)
+        {
+            Health = Mathf.Clamp(Health + Amount, 0, MaxHealth);
+
+            if (OnHeal != null)
+            {
+                OnHeal.Invoke();
+            }
+        }
+    }
+
+
+    public void HelpUp()
+    {
+        Heal();
+        IsDown = false;
+        CanMove = true;
+
+        // TODO: Play getting up animation.
+    }
+
+
+    private void SetDamageDebuffs()
+    {
+
     }
 
 
@@ -625,17 +698,10 @@ public class Entity : MonoBehaviour
     }
 
 
-    private IEnumerator StartHealthRegen()
-    {
-        yield return new WaitForSeconds(Health.RegenDelay);
-        Health.IsRegenerating = true;
-    }
-
-
     // Resets all main stats of this entity.
     public void ResetEntity()
     {
-        Health.Reset();
+        Health = MaxHealth;
         Stamina.Reset();
         IsDead = false;
         CurrentSpeed = RunSpeed;
