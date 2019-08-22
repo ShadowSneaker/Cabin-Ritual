@@ -547,8 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c5a92c049f7b34e847fe6cbe1bffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: 1
-  doorState: 0
+  Door: 4
+  doorState: 1
   locked: 1
   ItemRequired: {fileID: 11400000, guid: 4fd612f82fbb47c4396118c70945a5af, type: 2}
 --- !u!114 &467304145

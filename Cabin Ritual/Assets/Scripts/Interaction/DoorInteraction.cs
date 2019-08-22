@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     // with this you can pick the door type in the inspector and the event will change depending on it
-    public enum DoorType { StandardDoor, CabinDoorLocked, StandardLockedDoor, GardenShedDoor};
+    public enum DoorType { StandardDoor, CabinDoorLocked, StandardLockedDoor, GardenShedDoor, FullLock};
 
     // the state in which the door is in
     public enum DoorState { open, closed };
@@ -165,6 +165,15 @@ public class DoorInteraction : MonoBehaviour
                         }
                     }
                     break;
+                }
+            case (DoorType.FullLock):
+                {
+                    Controller temp = FindObjectOfType<Controller>();
+                    if (temp.ReturnLookingAt())
+                    {
+                        GetComponent<InteractableObject>().ScreenText = "the door wont budge!!";
+                    }
+                        break;
                 }
         }
     }
