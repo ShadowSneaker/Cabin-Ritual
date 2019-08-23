@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Letter
   m_EditorClassIdentifier: 
   name: Letter
-  Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  Icon: {fileID: 21300000, guid: ddee6dabdd342e845a5bac0ed7e69d29, type: 3}
   Description: a letter attached to the front door of the cabin
   Durability: 1
   Weapon: 0

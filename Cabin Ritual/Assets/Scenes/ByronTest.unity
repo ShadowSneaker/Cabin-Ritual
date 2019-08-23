@@ -671,6 +671,63 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &655914086
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_Name
+      value: SM_TrapDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 323.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 137.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -256.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 69953a0d871968e4a8ce8d4d9cd814ae, type: 3}
 --- !u!1 &761882882
 GameObject:
   m_ObjectHideFlags: 0

@@ -100,8 +100,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 302.5, y: 302.5}
+  m_AnchoredPosition: {x: 0, y: 0.0012512}
+  m_SizeDelta: {x: 228.02, y: 284.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1186335673
 CanvasRenderer:
@@ -181,8 +181,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00006485, y: -0.000015259}
-  m_SizeDelta: {x: 302.5, y: 302.5}
+  m_AnchoredPosition: {x: 0.0000038148, y: -2.17}
+  m_SizeDelta: {x: 302.5, y: 284.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1720466902
 CanvasRenderer:
@@ -212,8 +212,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 66602357d40102f41a3570e294f58bcc, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 1869633293}
   - component: {fileID: 1869633292}
   m_Layer: 5
-  m_Name: Image
+  m_Name: exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -925,11 +925,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6293813381906100678}
     m_Modifications:
-    - target: {fileID: 1419939648447232708, guid: a53b5d32788f83449865ace862370cc4,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 1419939648447232704, guid: a53b5d32788f83449865ace862370cc4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1035,6 +1030,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1419939648447232708, guid: a53b5d32788f83449865ace862370cc4,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 584041108, guid: a53b5d32788f83449865ace862370cc4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -10
@@ -1058,11 +1058,6 @@ PrefabInstance:
     - target: {fileID: 982069350, guid: a53b5d32788f83449865ace862370cc4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 302.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3505618602271173798, guid: a53b5d32788f83449865ace862370cc4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2446919116530030201, guid: a53b5d32788f83449865ace862370cc4,
         type: 3}
@@ -1385,6 +1380,11 @@ PrefabInstance:
     - target: {fileID: 8905072598570167864, guid: a53b5d32788f83449865ace862370cc4,
         type: 3}
       propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419939648447232710, guid: a53b5d32788f83449865ace862370cc4,
+        type: 3}
+      propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

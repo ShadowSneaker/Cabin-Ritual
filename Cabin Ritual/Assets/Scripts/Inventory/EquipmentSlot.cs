@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class EquipmentSlot : MonoBehaviour
 {
-    
+
     [Tooltip("the image of the players equip slot")]
     public Image EquipSlot;
 
-    
+
     [Tooltip("the images for thre equip slot when its empty")]
     public Sprite EmptyEquipSlot;
 
     // the inventory slots
     private InventorySlot[] Slots;
 
+    [Tooltip("the panel that appears when a letter is used")]
     public Image LetterPanel;
 
-    
-
+    [Tooltip("the text that appears on the letter")]
     public Text LetterPanelText;
 
     private void Start()

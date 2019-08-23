@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GraveInteraction : MonoBehaviour
 {
+    [Tooltip("the item required for the graves specific interaction")]
     public Item ItemRequired;
 
 

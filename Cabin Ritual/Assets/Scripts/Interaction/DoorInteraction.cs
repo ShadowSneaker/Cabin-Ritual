@@ -10,16 +10,16 @@ public class DoorInteraction : MonoBehaviour
     // the state in which the door is in
     public enum DoorState { open, closed };
     
-    //the actual enum for the person to edit
+    [Tooltip("the type of door this is")]
     public DoorType Door;
 
-    // the actual enum
+    [Tooltip("what state is the door in")]
     public DoorState doorState;
 
-    //bool to determine if door is locked
+    [Tooltip("does the door start locked")]
     public bool locked;
 
-    // if the door is locked what item is required to unlock it
+    [Tooltip("what item is required for this door to be opened")]
     public Item ItemRequired;
 
 
