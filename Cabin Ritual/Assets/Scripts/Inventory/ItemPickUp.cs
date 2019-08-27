@@ -14,8 +14,7 @@ public class ItemPickUp : MonoBehaviour
     [Tooltip("the item that you want this script to work with")]
     public Item item;
 
-
-
+   
 
     public void Pickup()
     {
@@ -27,6 +26,8 @@ public class ItemPickUp : MonoBehaviour
         {
             if (temp.GetPlayerInv().AddItem(item))
             {
+
+                
 
                 Debug.Log("Entered destroy");
                 Destroy(gameObject);

@@ -9,6 +9,9 @@ public class InventorySlot : MonoBehaviour
     // the item that is held within the inventory slot
     Item item;
 
+    // the gameobject of the item i want (used for instatiating)
+    public GameObject ItemObject;
+
     //ItemDrop itemdrop;
 
     [Tooltip("the icon the item displays")]
@@ -74,9 +77,12 @@ public class InventorySlot : MonoBehaviour
     //this will need to take an item and adds it to the inventory this inventory slot
     public void AddItemToSlot(Item NewItem)
     {
-        
+        Debug.Log("addItem to slot triggered");
        
             item = NewItem;
+
+            
+
             Icon.sprite = item.Icon;
             Icon.enabled = true;
 
@@ -92,6 +98,11 @@ public class InventorySlot : MonoBehaviour
     //removes the item held within this slot
     public void RemoveItemFromSlot()
     {
+        //Instantiate(item, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+
+      
+
+        
 
         PlayerInventory.RemoveItem(item);
 

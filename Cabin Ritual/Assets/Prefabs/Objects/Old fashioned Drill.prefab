@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 851bea91d4332794895bf730ba98902d, type: 2}
+  ItemObject: {fileID: 3738502915274123108}
 --- !u!114 &3446368293707878712
 MonoBehaviour:
   m_ObjectHideFlags: 0
