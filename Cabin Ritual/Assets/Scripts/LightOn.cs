@@ -11,27 +11,14 @@ public class LightOn : MonoBehaviour
     {
         LightActivation = false;
     }
-    //public void TurnOnLight()
-    //{
-    //    //Controller temp = FindObjectOfType<Controller>();
-    //    //if (temp.ReturnLookingAt())
-    //    //{
-    //    if (Input.GetKey("E"))
-    //    {
-    //        Light.SetActive(true);
-    //    }
-    //    //}
-    //}
-
-    void OnTriggerEnter(Collider collision)
+    public void TurnOnLight()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        Controller temp = FindObjectOfType<Controller>();
+        if (temp.ReturnLookingAt())
         {
-            //if (Input.GetButtonDown("E"))
-            //{
-                Debug.Log("running");
-                Light.SetActive(true);
-            //}
-        }
-    }
+
+            Light.SetActive(true);
+        }        
+    }   
+    
 }
