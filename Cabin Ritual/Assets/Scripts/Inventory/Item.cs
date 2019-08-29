@@ -51,9 +51,10 @@ public class Item : ScriptableObject
     public void CabinLetter()
     {
         
-            Instantiate(ItemDropped, new Vector3(DropXPos, DropYPos, DropZpos), Quaternion.identity);
-        
-       
+            GameObject Temp = Instantiate(ItemDropped, new Vector3(DropXPos, DropYPos, DropZpos), Quaternion.identity);
+
+            Temp.transform.parent = GameObject.Find("ItemPool").transform;
+            
     }
 
 

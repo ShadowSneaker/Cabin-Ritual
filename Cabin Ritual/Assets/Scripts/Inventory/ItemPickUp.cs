@@ -26,11 +26,13 @@ public class ItemPickUp : MonoBehaviour
         {
             if (temp.GetPlayerInv().AddItem(item))
             {
-
-                
-
+               
                 Debug.Log("Entered destroy");
-                Destroy(gameObject);
+
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                // this moves the gameobjects position inorder to the illusion of picking it up
+                gameObject.transform.position = new Vector3(0, 1000, 0);
+
             }
         }
         

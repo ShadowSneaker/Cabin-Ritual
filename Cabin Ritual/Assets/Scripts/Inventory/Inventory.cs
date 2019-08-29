@@ -128,14 +128,35 @@ public class Inventory : MonoBehaviour
 
 
         // this works for only the tool box for now so what i will do is make a switch of all of the items there can be 
-        if (item.name == "Tool Box")
+        //if (item.name == "Tool Box")
+        //{
+        //
+        //    Instantiate(ItemObject[0], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+        //    Debug.Log("instatiate happened");
+        //}
+
+        if(Items.Contains(item))
         {
+            if(item.name == "Key")
+            {
+                GameObject TempPool = GameObject.Find("ItemPool");
 
-            Instantiate(ItemObject[0], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-            Debug.Log("instatiate happened");
+                TempPool.transform.Find("Key(Clone)").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                TempPool.transform.Find("Key(Clone)").gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+            else 
+            {
+                GameObject TempPool = GameObject.Find("ItemPool");
+
+                TempPool.transform.Find(item.name).gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                TempPool.transform.Find(item.name).gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+           
+
+           
         }
-
-
 
 
 
