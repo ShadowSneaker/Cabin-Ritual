@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Area1-PreCabin.unity
     guid: 92ce08cef95f1694b8b29d8c13bfa824
+  - enabled: 1
+    path: Assets/Scenes/Area2 - Basement.unity
+    guid: 0ad3a8805069c924ca8398aa155d4c18
   m_configObjects: {}

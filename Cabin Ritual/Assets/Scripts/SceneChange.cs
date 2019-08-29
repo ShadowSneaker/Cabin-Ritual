@@ -12,4 +12,5 @@ public class SceneChange : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
     }
+
 }
