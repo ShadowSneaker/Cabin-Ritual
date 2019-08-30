@@ -135,6 +135,9 @@ public class Inventory : MonoBehaviour
         //    Debug.Log("instatiate happened");
         //}
 
+
+        // this is like this because when an item is created new (from an event like the letter dropping the key) it has to find the item with clone on the end
+        // so until i figure out a more efficent way this is the only way i can think of
         if(Items.Contains(item))
         {
             if(item.name == "Key")
@@ -144,6 +147,46 @@ public class Inventory : MonoBehaviour
                 TempPool.transform.Find("Key(Clone)").gameObject.GetComponent<MeshRenderer>().enabled = true;
 
                 TempPool.transform.Find("Key(Clone)").gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+            else if (item.name == "Plant")
+            {
+                GameObject TempPool = GameObject.Find("ItemPool");
+
+                TempPool.transform.Find("Plant(Clone)").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                TempPool.transform.Find("Plant(Clone)").gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+            else if (item.name == "RottenMeat")
+            {
+                GameObject TempPool = GameObject.Find("ItemPool");
+
+                TempPool.transform.Find("RottenMeat(Clone)").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                TempPool.transform.Find("RottenMeat(Clone)").gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+            else if (item.name == "Bone")
+            {
+                GameObject TempPool = GameObject.Find("ItemPool");
+
+                TempPool.transform.Find("Bone(Clone)").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                TempPool.transform.Find("Bone(Clone)").gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+            else if (item.name == "Rat")
+            {
+                GameObject TempPool = GameObject.Find("ItemPool");
+
+                TempPool.transform.Find("Rat(Clone)").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                TempPool.transform.Find("Rat(Clone)").gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            }
+            else if (item.name == "RitualKnife")
+            {
+                GameObject TempPool = GameObject.Find("ItemPool");
+
+                TempPool.transform.Find("RitualKnife(Clone)").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                TempPool.transform.Find("RitualKnife(Clone)").gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
             }
             else 
             {
