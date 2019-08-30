@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   name: Knife
-  Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  Icon: {fileID: 21300000, guid: 6fbf64b79e92f9943b6bc5bda775a21a, type: 3}
   Description: This knife is so rusty it couldn't be used for cutting anything.
   Durability: 1
   Weapon: 0
