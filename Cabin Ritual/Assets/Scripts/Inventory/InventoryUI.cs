@@ -16,7 +16,9 @@ public class InventoryUI : MonoBehaviour
 
         SoundEffectMixer.SetFloat("OpenCloseInv", 20);
         // this is where i will need an audio manager so that i can actually play the sound
-        
+
+        FindObjectOfType<AudioManager>().Play("Inventory");
+
         return gameObject.activeInHierarchy;
     }
 
