@@ -32,7 +32,7 @@ public class EquipmentSlot : MonoBehaviour
     //Unequip button
     public void Unequip()
     {
-        //for now just changes the image back to null
+       
         EquipSlot.sprite = EmptyEquipSlot;
 
         foreach(InventorySlot i in Slots)
