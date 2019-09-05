@@ -38,6 +38,9 @@ public class Controller : MonoBehaviour
     //a refernce to the InventoryUI script
     public InventoryUI InventoryUI;
 
+    // a refernce to the arcadeUI script
+    public ArcadeUI ArcadeUI;
+
     // The interactable objec the player is looking at.
     private InteractableObject LookingAt;
 
@@ -113,6 +116,11 @@ public class Controller : MonoBehaviour
                 {
                     InventoryUI.Close_OpenUI();
                     PlayerInv.ChangeInventoryOpen();
+                }
+
+                if(Input.GetButtonDown("Points"))
+                {
+                    ArcadeUI.OpenCloseUI();
                 }
 
                 if (Input.GetButtonDown("Crouch"))

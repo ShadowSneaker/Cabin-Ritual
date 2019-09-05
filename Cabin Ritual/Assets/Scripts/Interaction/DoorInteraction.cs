@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     // with this you can pick the door type in the inspector and the event will change depending on it
-    public enum DoorType { StandardDoor, CabinDoorLocked, StandardLockedDoor, GardenShedDoor, FullLock};
+    public enum DoorType { StandardDoor, CabinDoorLocked, StandardLockedDoor, GardenShedDoor, FullLock, ArcadeDoor};
 
     // the state in which the door is in
     public enum DoorState { open, closed };
@@ -22,7 +22,8 @@ public class DoorInteraction : MonoBehaviour
     [Tooltip("what item is required for this door to be opened")]
     public Item ItemRequired;
 
-
+    // the minumum amount a door costs
+    public int ZombieDoorMin = 500;
     
 
 
@@ -174,6 +175,53 @@ public class DoorInteraction : MonoBehaviour
                         GetComponent<InteractableObject>().ScreenText = "the door wont budge!!";
                     }
                         break;
+                }
+            case (DoorType.ArcadeDoor):
+                {
+                    Controller temp = FindObjectOfType<Controller>();
+                    PointsSystem TempPoint = FindObjectOfType<PointsSystem>();
+
+                    if(locked)
+                    {
+
+                        if(TempPoint.GetPlayerPointsAquired() < (ZombieDoorMin + (TempPoint.ZombiedoorNumber * 100)))
+                        {
+                            if (temp.ReturnLookingAt())
+                            {
+                                GetComponent<InteractableObject>().ScreenText = "the Door Costs : " + ((ZombieDoorMin + (TempPoint.ZombiedoorNumber * 100)).ToString());
+                            }
+                        }
+                        else
+                        {
+                            TempPoint.GetPlayerPoints().RemovePoints((ZombieDoorMin + (TempPoint.ZombiedoorNumber * 100)));
+                            TempPoint.ZombiedoorNumber += 1;
+
+                            GetComponent<InteractableObject>().ScreenText = "Door unlocked";
+
+                            locked = false;
+                        }
+
+
+                        
+
+
+
+                        break;
+                    }
+                    else
+                    {
+                        GetComponent<Animator>().Play("open");
+                        doorState = DoorState.open;
+                        break;
+                    }
+
+                    
+
+
+
+
+
+                   
                 }
         }
     }
