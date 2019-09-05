@@ -155,4 +155,16 @@ public class ObjectPool : MonoBehaviour
         }
         return FoundObjects;
     }
+
+
+    public string GetRandomKey()
+    {
+        return new List<string>(ObjectTypes.Keys)[Random.Range(0, ObjectTypes.Count)];
+    }
+
+
+    public List<string> GetAllKeys()
+    {
+        return new List<string>(ObjectTypes.Keys);
+    }
 }

@@ -7,11 +7,55 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectPool))]
 public class GameMode : MonoBehaviour
 {
+    public enum EOption
+    {
+        Yes,
+        No,
+        Both
+    }
+
+    [System.Serializable]
+    public struct SSpawnParams
+    {
+        [Tooltip("Should the entity be spawned near the player.")]
+        public bool SpawnNearPlayer;
+
+        [Tooltip("Should the entity only be spawned at a valid spawner.")]
+        public EOption SpawnAtValid;
+
+        [Tooltip("Forces this entity to be spawned (leave empty for a random entity type).")]
+        public string ForceType;
+
+        [Tooltip("Forces the entity to be spawned near a specified player using the player index (Set to -1 for a random player).")]
+        public int ForceByPlayer;
+
+        [Tooltip("Forces the entity to be spawned at a specific transform (Set to null for a random spawner.")]
+        public Transform ForceTransform;
+    }
+    
+
     private struct PlayerInfo
     {
         public Entity Player;
         public Controller PlayerController;
     }
+
+    
+
+    [Header("Force Spawning")]
+
+
+
+    [Tooltip("Forcse a entity to be spawned in the world.")]
+    [SerializeField]
+    private bool ForceSpawn = false;
+
+    [Tooltip("The spawn parameters for force spawning an entity.")]
+    [SerializeField]
+    private SSpawnParams SpawnParams = new SSpawnParams();
+
+
+    [Header("General")]
 
 
     [Tooltip("How many players are in the game (1 - 4")]
@@ -72,6 +116,12 @@ public class GameMode : MonoBehaviour
                 Players[i].Player = Controllers[i].GetComponent<Entity>();
             }
         }
+    }
+
+
+    private void FixedUpdate()
+    {
+        CheckForceSpawn();
     }
 
 
@@ -184,6 +234,79 @@ public class GameMode : MonoBehaviour
     public GameObject SpawnNearRandomPlayer(string Key)
     {
         return SpawnNearPlayer(Key, Players[Random.Range(0, Players.Length)].PlayerController);
+    }
+
+
+    public GameObject SpawnAwayPlayer(string Key, Controller Player)
+    {
+        if (Player && SpawnZones.Count > 0)
+        {
+            for (int i = 0; i < TrySpawnAttempts; ++i)
+            {
+                SpawnZone Zone = SpawnZones[Random.Range(0, SpawnZones.Count)];
+                if (Vector3.Distance(Zone.transform.position, Player.transform.position) >= MaxSpawnDistance)
+                {
+                    return Spawn(Key, Zone.transform);
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    public GameObject SpawnAwayPlayer(string Key, int PlayerIndex)
+    {
+        return SpawnAwayPlayer(Key, Players[PlayerIndex].PlayerController);
+    }
+
+
+    public GameObject SpawnAwayRandomPlayer(string Key)
+    {
+        return SpawnAwayPlayer(Key, Players[Random.Range(0, Players.Length)].PlayerController);
+    }
+
+
+    private void CheckForceSpawn()
+    {
+        if (ForceSpawn)
+        {
+            ForceSpawn = false;
+
+            string EntityKey = ((SpawnParams.ForceType != "") ? SpawnParams.ForceType : Pool.GetRandomKey());
+            int PlayerIndex = ((SpawnParams.ForceByPlayer != -1) ? SpawnParams.ForceByPlayer : Random.Range(0, PlayerCount));
+
+            //Transform SpawnTransform = ((SpawnParams.ForceTransform != null) ? SpawnParams.ForceTransform : SpawnZones[Random.Range(0, SpawnZones.Count)].transform);
+
+            Transform SpawnTransform = null;
+
+            for (int i = 0; i < TrySpawnAttempts; ++i)
+            {
+                SpawnZone Zone = SpawnZones[Random.Range(0, SpawnZones.Count)];
+
+                if (SpawnParams.SpawnNearPlayer)
+                {
+                    if (Vector3.Distance(Zone.transform.position, GetPlayer(PlayerIndex).transform.position) <= MaxSpawnDistance)
+                    {
+                        SpawnTransform = Zone.transform;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (Vector3.Distance(Zone.transform.position, GetPlayer(PlayerIndex).transform.position) >= MaxSpawnDistance)
+                    {
+                        SpawnTransform = Zone.transform;
+                        break;
+                    }
+                }
+            }
+
+            if (SpawnTransform != null)
+            {
+                Spawn(EntityKey, SpawnTransform);
+            }
+        }
     }
 
 
