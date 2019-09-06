@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GunScript : MonoBehaviour
 {
     public float Damage = 10f;
@@ -12,10 +13,12 @@ public class GunScript : MonoBehaviour
     public int MaxAmmo = 10;
     public int CurrentAmmo;
     public float ReloadTime = 1f;
+    private bool IsReloading = false;
 
     public Camera FpsCam;
     public ParticleSystem MuzzleFlash;
     public GameObject ImpactEffect;
+    public Animator Animator;
 
     private float NextTimeToFire = 0f;
 
@@ -25,13 +28,24 @@ public class GunScript : MonoBehaviour
         if (CurrentAmmo == -1)
             CurrentAmmo = MaxAmmo;
     }
-    // Update is called once per frame
+
+    void OnEnable()
+    {
+        IsReloading = false;
+        Animator.SetBool("Reloading", false);
+    }
+
+    
     void Update()
     {
+        if(IsReloading)
+        {
+            return;
+        }
 
         if(CurrentAmmo <= 0)
         {
-            Reload();
+            StartCoroutine(Reload());
             return;
         }
 
@@ -84,10 +98,27 @@ public class GunScript : MonoBehaviour
         }
     }
 
-    void Reload()
+    IEnumerator Reload()
     {
+        IsReloading = true;
         Debug.Log("Reloading");
+
+        
+
+        Animator.SetBool("Reloading", true);
+
+        yield return new WaitForSeconds(ReloadTime - .25f);
+
+        GetComponent<AudioSource>().Stop();
+
+        Animator.SetBool("Reloading", false);
+
+        yield return new WaitForSeconds(.25f);
+
+        
+
         CurrentAmmo = MaxAmmo;
 
+        IsReloading = false;
     }
 }
