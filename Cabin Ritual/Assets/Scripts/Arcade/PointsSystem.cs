@@ -15,7 +15,7 @@ public class PointsSystem : MonoBehaviour
 
     private void Start()
     {
-        ThePlayer = GameObject.Find("Player").GetComponent<PlayersPoints>();
+        ThePlayer = GameObject.Find("Player With Gun").GetComponent<PlayersPoints>();
     }
 
 

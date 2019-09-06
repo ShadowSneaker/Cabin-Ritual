@@ -198,6 +198,24 @@ public class DoorInteraction : MonoBehaviour
 
                             GetComponent<InteractableObject>().ScreenText = "Door unlocked";
 
+
+                            switch (doorState)
+                            {
+                                case (DoorState.open):
+                                    {
+                                        GetComponent<Animation>().Play("close");
+                                        doorState = DoorState.closed;
+                                        break;
+                                    }
+                                case (DoorState.closed):
+                                    {
+                                        GetComponent<Animation>().Play("open");
+                                        doorState = DoorState.open;
+                                        break;
+                                    }
+                            }
+
+
                             locked = false;
                         }
 
