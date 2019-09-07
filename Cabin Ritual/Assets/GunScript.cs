@@ -55,6 +55,7 @@ public class GunScript : MonoBehaviour
     void Update()
     {
         //Displays ammo on the screen
+        if (AmmoAmount)
         AmmoAmount.text = CurrentAmmo.ToString();
 
         if(IsReloading)

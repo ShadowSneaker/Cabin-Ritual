@@ -42,7 +42,7 @@ public class AIBase : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Agent.speed = AI.GetSpeed;
     }

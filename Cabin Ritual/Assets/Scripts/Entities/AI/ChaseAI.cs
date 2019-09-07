@@ -15,9 +15,20 @@ public class ChaseAI : AIBase
    
 
     /// Overridables
+    
 
-    private void FixedUpdate()
+    private void Awake()
     {
+        if (!FollowObject)
+        {
+            GameMode GM = FindObjectOfType<GameMode>();
+            FollowObject = GM.GetPlayer(Random.Range(0, GM.GetPlayerCount())).transform;
+        }
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
         Agent.destination = FollowObject.position;
         
     }
