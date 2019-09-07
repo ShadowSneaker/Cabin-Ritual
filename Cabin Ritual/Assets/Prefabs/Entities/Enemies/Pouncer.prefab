@@ -765,7 +765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4787570402465657505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.92, y: -0.025, z: 41.34}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4787570402465689349}
@@ -831,7 +831,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.43
-  m_BaseOffset: -0.09
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4787570401035502140
@@ -851,8 +851,8 @@ MonoBehaviour:
   DownCount: 0
   HasDownState: 0
   Invulnerable: 0
-  Health: 3
-  MaxHealth: 3
+  Health: 100
+  MaxHealth: 100
   ImmunityFrames: 0.5
   ConsumeStamina: 1
   Stamina:
@@ -867,10 +867,10 @@ MonoBehaviour:
   Sprinting: 0
   Walking: 0
   Crouching: 0
-  CurrentSpeed: 5
-  WalkSpeed: 3
-  RunSpeed: 5
-  SprintSpeed: 10
+  CurrentSpeed: 1
+  WalkSpeed: 1
+  RunSpeed: 1
+  SprintSpeed: 1
   CrouchSpeed: 2.5
   CrouchHeight: 0.4
   JumpStrength: 5
@@ -891,7 +891,18 @@ MonoBehaviour:
   SprintSound: {fileID: 0}
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4787570401035502136}
+        m_MethodName: Return
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnHurt:
@@ -918,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObject: {fileID: 0}
+  Key: Pouncer
 --- !u!114 &4353768470739566242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
+  ThePlayer: {fileID: 0}
 --- !u!82 &8708132908621478178
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1112,7 +1125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4787570402465657637}
   m_LocalRotation: {x: 0.6035688, y: 0.3354711, z: 0.19125435, w: 0.6975569}
-  m_LocalPosition: {x: 0.0052316836, y: 0.39377823, z: -0.014611521}
+  m_LocalPosition: {x: 0.0052316836, y: 0.3, z: -0.014611521}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4787570402465689407}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 //Sets and applies all the game rules directing the game in a specified direction.
@@ -189,11 +190,14 @@ public class GameMode : MonoBehaviour
     public GameObject Spawn(string Key, Transform InTransform)
     {
         GameObject Object = Pool.CheckoutObject(Key);
+        Object.GetComponent<Entity>().ResetEntity();
+
         if (Object)
         {
-            Object.transform.position = InTransform.position;
-            Object.transform.rotation = InTransform.rotation;
-            Object.transform.localScale = InTransform.localScale;
+            Object.GetComponent<NavMeshAgent>().Warp(InTransform.position);
+            //Object.transform.position = InTransform.position;
+            //Object.transform.rotation = InTransform.rotation;
+            //Object.transform.localScale = InTransform.localScale;
         }
         return Object;
     }
@@ -315,7 +319,10 @@ public class GameMode : MonoBehaviour
     // @param Object - The object to be despawned.
     public void Despawn(string Key, GameObject Object)
     {
+
+        Debug.Log("DIE");
         Pool.ReturnObject(Key, Object);
+
     }
 
 

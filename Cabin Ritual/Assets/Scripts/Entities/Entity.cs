@@ -526,9 +526,9 @@ public class Entity : MonoBehaviour
     // @param Damage - The amount of damage this entity will take.
     public void TakeDamage(int Damage = 1)
     {
-        if (!IsDead && !Invulnerable && !IsImmune && Damage != 0)
+        if (!Invulnerable && !IsImmune && Damage != 0)
         {
-            Health = Mathf.Clamp(Health - Damage, 0, MaxHealth);
+            Health -= Damage;
 
             if (Health <= 0)
             {
@@ -571,6 +571,7 @@ public class Entity : MonoBehaviour
 
         Audio.clip = DeathSound;
         Audio.Play();
+
 
         if (OnDeath != null)
         {

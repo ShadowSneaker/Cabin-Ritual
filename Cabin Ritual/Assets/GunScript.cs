@@ -11,14 +11,14 @@ public class GunScript : MonoBehaviour
     public bool ToggleFullAuto = false;
 
     //Damage variable 
-    public float Damage = 10f;
+    public int Damage = 10;
     //Headshot Damage variable
     //public float HeadshotDamage = 20f;
     //Range variable
     public float Range = 100f;
     //Speed of fire variable
     public float FireRate = 15f;
-    //force on target object variable
+    //force on Target object variable
     public float ImpactForce = 30f;
 
     //Max ammo for gun vairable
@@ -48,7 +48,7 @@ public class GunScript : MonoBehaviour
     void OnEnable()
     {
         IsReloading = false;
-        Animator.SetBool("Reloading", false);
+        //Animator.SetBool("Reloading", false);
     }
 
     
@@ -134,13 +134,12 @@ public class GunScript : MonoBehaviour
         if(Physics.Raycast(FpsCam.transform.position, FpsCam.transform.forward, out hit, Range))
         {
             Debug.DrawRay(FpsCam.transform.position, FpsCam.transform.forward, Color.red);
-            Debug.Log(hit.transform.name);
 
-            //Does damage to 'target'
-            Target target = hit.transform.GetComponent<Target>();
-            if(target != null)
+            //Does damage to 'Target'
+            Entity Target = hit.transform.GetComponent<Entity>();
+            if(Target != null)
             {
-                target.TakeDamage(Damage);
+                Target.TakeDamage(Damage);
             }
             
 
@@ -161,7 +160,6 @@ public class GunScript : MonoBehaviour
 
         IsReloading = true;
        // Animator.SetBool("Fire", false);
-        Debug.Log("Reloading");
 
         GetComponent<AudioSource>().Stop();
 

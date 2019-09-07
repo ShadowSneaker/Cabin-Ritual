@@ -10,4 +10,9 @@ public class PlayersPoints : MonoBehaviour
     {
         PointsAquired -= points;        
     }
+
+    public void AddPoints(int Points)
+    {
+        PointsAquired += Points;
+    }
 }

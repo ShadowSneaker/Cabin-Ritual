@@ -12,16 +12,21 @@ public class ChaseAI : AIBase
     [Tooltip("The object this AI should move towards")]
     public Transform FollowObject;
 
-   
 
-    /// Overridables
+    public string Key;
+    private GameMode GM = null;
+
     
 
-    private void Awake()
+
+    /// Overridables
+
+
+    private void OnEnable()
     {
+        GM = FindObjectOfType<GameMode>();
         if (!FollowObject)
         {
-            GameMode GM = FindObjectOfType<GameMode>();
             FollowObject = GM.GetPlayer(Random.Range(0, GM.GetPlayerCount())).transform;
         }
     }
@@ -36,6 +41,11 @@ public class ChaseAI : AIBase
     /// Functions
 
 
-
+    public void Return()
+    {
+        GM.GetPlayer(0).GetComponent<PlayersPoints>().AddPoints(100);
+        GM.Despawn(Key, this.gameObject);
+        
+    }
 
 }
