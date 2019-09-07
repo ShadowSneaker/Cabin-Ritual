@@ -28,6 +28,8 @@ public class DoorInteraction : MonoBehaviour
     //For when it is not a door to open (Samuel edit)
     public GameObject Barrier;
 
+    // a bool to determine if its a door or a baricade
+    public bool barrier;
 
     void Start()
     {
@@ -205,25 +207,33 @@ public class DoorInteraction : MonoBehaviour
 
                             GetComponent<InteractableObject>().ScreenText = "Door unlocked";
 
-
-                            //Turns the item off when the object brought when not a door (Samuel edit)
-                            Barrier.gameObject.SetActive(false);
-
-                            switch (doorState)
+                            if(barrier)
                             {
-                                case (DoorState.open):
-                                    {
-                                        GetComponent<Animation>().Play("close");
-                                        doorState = DoorState.closed;
-                                        break;
-                                    }
-                                case (DoorState.closed):
-                                    {
-                                        GetComponent<Animation>().Play("open");
-                                        doorState = DoorState.open;
-                                        break;
-                                    }
+                                //Turns the item off when the object brought when not a door (Samuel edit)
+                                Barrier.gameObject.SetActive(false);
+                                break;
                             }
+                            else
+                            {
+                                switch (doorState)
+                                {
+                                    case (DoorState.open):
+                                        {
+                                            GetComponent<Animation>().Play("close");
+                                            doorState = DoorState.closed;
+                                            break;
+                                        }
+                                    case (DoorState.closed):
+                                        {
+                                            GetComponent<Animation>().Play("open");
+                                            doorState = DoorState.open;
+                                            break;
+                                        }
+                                }
+                            }
+                            
+
+                            
 
                             
 
