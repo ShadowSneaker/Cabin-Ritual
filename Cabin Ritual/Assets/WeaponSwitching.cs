@@ -18,6 +18,7 @@ public class WeaponSwitching : MonoBehaviour
         //Scroll down to change weapon
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
+            Debug.Log("Scrolling...");
             if (SelectedWeapon >= transform.childCount - 1)
                 SelectedWeapon = 0;
             else
@@ -27,6 +28,8 @@ public class WeaponSwitching : MonoBehaviour
         //Scroll up to change weapon
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
+
+            Debug.Log("Scrolling...");
             if (SelectedWeapon <= 0)
                 SelectedWeapon = transform.childCount - 1;
             else

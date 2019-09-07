@@ -24,8 +24,15 @@ public class DoorInteraction : MonoBehaviour
 
     // the minumum amount a door costs
     public int ZombieDoorMin = 500;
-    
 
+    //For when it is not a door to open (Samuel edit)
+    public GameObject Barrier;
+
+
+    void Start()
+    {
+        Barrier.gameObject.SetActive(true);
+    }
 
     // the function that determines the event that will happen depening on the type of door it is
     public void DoorEvent()
@@ -199,6 +206,9 @@ public class DoorInteraction : MonoBehaviour
                             GetComponent<InteractableObject>().ScreenText = "Door unlocked";
 
 
+                            //Turns the item off when the object brought when not a door (Samuel edit)
+                            Barrier.gameObject.SetActive(false);
+
                             switch (doorState)
                             {
                                 case (DoorState.open):
@@ -215,9 +225,11 @@ public class DoorInteraction : MonoBehaviour
                                     }
                             }
 
+                            
+
 
                             locked = false;
-                        }
+                        }              
 
 
                         

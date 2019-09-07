@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class ActivatableObject : MonoBehaviour
-{
+{  
 
     public enum ActivationBehaviour
     {

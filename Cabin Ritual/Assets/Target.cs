@@ -7,6 +7,13 @@ public class Target : MonoBehaviour
 
     public float Health = 50f;
 
+    public PlayersPoints ThePlayer;
+
+    private void Start()
+    {
+        ThePlayer = GameObject.Find("Player With Gun").GetComponent<PlayersPoints>();
+    }
+
     public void TakeDamage(float amount)
     {
         Health -= amount;
@@ -16,8 +23,9 @@ public class Target : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
+        ThePlayer.PointsAquired += 100;
         Destroy(gameObject);
     }
 

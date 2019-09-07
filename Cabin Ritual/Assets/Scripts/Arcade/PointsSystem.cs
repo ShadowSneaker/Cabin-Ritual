@@ -10,8 +10,10 @@ public class PointsSystem : MonoBehaviour
 
     // the number of doors the player has opened in arcade mode
     public int ZombiedoorNumber = 0;
+    
 
-    public PlayersPoints ThePlayer;
+    private PlayersPoints ThePlayer;
+        
 
     private void Start()
     {
@@ -21,7 +23,7 @@ public class PointsSystem : MonoBehaviour
 
     // function to add points to the players point system
     public void AddPoints()
-    {
+    {        
         ThePlayer.PointsAquired += 100;
     }
 

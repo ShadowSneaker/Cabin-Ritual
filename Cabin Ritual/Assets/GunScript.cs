@@ -1,30 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class GunScript : MonoBehaviour
 {
+    //Inspector bool to be check for guns
+    [Tooltip("Is it an aotomatic gun?")]
+    [SerializeField]
+    public bool ToggleFullAuto = false;
+
+    //Damage variable 
     public float Damage = 10f;
+    //Headshot Damage variable
+    //public float HeadshotDamage = 20f;
+    //Range variable
     public float Range = 100f;
+    //Speed of fire variable
     public float FireRate = 15f;
+    //force on target object variable
     public float ImpactForce = 30f;
 
+    //Max ammo for gun vairable
     public int MaxAmmo = 10;
+    //Current ammo of gun
     public int CurrentAmmo;
+    //How long it takes to reload
     public float ReloadTime = 1f;
+    //Is the gun reloading bool
     private bool IsReloading = false;
 
     public Camera FpsCam;
     public ParticleSystem MuzzleFlash;
-    public GameObject ImpactEffect;
+    public GameObject ImpactEffect;    
     public Animator Animator;
+    public Text AmmoAmount;
 
     private float NextTimeToFire = 0f;
 
 
     void Start()
-    {
+    {        
         if (CurrentAmmo == -1)
             CurrentAmmo = MaxAmmo;
     }
@@ -38,31 +54,71 @@ public class GunScript : MonoBehaviour
     
     void Update()
     {
+        //Displays ammo on the screen
+        AmmoAmount.text = CurrentAmmo.ToString();
+
         if(IsReloading)
         {
             return;
         }
-
+        
+        //Srarts the reloading sequence
         if(CurrentAmmo <= 0)
         {
             StartCoroutine(Reload());
             return;
         }
 
-        if(Input.GetButtonDown("Fire1")&& Time.time >= NextTimeToFire)
+        //Allows the player to reload gun by pressing R as long as the player isnt on max ammo
+        if (Input.GetKeyDown(KeyCode.R) && CurrentAmmo != MaxAmmo)
         {
-            //How fast the gun can fire
-            NextTimeToFire = Time.time + 1f / FireRate; 
-
-            //Calls function
-            Shoot();
-
-            GetComponent<AudioSource>().Play();
+            StartCoroutine(Reload());
+            return;
         }
 
-        if (Input.GetButtonUp("Fire1") == true)
+        //Checks to see if the bool for automatic gun is checked
+        if (ToggleFullAuto == true)
         {
-            GetComponent<AudioSource>().Stop();
+            //Automatic guns fire
+            if (Input.GetButton("Fire1") && Time.time >= NextTimeToFire)
+            {
+                //How fast the gun can fire
+                NextTimeToFire = Time.time + 1f / FireRate;
+
+                //Calls function
+                Shoot();
+
+                GetComponent<AudioSource>().Play();
+            }
+
+            if (Input.GetButtonUp("Fire1") == true)
+            {
+                GetComponent<AudioSource>().Stop();
+            }
+        }
+        else
+        {
+            //Non automatic guns fire
+            if (Input.GetButtonDown("Fire1") && Time.time >= NextTimeToFire)
+            {
+                //How fast the gun can fire
+                NextTimeToFire = Time.time + 1f / FireRate;
+
+                //Animator.SetBool("Fire", true);
+
+                //Calls function
+                Shoot();
+
+                GetComponent<AudioSource>().Play();
+
+                
+            }
+
+            if (Input.GetButtonUp("Fire1") == true)
+            {
+                GetComponent<AudioSource>().Stop();
+                //Animator.SetBool("Fire", false);
+            }
         }
     }
 
@@ -85,6 +141,7 @@ public class GunScript : MonoBehaviour
             {
                 target.TakeDamage(Damage);
             }
+            
 
             //Causes force on object pusing it away from player
             if(hit.rigidbody != null)
@@ -99,26 +156,33 @@ public class GunScript : MonoBehaviour
     }
 
     IEnumerator Reload()
-    {
+    { 
+
         IsReloading = true;
+       // Animator.SetBool("Fire", false);
         Debug.Log("Reloading");
-
-        
-
-        Animator.SetBool("Reloading", true);
-
-        yield return new WaitForSeconds(ReloadTime - .25f);
 
         GetComponent<AudioSource>().Stop();
 
+        Animator.SetBool("Reloading", true);
+    
+        yield return new WaitForSeconds(ReloadTime - .25f);
+    
+        GetComponent<AudioSource>().Stop();
+    
         Animator.SetBool("Reloading", false);
-
+    
         yield return new WaitForSeconds(.25f);
-
         
 
         CurrentAmmo = MaxAmmo;
-
+    
         IsReloading = false;
     }
+
+    //IEnumerator GunFire()
+    //{
+    //    yield return new WaitForSeconds(FireRate - .25f);
+    //}
+
 }
