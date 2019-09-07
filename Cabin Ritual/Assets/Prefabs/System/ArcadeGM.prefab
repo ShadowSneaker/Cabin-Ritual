@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1988450878742218067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988450878742218068}
+  - component: {fileID: 1988450878742218069}
+  - component: {fileID: 1988450878742218066}
+  m_Layer: 0
+  m_Name: ArcadeGM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988450878742218068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988450878742218067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.508684, y: 25.127888, z: -21.436026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1988450878742218069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988450878742218067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6853a7efbfcf0c4f994aeb484b8e890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShouldScaleSpawns: 1
+  ObjectMultiplier: 1
+  CreateObjects:
+  - Key: Zombie
+    Prefab: {fileID: 4576255631562492582, guid: 6eb6b00aef530db43bbe38d68c33fd2e,
+      type: 3}
+    InstanceCount: 50
+--- !u!114 &1988450878742218066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988450878742218067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a15d16c6ecfa264e9dfde9a78845fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceSpawn: 0
+  SpawnParams:
+    SpawnNearPlayer: 0
+    SpawnAtValid: 0
+    ForceType: 
+    ForceByPlayer: 0
+    ForceTransform: {fileID: 0}
+  PlayerCount: 1
+  StaticPlayers: []
+  MaxSpawnDistance: 200
+  TrySpawnAttempts: 200
+  AllowSpawning: 1
+  ZombieTypes: []
+  SpawnRate: 1.5
+  SpawnRateCap: 0.001
+  SpawnMultiplier: 1
+  IncreaseRateInverval: 60
