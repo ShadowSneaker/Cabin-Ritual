@@ -748,8 +748,8 @@ GameObject:
   - component: {fileID: 4787570401035502141}
   - component: {fileID: 4787570401035502140}
   - component: {fileID: 4787570401035502136}
-  - component: {fileID: 4353768470739566242}
   - component: {fileID: 8708132908621478178}
+  - component: {fileID: 4839747975724104941}
   m_Layer: 0
   m_Name: Pouncer
   m_TagString: Untagged
@@ -930,20 +930,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowObject: {fileID: 0}
   Key: Pouncer
---- !u!114 &4353768470739566242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4787570402465657505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca9e56d914984b49b7a689feeab1720, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 100
-  ThePlayer: {fileID: 0}
 --- !u!82 &8708132908621478178
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1040,6 +1026,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &4839747975724104941
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787570402465657505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.79715157, y: 0.4771005, z: 1.8430681}
+  m_Center: {x: 0.10142422, y: 0.26144975, z: -0.061507702}
 --- !u!1 &4787570402465657633
 GameObject:
   m_ObjectHideFlags: 0
