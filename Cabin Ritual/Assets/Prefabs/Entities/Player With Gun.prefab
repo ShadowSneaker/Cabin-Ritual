@@ -5577,6 +5577,7 @@ MonoBehaviour:
   InventoryUI: {fileID: 8973167405372810545}
   ArcadeUI: {fileID: 5819511736851559650}
   Cam: {fileID: 8258387573324111734}
+  Gun: {fileID: 0}
 --- !u!114 &257474608302512082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5708,7 +5709,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.3
+  m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

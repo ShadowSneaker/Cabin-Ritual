@@ -5101,8 +5101,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309205803653733046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4145, z: 0.7936}
+  m_LocalRotation: {x: -0, y: -0, z: -7.1054274e-15, w: 1}
+  m_LocalPosition: {x: 0, y: 0.41450036, z: 0.7936021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 307315564417315174}
@@ -5133,8 +5133,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309221338338138595}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.394, y: 1.483, z: 8.674}
+  m_LocalRotation: {x: -0, y: -0, z: -7.1054274e-15, w: 1}
+  m_LocalPosition: {x: 8.394004, y: 1.4829999, z: 8.674004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 314302251169600351}
@@ -9860,11 +9860,18 @@ MonoBehaviour:
   ToggleFullAuto: 0
   Damage: 10
   Range: 100
-  FireRate: 15
+  FireRate: 5
   ImpactForce: 30
+  TotalAmmo: 0
   MaxAmmo: 10
   CurrentAmmo: 0
+  Clips: 4
+  BulletsPerClip: 0
   ReloadTime: 1
+  FireSound: {fileID: 0}
+  ReloadSound: {fileID: 0}
+  EmptyClipSound: {fileID: 0}
+  CockSound: {fileID: 0}
   FpsCam: {fileID: 0}
   MuzzleFlash: {fileID: 472095703437150831}
   ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
@@ -10003,9 +10010,16 @@ MonoBehaviour:
   Range: 100
   FireRate: 5
   ImpactForce: 30
+  TotalAmmo: 0
   MaxAmmo: 10
   CurrentAmmo: 0
+  Clips: 4
+  BulletsPerClip: 0
   ReloadTime: 1
+  FireSound: {fileID: 0}
+  ReloadSound: {fileID: 0}
+  EmptyClipSound: {fileID: 0}
+  CockSound: {fileID: 0}
   FpsCam: {fileID: 0}
   MuzzleFlash: {fileID: 0}
   ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
@@ -19680,8 +19694,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5160092792172479280}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.4119949, y: -0.2739998, z: 0.75000024}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.41199303, y: -0.2739998, z: 0.7500019}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 328873151928599132}
@@ -19750,9 +19764,16 @@ MonoBehaviour:
   Range: 100
   FireRate: 10
   ImpactForce: 50
+  TotalAmmo: 0
   MaxAmmo: 25
   CurrentAmmo: 0
+  Clips: 4
+  BulletsPerClip: 0
   ReloadTime: 2
+  FireSound: {fileID: 0}
+  ReloadSound: {fileID: 0}
+  EmptyClipSound: {fileID: 0}
+  CockSound: {fileID: 0}
   FpsCam: {fileID: 0}
   MuzzleFlash: {fileID: 328873151928599130}
   ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
