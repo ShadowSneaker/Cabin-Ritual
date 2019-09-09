@@ -147,9 +147,14 @@ public class Controller : MonoBehaviour
                     }
                 }
 
-                if(Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1"))
                 {
                     Gun.Shoot();
+                }
+
+                if (Input.GetButtonUp("Fire1"))
+                {
+                    Gun.StopShooting();
                 }
             }
             else

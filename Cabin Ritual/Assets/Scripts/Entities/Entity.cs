@@ -234,6 +234,14 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private int AntiBunnyHopFactor = 1;
 
+    [Header("Weapons")]
+
+
+    // TODO: Replace the gun script with a generic "Weapon" script.
+    [Tooltip("A list of the weapons this entity has.")]
+    [SerializeField]
+    private GunScript[] Weapons;
+
 
     [Header("Sounds")]
 

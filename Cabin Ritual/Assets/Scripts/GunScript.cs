@@ -169,7 +169,7 @@ public class GunScript : MonoBehaviour
     //    
     //}
 
-    public void Shoot()
+    public virtual void Shoot()
     {
         if (CurrentAmmo > 0)
         {
@@ -177,6 +177,8 @@ public class GunScript : MonoBehaviour
             MuzzleFlash.Play();
 
             --CurrentAmmo;
+            NextTimeToFire = Time.time + 1f / FireRate;
+
             Audio.clip = FireSound;
             Audio.Play();
             Animator.SetBool("Fire", true);
@@ -220,10 +222,20 @@ public class GunScript : MonoBehaviour
         }
     }
 
-    public IEnumerator Reload()
+
+    // Used just to make reloading more streemlined instead of calling a coroutine.
+    public void Reload()
+    {
+        StartCoroutine(ReloadTimer());
+    }
+
+
+    IEnumerator ReloadTimer()
     {
         Audio.clip = ReloadSound;
         Audio.Play();
+
+        Debug.Log("Reloading");
 
         IsReloading = true;
        // Animator.SetBool("Fire", false);
@@ -250,5 +262,11 @@ public class GunScript : MonoBehaviour
     //{
     //    yield return new WaitForSeconds(FireRate - .25f);
     //}
+
+    public virtual void StopShooting()
+    {
+        //GetComponent<AudioSource>().Stop();
+        Animator.SetBool("Fire", false);
+    }
 
 }
