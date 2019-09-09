@@ -16,7 +16,9 @@ public class ChaseAI : AIBase
     public string Key;
     private GameMode GM = null;
 
-    
+    //public Animator Animator;
+
+
 
 
     /// Overridables
@@ -44,6 +46,7 @@ public class ChaseAI : AIBase
     public void Return()
     {
         GM.GetPlayer(0).GetComponent<PlayersPoints>().AddPoints(100);
+        //Animator.SetBool("Dying", true);
         GM.Despawn(Key, this.gameObject);
         
     }

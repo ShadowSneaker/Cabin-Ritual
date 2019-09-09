@@ -21,14 +21,47 @@ public class GunScript : MonoBehaviour
     //force on Target object variable
     public float ImpactForce = 30f;
 
+    [Header("Ammo")]
+
+    //[Tooltip("The total amount of ammo this gun has.")]
+    [DisplayWithoutEdit()]
+    [SerializeField]
+    private int TotalAmmo = 0;
+
     //Max ammo for gun vairable
     public int MaxAmmo = 10;
     //Current ammo of gun
     public int CurrentAmmo;
+    //Amount of gun Clips
+    public int Clips = 4;
+    //Bullets per clip
+    public int BulletsPerClip;
+
+
     //How long it takes to reload
     public float ReloadTime = 1f;
     //Is the gun reloading bool
     private bool IsReloading = false;
+
+    [Tooltip("The sound that plays when the user fires the gun.")]
+    [SerializeField]
+    private AudioClip FireSound;
+
+    [Tooltip("The sound that plays when the user is reloading.")]
+    [SerializeField]
+    private AudioClip ReloadSound;
+
+    [Tooltip("The sound that plays when the user fires with no ammo.")]
+    [SerializeField]
+    private AudioClip EmptyClipSound;
+
+    [Tooltip("")]
+    [SerializeField]
+    private AudioClip CockSound;
+
+    // A reference to the audio source.
+    private AudioSource Audio = null;
+
 
     public Camera FpsCam;
     public ParticleSystem MuzzleFlash;
@@ -45,6 +78,15 @@ public class GunScript : MonoBehaviour
     {        
         if (CurrentAmmo == -1)
             CurrentAmmo = MaxAmmo;
+
+        Audio = GetComponent<AudioSource>();
+        if (!Audio) Debug.LogWarning("Warning: Audio source not found.");
+    }
+
+
+    void OnValidate()
+    {
+        TotalAmmo = Clips * BulletsPerClip;
     }
 
     void OnEnable()
@@ -54,113 +96,134 @@ public class GunScript : MonoBehaviour
     }
 
     
-    void Update()
+    //void Update()
+    //{
+    //   
+    //        //Displays ammo on the screen
+    //        if (AmmoAmount)
+    //            AmmoAmount.text = CurrentAmmo.ToString();
+    //
+    //        //if (IsReloading)
+    //        //{
+    //        //    return;
+    //        //}
+    //
+    //        //Srarts the reloading sequence
+    //        if (CurrentAmmo <= 0)
+    //        {
+    //            StartCoroutine(Reload());
+    //            return;
+    //        }
+    //
+    //        //Allows the player to reload gun by pressing R as long as the player isnt on max ammo
+    //        if (Input.GetKeyDown(KeyCode.R) && CurrentAmmo != MaxAmmo)
+    //        {
+    //            StartCoroutine(Reload());
+    //            return;
+    //        }
+    //
+    //        //Checks to see if the bool for automatic gun is checked
+    //        if (ToggleFullAuto == true)
+    //        {
+    //            //Automatic guns fire
+    //            if (Input.GetButton("Fire1") && Time.time >= NextTimeToFire)
+    //            {
+    //                //How fast the gun can fire
+    //                NextTimeToFire = Time.time + 1f / FireRate;
+    //
+    //                //Calls function
+    //                Shoot();
+    //
+    //                GetComponent<AudioSource>().Play();
+    //            }
+    //
+    //            if (Input.GetButtonUp("Fire1") == true)
+    //            {
+    //                GetComponent<AudioSource>().Stop();
+    //            }
+    //        }
+    //        else
+    //        {
+    //            //Non automatic guns fire
+    //            if (Input.GetButtonDown("Fire1") && Time.time >= NextTimeToFire)
+    //            {
+    //                //How fast the gun can fire
+    //                NextTimeToFire = Time.time + 1f / FireRate;
+    //
+    //                //Animator.SetBool("Fire", true);
+    //
+    //                //Calls function
+    //                Shoot();
+    //
+    //                GetComponent<AudioSource>().Play();
+    //
+    //
+    //            }
+    //
+    //            if (Input.GetButtonUp("Fire1") == true)
+    //            {
+    //                GetComponent<AudioSource>().Stop();
+    //                //Animator.SetBool("Fire", false);
+    //            }
+    //        }
+    //    
+    //}
+
+    public void Shoot()
     {
-       
-            //Displays ammo on the screen
-            if (AmmoAmount)
-                AmmoAmount.text = CurrentAmmo.ToString();
+        if (CurrentAmmo > 0)
+        {
+            //Plays particle affect on fire
+            MuzzleFlash.Play();
 
-            if (IsReloading)
-            {
-                return;
-            }
+            --CurrentAmmo;
+            Audio.clip = FireSound;
+            Audio.Play();
+            Animator.SetBool("Fire", true);
 
-            //Srarts the reloading sequence
-            if (CurrentAmmo <= 0)
+            RaycastHit hit;
+            if (Physics.Raycast(FpsCam.transform.position, FpsCam.transform.forward, out hit, Range))
             {
-                StartCoroutine(Reload());
-                return;
-            }
+                Debug.DrawRay(FpsCam.transform.position, FpsCam.transform.forward, Color.red);
 
-            //Allows the player to reload gun by pressing R as long as the player isnt on max ammo
-            if (Input.GetKeyDown(KeyCode.R) && CurrentAmmo != MaxAmmo)
-            {
-                StartCoroutine(Reload());
-                return;
-            }
-
-            //Checks to see if the bool for automatic gun is checked
-            if (ToggleFullAuto == true)
-            {
-                //Automatic guns fire
-                if (Input.GetButton("Fire1") && Time.time >= NextTimeToFire)
+                //Does damage to 'Target'
+                Entity Target = hit.transform.GetComponent<Entity>();
+                if (Target != null)
                 {
-                    //How fast the gun can fire
-                    NextTimeToFire = Time.time + 1f / FireRate;
-
-                    //Calls function
-                    Shoot();
-
-                    GetComponent<AudioSource>().Play();
+                    Target.TakeDamage(Damage);
                 }
 
-                if (Input.GetButtonUp("Fire1") == true)
+
+                //Causes force on object pusing it away from player
+                if (hit.rigidbody != null)
                 {
-                    GetComponent<AudioSource>().Stop();
+                    hit.rigidbody.AddForce(-hit.normal * ImpactForce);
                 }
+
+                //Puts effect at bullet place of impact then delets from hierachy after 2 seconds
+                GameObject impact = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impact, 1f);
+            }
+        }
+        else
+        {
+            if (TotalAmmo > 0)
+            {
+                Reload();
             }
             else
             {
-                //Non automatic guns fire
-                if (Input.GetButtonDown("Fire1") && Time.time >= NextTimeToFire)
-                {
-                    //How fast the gun can fire
-                    NextTimeToFire = Time.time + 1f / FireRate;
-
-                    //Animator.SetBool("Fire", true);
-
-                    //Calls function
-                    Shoot();
-
-                    GetComponent<AudioSource>().Play();
-
-
-                }
-
-                if (Input.GetButtonUp("Fire1") == true)
-                {
-                    GetComponent<AudioSource>().Stop();
-                    //Animator.SetBool("Fire", false);
-                }
+                // Play empty clip sound.
+                Audio.clip = EmptyClipSound;
+                Audio.Play();
             }
-        
-    }
-
-    void Shoot()
-    {
-        //Plays particle affect on fire
-        MuzzleFlash.Play();
-
-        CurrentAmmo--;
-
-        RaycastHit hit;
-        if(Physics.Raycast(FpsCam.transform.position, FpsCam.transform.forward, out hit, Range))
-        {
-            Debug.DrawRay(FpsCam.transform.position, FpsCam.transform.forward, Color.red);
-
-            //Does damage to 'Target'
-            Entity Target = hit.transform.GetComponent<Entity>();
-            if(Target != null)
-            {
-                Target.TakeDamage(Damage);
-            }
-            
-
-            //Causes force on object pusing it away from player
-            if(hit.rigidbody != null)
-            {
-                hit.rigidbody.AddForce(-hit.normal * ImpactForce);
-            }
-
-            //Puts effect at bullet place of impact then delets from hierachy after 2 seconds
-            GameObject impact = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impact, 1f);
         }
     }
 
-    IEnumerator Reload()
-    { 
+    public IEnumerator Reload()
+    {
+        Audio.clip = ReloadSound;
+        Audio.Play();
 
         IsReloading = true;
        // Animator.SetBool("Fire", false);

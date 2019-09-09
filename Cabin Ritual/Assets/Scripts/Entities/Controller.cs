@@ -59,6 +59,9 @@ public class Controller : MonoBehaviour
     private Transform Cam = null;
 
 
+    //TEMPORARY, FIX THIS IDIOT
+    public GunScript Gun = null;
+
     
 
     ///  Overridables
@@ -142,6 +145,11 @@ public class Controller : MonoBehaviour
                     {
                         Player.UnCrouch();
                     }
+                }
+
+                if(Input.GetButtonDown("Fire1"))
+                {
+                    Gun.Shoot();
                 }
             }
             else
