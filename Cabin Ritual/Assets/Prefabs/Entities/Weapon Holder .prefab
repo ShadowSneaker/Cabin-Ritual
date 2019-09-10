@@ -9817,10 +9817,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307315564417315174}
-  - component: {fileID: 309840450083623813}
+  - component: {fileID: 898870460397325644}
   - component: {fileID: 5160092793095398922}
   - component: {fileID: 5160092793095398923}
-  - component: {fileID: 309244834899769687}
   m_Layer: 0
   m_Name: Handgun_M1911A_Black
   m_TagString: Untagged
@@ -9845,7 +9844,7 @@ Transform:
   m_Father: {fileID: 5160092793199340487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
---- !u!114 &309840450083623813
+--- !u!114 &898870460397325644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9854,19 +9853,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 309244834899769672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c9489ce8613e42a31393420590b67, type: 3}
+  m_Script: {fileID: 11500000, guid: 10ff95eb7157dbc4f947686cf98efadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToggleFullAuto: 0
+  IsFiring: 0
+  Active: 0
   Damage: 10
   Range: 100
   FireRate: 5
+  WeaponSway: 2
   ImpactForce: 30
-  TotalAmmo: 0
-  MaxAmmo: 10
+  Accuracy: 80
+  TotalAmmo: 40
+  ConsumeAmmo: 1
+  ClipSize: 10
   CurrentAmmo: 0
   Clips: 4
-  BulletsPerClip: 0
   ReloadTime: 1
   FireSound: {fileID: 0}
   ReloadSound: {fileID: 0}
@@ -9874,9 +9876,7 @@ MonoBehaviour:
   CockSound: {fileID: 0}
   FpsCam: {fileID: 0}
   MuzzleFlash: {fileID: 472095703437150831}
-  ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
-    type: 3}
-  Animator: {fileID: 5160092793095398923}
+  ImpactEffect: {fileID: 0}
   AmmoAmount: {fileID: 0}
 --- !u!82 &5160092793095398922
 AudioSource:
@@ -9993,39 +9993,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &309244834899769687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309244834899769672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c9489ce8613e42a31393420590b67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ToggleFullAuto: 0
-  Damage: 10
-  Range: 100
-  FireRate: 5
-  ImpactForce: 30
-  TotalAmmo: 0
-  MaxAmmo: 10
-  CurrentAmmo: 0
-  Clips: 4
-  BulletsPerClip: 0
-  ReloadTime: 1
-  FireSound: {fileID: 0}
-  ReloadSound: {fileID: 0}
-  EmptyClipSound: {fileID: 0}
-  CockSound: {fileID: 0}
-  FpsCam: {fileID: 0}
-  MuzzleFlash: {fileID: 0}
-  ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
-    type: 3}
-  Animator: {fileID: 0}
-  AmmoAmount: {fileID: 0}
 --- !u!1 &309315665470618524
 GameObject:
   m_ObjectHideFlags: 0
@@ -19759,16 +19726,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6c9489ce8613e42a31393420590b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToggleFullAuto: 1
+  IsFiring: 0
+  Active: 0
   Damage: 10
   Range: 100
   FireRate: 10
+  WeaponSway: 0
   ImpactForce: 50
-  TotalAmmo: 0
-  MaxAmmo: 25
+  Accuracy: 80
+  TotalAmmo: 40
+  ConsumeAmmo: 1
+  ClipSize: 10
   CurrentAmmo: 0
   Clips: 4
-  BulletsPerClip: 0
   ReloadTime: 2
   FireSound: {fileID: 0}
   ReloadSound: {fileID: 0}
@@ -19778,7 +19748,6 @@ MonoBehaviour:
   MuzzleFlash: {fileID: 328873151928599130}
   ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
     type: 3}
-  Animator: {fileID: 5160092792172479294}
   AmmoAmount: {fileID: 0}
 --- !u!95 &5160092792172479294
 Animator:

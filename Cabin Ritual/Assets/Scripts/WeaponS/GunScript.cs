@@ -245,7 +245,8 @@ public class GunScript : MonoBehaviour
 
     public virtual void StopShooting()
     {
-        Anim.SetBool("Fire", false);
+        Anim = GetComponent<Animator>();
+        if (!Anim) Debug.LogWarning("Warning: Animator not found.");
         IsFiring = false;
     }
 

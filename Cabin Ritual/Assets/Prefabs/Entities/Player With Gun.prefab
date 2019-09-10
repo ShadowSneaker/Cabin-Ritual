@@ -5667,6 +5667,7 @@ MonoBehaviour:
   AirControlScale: 0.25
   AntiBumpFactor: 0.75
   AntiBunnyHopFactor: 1
+  Weapons: []
   HurtSound: {fileID: 0}
   DeathSound: {fileID: 0}
   SprintSound: {fileID: 0}
@@ -5709,7 +5710,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.6
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -6074,22 +6075,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 309840450083623813, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+    - target: {fileID: 5160092792172479295, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
         type: 3}
       propertyPath: FpsCam
       value: 
       objectReference: {fileID: 8258387573324111721}
-    - target: {fileID: 309840450083623813, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+    - target: {fileID: 5160092792172479295, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
         type: 3}
       propertyPath: AmmoAmount
       value: 
       objectReference: {fileID: 1244530926}
-    - target: {fileID: 5160092792172479295, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+    - target: {fileID: 309840450083623813, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
         type: 3}
       propertyPath: FpsCam
       value: 
       objectReference: {fileID: 8258387573324111721}
-    - target: {fileID: 5160092792172479295, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+    - target: {fileID: 309840450083623813, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
         type: 3}
       propertyPath: AmmoAmount
       value: 
