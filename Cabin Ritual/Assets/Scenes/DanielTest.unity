@@ -658,6 +658,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1459298299 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8258387573324111721, guid: 7101217fe1144034dbb5428dffb8e94e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1512873746}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1512873746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -774,7 +780,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Gun
       value: 
-      objectReference: {fileID: 1999779075}
+      objectReference: {fileID: 1750186232}
     - target: {fileID: 257474608302512082, guid: 7101217fe1144034dbb5428dffb8e94e,
         type: 3}
       propertyPath: m_Enabled
@@ -804,8 +810,35 @@ PrefabInstance:
       propertyPath: CurrentAmmo
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3403435904165711828, guid: 7101217fe1144034dbb5428dffb8e94e,
+        type: 3}
+      propertyPath: Active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403435904165711828, guid: 7101217fe1144034dbb5428dffb8e94e,
+        type: 3}
+      propertyPath: CurrentAmmo
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403435904165711828, guid: 7101217fe1144034dbb5428dffb8e94e,
+        type: 3}
+      propertyPath: FpsCam
+      value: 
+      objectReference: {fileID: 1459298299}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7101217fe1144034dbb5428dffb8e94e, type: 3}
+--- !u!114 &1750186232 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3403435904165711828, guid: 7101217fe1144034dbb5428dffb8e94e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1512873746}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ff95eb7157dbc4f947686cf98efadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1863197503
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,18 +1021,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1999779075 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2814403663689191709, guid: 7101217fe1144034dbb5428dffb8e94e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1512873746}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c9489ce8613e42a31393420590b67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2045380934
 GameObject:
   m_ObjectHideFlags: 0

@@ -124,7 +124,7 @@ public class GunScript : MonoBehaviour
     
 
 
-    void Start()
+    void Awake()
     {        
         if (CurrentAmmo == -1)
             CurrentAmmo = ClipSize;
@@ -269,8 +269,8 @@ public class GunScript : MonoBehaviour
         if (!ConsumeAmmo ||CurrentAmmo > 0)
         {
             CaluclateAccuracy();
-            //if (CheckCollision())
-            //{
+            if (CheckCollision())
+            {
             
                 RaycastHit Hit;
                 if (Physics.Raycast(FpsCam.transform.position, FpsCam.transform.forward, out Hit, Range))
@@ -291,7 +291,7 @@ public class GunScript : MonoBehaviour
                     GameObject Impact = Instantiate(ImpactEffect, Hit.point, Quaternion.LookRotation(Hit.normal));
                     Destroy(Impact, 1.0f);
                 }
-            //}
+            }
 
             Audio.clip = FireSound;
             Audio.Play();

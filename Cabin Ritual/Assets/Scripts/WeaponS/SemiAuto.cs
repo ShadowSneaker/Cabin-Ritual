@@ -23,9 +23,9 @@ public class SemiAuto : GunScript
 
         if (CanFire())
         {
-            Shoot();
+            ShootBullet();
             IncreaseSpread();
-
+            
             Active = false;
             FireDelay(GetFireRate());
         }
