@@ -6,49 +6,169 @@ public class GunBuy : MonoBehaviour
 {
     // the minumum amount a Gun costs
     public int GunMin = 500;
+    public int GunAmmoCost = 250;
 
     //For when it is not a door to open (Samuel edit)
     public GameObject WallGun;
-    //public GameObject WeaponHolder;
+    public GameObject Weapon;
+
+    bool WeaponOn;
+
+    private GunScript Ammo;
 
 
     void Start()
     {
         //object ChildObj = Transform.FindObjectOfType("Weapon Holder");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        GunPickUp();
-    }
+        Weapon.SetActive(false);
+    }   
 
     public void GunPickUp()
     {
-        Controller temp = FindObjectOfType<Controller>();
-        PointsSystem TempPoint = FindObjectOfType<PointsSystem>();
-
-        if (TempPoint.GetPlayerPointsAquired() < (GunMin + (TempPoint.ZombiedoorNumber * 100)))
+        if (WeaponOn == false)
         {
-            if (temp.ReturnLookingAt())
+
+            Controller temp = FindObjectOfType<Controller>();
+            PointsSystem TempPoint = FindObjectOfType<PointsSystem>();
+
+            if (TempPoint.GetPlayerPointsAquired() < (GunMin))
             {
-                GetComponent<InteractableObject>().ScreenText = "Gun Cost: " + ((GunMin + (TempPoint.ZombiedoorNumber * 100)).ToString());
+                if (temp.ReturnLookingAt())
+                {
+                    GetComponent<InteractableObject>().ScreenText = "Gun Cost: " + ((GunMin));
+                }
             }
+            else
+            {
+                TempPoint.GetPlayerPoints().RemovePoints((GunMin));
+                TempPoint.ZombiedoorNumber += 1;
+
+                WeaponOn = true;
+                Weapon.SetActive(true);
+            }            
         }
+
         else
         {
-            TempPoint.GetPlayerPoints().RemovePoints((GunMin + (TempPoint.ZombiedoorNumber * 100)));
-            TempPoint.ZombiedoorNumber += 1;
+            AmmoBuy();
+        }
+    }
 
-            GetComponent<InteractableObject>().ScreenText = "Gun Aquired";            
+    public void AmmoBuy()
+    {
+        if (WeaponOn == true)
+        {
+            
+                Controller temp = FindObjectOfType<Controller>();
+                PointsSystem TempPoint = FindObjectOfType<PointsSystem>();
 
-            //WeaponHolder.Find("Weapon Holder").GetComponent<WeaponSwitching>().enabled = true;
+                if (TempPoint.GetPlayerPointsAquired() < (GunAmmoCost))
+                {
+                    if (temp.ReturnLookingAt())
+                    {
+                        GetComponent<InteractableObject>().ScreenText = "Gun Ammo Cost: " + ((GunAmmoCost));
+                    }
+                }
+                else
+                {
+                    TempPoint.GetPlayerPoints().RemovePoints((GunAmmoCost));
+                    TempPoint.ZombiedoorNumber += 1;
 
-            Debug.Log("gun brought");
-            //Turns the item off when the object brought when not a door (Samuel edit)
-            //Barrier.gameObject.SetActive(false);
-            //break;
 
+
+                    GetComponent<InteractableObject>().ScreenText = "Ammo brought";
+
+
+
+                    //GetComponent<WeaponSwitching>().enabled = true;
+
+                    Debug.Log("gun brought");
+                    //Turns the item off when the object brought when not a door (Samuel edit)
+                    //Barrier.gameObject.SetActive(false);
+                    //break;
+
+                }
+            
         }
     }
 }
+
+
+//(DoorType.ArcadeDoor):
+//                {
+//                    Controller temp = FindObjectOfType<Controller>();
+//PointsSystem TempPoint = FindObjectOfType<PointsSystem>();
+//
+//                    if(locked)
+//                    {
+//
+//                        if(TempPoint.GetPlayerPointsAquired() < (ZombieDoorMin + (TempPoint.ZombiedoorNumber* 100)))
+//                        {
+//                            if (temp.ReturnLookingAt())
+//                            {
+//                                GetComponent<InteractableObject>().ScreenText = "the Door Costs : " + ((ZombieDoorMin + (TempPoint.ZombiedoorNumber* 100)).ToString());
+//                            }
+//                        }
+//                        else
+//                        {
+//                            TempPoint.GetPlayerPoints().RemovePoints((ZombieDoorMin + (TempPoint.ZombiedoorNumber* 100)));
+//                            TempPoint.ZombiedoorNumber += 1;
+//
+//                            GetComponent<InteractableObject>().ScreenText = "Door unlocked";
+//
+//                            if(barrier)
+//                            {
+//                                //Turns the item off when the object brought when not a door (Samuel edit)
+//                                Barrier.gameObject.SetActive(false);
+//                                break;
+//                            }
+//                            else
+//                            {
+//                                switch (doorState)
+//                                {
+//                                    case (DoorState.open):
+//                                        {
+//                                            GetComponent<Animation>().Play("close");
+//                                    doorState = DoorState.closed;
+//                                            break;
+//                                        }
+//                                    case (DoorState.closed):
+//                                        {
+//                                            GetComponent<Animation>().Play("open");
+//                                    doorState = DoorState.open;
+//                                            break;
+//                                        }
+//                                }
+//                            }
+//                            
+//
+//                            
+//
+//                            
+//
+//
+//                            locked = false;
+//                        }              
+//
+//
+//                        
+//
+//
+//
+//                        break;
+//                    }
+//                    else
+//                    {
+//                        GetComponent<Animator>().Play("open");
+//                        doorState = DoorState.open;
+//                        break;
+//                    }
+//
+//                    
+//
+
+
+
+
+                   
+              

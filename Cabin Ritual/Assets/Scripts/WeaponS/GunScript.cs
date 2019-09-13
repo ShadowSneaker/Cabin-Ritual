@@ -111,10 +111,10 @@ public class GunScript : MonoBehaviour
     public ParticleSystem MuzzleFlash;
 
     // This probably shouldn't be here but ok.
-    public GameObject ImpactEffect;    
+    public GameObject ImpactEffect;
 
     // A referance to the animator script on this gun.
-    private Animator Anim = null;
+    private Animator Anim;
 
     // This also probably shouldn't be here. The UI should just know what gun is currently selected and display that.
     public Text AmmoAmount;
@@ -145,7 +145,7 @@ public class GunScript : MonoBehaviour
     void OnEnable()
     {
         IsReloading = false;
-        //Animator.SetBool("Reloading", false);
+        Anim.SetBool("Reloading", false);
     }
 
 
@@ -235,9 +235,13 @@ public class GunScript : MonoBehaviour
     {
         if (Active)
         {
-            if (ConsumeAmmo || CurrentAmmo > 0)
+            if (AmmoAmount)
+                AmmoAmount.text = CurrentAmmo.ToString() + ("/10");
+
+                if (ConsumeAmmo || CurrentAmmo > 0)
             {
                 IsFiring = true;
+                Anim.SetBool("Fire", true);
             }
         }
     }
@@ -248,6 +252,7 @@ public class GunScript : MonoBehaviour
         Anim = GetComponent<Animator>();
         if (!Anim) Debug.LogWarning("Warning: Animator not found.");
         IsFiring = false;
+        Anim.SetBool("Fire", false);
     }
 
 
@@ -368,7 +373,7 @@ public class GunScript : MonoBehaviour
     // Used just to make reloading more streemlined instead of calling a coroutine.
     public void Reload()
     {
-        if (CurrentAmmo != ClipSize && TotalAmmo > 0)
+        if (CurrentAmmo != ClipSize && TotalAmmo > 0 || Input.GetKeyDown(KeyCode.R))
         {
             Active = false;
 
@@ -379,7 +384,8 @@ public class GunScript : MonoBehaviour
 
             StartCoroutine(ReloadTimer());
         }
-    }
+    }  
+  
 
 
     IEnumerator ReloadTimer()
@@ -405,6 +411,8 @@ public class GunScript : MonoBehaviour
                 TotalAmmo = 0;
             }
         }
+
+        Anim.SetBool("Reloading", false);
 
 
 
