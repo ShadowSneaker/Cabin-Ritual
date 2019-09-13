@@ -121,7 +121,9 @@ public class GunScript : MonoBehaviour
 
     //private float NextTimeToFire = 0f;
 
-    
+    //byrons small edit
+    //public enum GunName { Pistol, SMG, ShotGun };
+    //public GunName NameOfGun;
 
 
     void Awake()

@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
     [Tooltip("the amount of slots you want in the players inventory")]
     public int InventorySpace = 4;
 
-    [Tooltip("the lost of items within the players inventory")]
+    [Tooltip("the list of items within the players inventory")]
     public List<Item> Items = new List<Item>();
     
     public List<GameObject> ItemObject = new List<GameObject>();
