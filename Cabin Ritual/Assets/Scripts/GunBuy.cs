@@ -18,12 +18,11 @@ public class GunBuy : MonoBehaviour
     public GameObject Weapon;
 
     // byron
-    // a list of the gameobjects that are the guns used (instead of adding each one as a seperate gameobject)
-    //public GameObject[] Guns;
-    //
-    //i think to solve the problem have a enum here that holds the gun name that can be purchased 
-    //public List<GunScript> guntype = new List<GunScript>();
-    
+
+    public enum Guntype { pistol, Shotgun, SMG, AssultRifle, Revolver}
+
+    public Guntype BuyableGun;
+
     bool WeaponOn;
 
     private GunScript Ammo;
@@ -34,13 +33,39 @@ public class GunBuy : MonoBehaviour
         //object ChildObj = Transform.FindObjectOfType("Weapon Holder");
         Weapon.SetActive(false);
 
-        // iterates through the array of guns to disable them all at the begining
-        //for(int i = 0;  i < Guns.Length; i++)
-        //{
-        //    guntype[i] = Guns[i].GetComponent<GunScript>();
-        //
-        //    Guns[i].SetActive(false);
-        //}
+        switch (BuyableGun)
+        {
+            case (Guntype.pistol):
+                {
+                    GunMin = 500;
+                    GunAmmoCost = 250;
+                    break;
+                }
+            case (Guntype.Shotgun):
+                {
+                    GunMin = 700;
+                    GunAmmoCost = 300;
+                    break;
+                }
+            case (Guntype.SMG):
+                {
+                    GunMin = 800;
+                    GunAmmoCost = 200;
+                    break;
+                }
+            case (Guntype.AssultRifle):
+                {
+                    GunMin = 700;
+                    GunAmmoCost = 300;
+                    break;
+                }
+            case (Guntype.Revolver):
+                {
+                    GunMin = 1000;
+                    GunAmmoCost = 150;
+                    break;
+                }
+        }
 
     }
 
@@ -125,10 +150,7 @@ public class GunBuy : MonoBehaviour
     //public void GunPickUp()
     //{
     //
-    //    switch(guntype)
-    //    {
-    //        
-    //    }
+    //    
     //
     //    if (WeaponOn == false)
     //    {
