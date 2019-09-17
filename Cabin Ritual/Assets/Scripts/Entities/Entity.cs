@@ -302,6 +302,8 @@ public class Entity : MonoBehaviour
     // Allows movement functions to work.
     private bool CanMove = true;
 
+    public Animator Anim;
+
 
 
 
@@ -580,6 +582,7 @@ public class Entity : MonoBehaviour
         Audio.clip = DeathSound;
         Audio.Play();
 
+        Anim.SetBool("Dying", true);
 
         if (OnDeath != null)
         {
