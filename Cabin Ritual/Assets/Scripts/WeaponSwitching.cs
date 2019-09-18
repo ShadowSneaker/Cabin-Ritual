@@ -47,7 +47,14 @@ public class WeaponSwitching : MonoBehaviour
         foreach (Transform weapon in transform)
         {
             if (i == SelectedWeapon)
+            {
                 weapon.gameObject.SetActive(true);
+
+                FindObjectOfType<Controller>().Gun = weapon.GetComponent<GunScript>();
+
+            }
+                
+
             else
                 weapon.gameObject.SetActive(false);
             i++;
