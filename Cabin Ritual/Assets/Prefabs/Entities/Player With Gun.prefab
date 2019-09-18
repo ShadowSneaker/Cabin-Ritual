@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!114 &926913454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5698,6 +5698,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Cam: {fileID: 8258387573324111734}
+  Anim: {fileID: 0}
 --- !u!143 &3774866981742887237
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5824,7 +5825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef4f4f647dd4ad4dad99513c5aea974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointsAquired: 50000
+  PointsAquired: 500
 --- !u!95 &7268341448083179954
 Animator:
   serializedVersion: 3
@@ -6120,6 +6121,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 8.753
       objectReference: {fileID: 0}
+    - target: {fileID: 309244834899769672, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
         type: 3}
       propertyPath: Active
@@ -6151,11 +6157,6 @@ PrefabInstance:
       propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5160092793095398923, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9b2741211ffb4a74ea4cbf2053f1fc9f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f817e7db0f4d3488ada2dbd074b7a3, type: 3}
 --- !u!4 &7268341448267508063 stripped
