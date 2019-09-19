@@ -29,4 +29,13 @@ public class Target : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void PlayerTakeDamage(float amount)
+    {
+        Health -= amount;
+        if (Health <= 0f)
+        {
+            Die();
+        }
+    }
+
 }

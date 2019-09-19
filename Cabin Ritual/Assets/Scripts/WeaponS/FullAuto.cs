@@ -27,6 +27,7 @@ public class FullAuto : GunScript
             ShootBullet();
             IncreaseSpread();
 
+            Active = false;
             new WaitForSeconds(GetFireRate());
         }
     }

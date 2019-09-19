@@ -54,8 +54,8 @@ public class Shotgun : GunScript
         {
             if (CanFire())
             {
-                Fire();
                 Active = false;
+                Fire();                
             }
         }
     }

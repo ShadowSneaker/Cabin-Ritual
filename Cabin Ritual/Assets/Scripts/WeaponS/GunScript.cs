@@ -237,6 +237,7 @@ public class GunScript : MonoBehaviour
     {
         if (Active)
         {
+
             if (AmmoAmount)
                 AmmoAmount.text = CurrentAmmo.ToString() + ("/10");
 

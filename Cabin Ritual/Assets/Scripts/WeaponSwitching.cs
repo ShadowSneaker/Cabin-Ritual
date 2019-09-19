@@ -60,4 +60,14 @@ public class WeaponSwitching : MonoBehaviour
             i++;
         }
     }
+
+    void Slot1()
+    {
+
+    }
+
+    void Slot2()
+    {
+
+    }
 }

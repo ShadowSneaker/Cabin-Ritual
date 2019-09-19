@@ -277,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -49.99994, y: -50}
+  m_AnchoredPosition: {x: -50, y: -50}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1383664378
@@ -400,7 +400,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9cce4de181439d440891d7bdccf12df2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsFiring: 0
   Active: 1
-  Damage: 10
+  Damage: 40
   Range: 100
   FireRate: 15
   WeaponSway: 0
@@ -531,7 +531,7 @@ MonoBehaviour:
   CurrentAmmo: 0
   Clips: 8
   ReloadTime: 1
-  FireSound: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
+  FireSound: {fileID: 8300000, guid: 9cce4de181439d440891d7bdccf12df2, type: 3}
   ReloadSound: {fileID: 0}
   EmptyClipSound: {fileID: 0}
   CockSound: {fileID: 0}
@@ -5979,6 +5979,7 @@ GameObject:
   - component: {fileID: 8258387572702033590}
   - component: {fileID: 5923954676054372779}
   - component: {fileID: 7268341448083179954}
+  - component: {fileID: 2352066017699770807}
   m_Layer: 0
   m_Name: Player With Gun
   m_TagString: Untagged
@@ -6079,8 +6080,8 @@ MonoBehaviour:
   DownCount: 0
   HasDownState: 0
   Invulnerable: 0
-  Health: 3
-  MaxHealth: 3
+  Health: 30
+  MaxHealth: 30
   ImmunityFrames: 0.5
   ConsumeStamina: 1
   Stamina:
@@ -6292,6 +6293,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &2352066017699770807
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7995376477839522592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.0513172
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.02188015, z: 0}
 --- !u!1 &8258387573324111723
 GameObject:
   m_ObjectHideFlags: 0
@@ -6547,6 +6562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 3928473642713747151, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3928473642714239727, guid: 8e358d0df9bc68845858e98df56ffb02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6602,6 +6622,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1139131723199667540, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b841fbd2eea2a4b4e90194654ec3c10f, type: 3}
+    - target: {fileID: 2424502503024188346, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: FireRate
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424502503024188346, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: TotalAmmo
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424502503024188346, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: ClipSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424502503024188346, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: FireSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b841fbd2eea2a4b4e90194654ec3c10f, type: 3}
+    - target: {fileID: 2424502503024188346, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: CockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e430bb0284103846a14a7fbf152f3d8, type: 3}
     - target: {fileID: 2424502503024188346, guid: 8e358d0df9bc68845858e98df56ffb02,
         type: 3}
       propertyPath: FpsCam
@@ -6612,6 +6662,11 @@ PrefabInstance:
       propertyPath: AmmoAmount
       value: 
       objectReference: {fileID: 1244530926}
+    - target: {fileID: 5486035020194792983, guid: 8e358d0df9bc68845858e98df56ffb02,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 02022e828ce85a44099b595f5ab7a03d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e358d0df9bc68845858e98df56ffb02, type: 3}
 --- !u!1001 &2540596472291295896
@@ -6625,6 +6680,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Weapon Holder '
+      objectReference: {fileID: 0}
+    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: Active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: FireSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
+    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: FpsCam
+      value: 
+      objectReference: {fileID: 8258387573324111721}
+    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: ImpactEffect
+      value: 
+      objectReference: {fileID: 600667123876979242, guid: 4d9431905f3d64c4e9b8f6ae3ca86fc4,
+        type: 3}
+    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: AmmoAmount
+      value: 
+      objectReference: {fileID: 1244530926}
+    - target: {fileID: 309244834899769672, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5160092793199340487, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
         type: 3}
@@ -6711,6 +6797,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5160092793095398922, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 307152402647408880, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6726,50 +6817,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 8.753
       objectReference: {fileID: 0}
-    - target: {fileID: 309244834899769672, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: Active
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: FireSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
-    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: FpsCam
-      value: 
-      objectReference: {fileID: 8258387573324111721}
-    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: ImpactEffect
-      value: 
-      objectReference: {fileID: 600667123876979242, guid: 4d9431905f3d64c4e9b8f6ae3ca86fc4,
-        type: 3}
-    - target: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: AmmoAmount
-      value: 
-      objectReference: {fileID: 1244530926}
-    - target: {fileID: 5160092793095398922, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-        type: 3}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f817e7db0f4d3488ada2dbd074b7a3, type: 3}
---- !u!4 &7268341448267508063 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5160092793199340487, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2540596472291295896}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3403435904165711828 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 898870460397325644, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
@@ -6782,6 +6831,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ff95eb7157dbc4f947686cf98efadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7268341448267508063 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5160092793199340487, guid: 72f817e7db0f4d3488ada2dbd074b7a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2540596472291295896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3524429279905343854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6854,6 +6909,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8453490215489614452, guid: 3a6c6a105a943b34d9bfd4b80e8850cb,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7911774927987306917, guid: 3a6c6a105a943b34d9bfd4b80e8850cb,
         type: 3}
       propertyPath: FpsCam
@@ -6864,10 +6924,5 @@ PrefabInstance:
       propertyPath: AmmoAmount
       value: 
       objectReference: {fileID: 1244530926}
-    - target: {fileID: 8453490215489614452, guid: 3a6c6a105a943b34d9bfd4b80e8850cb,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a6c6a105a943b34d9bfd4b80e8850cb, type: 3}

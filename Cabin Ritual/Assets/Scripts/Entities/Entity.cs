@@ -542,6 +542,8 @@ public class Entity : MonoBehaviour
 
             if (Health <= 0)
             {
+                //StartCoroutine(DeathAnim());
+
                 if (HasDownState)
                 {
                     if (DownCount > 0)
@@ -557,6 +559,7 @@ public class Entity : MonoBehaviour
                 }
                 else
                 {
+                    //StartCoroutine(DeathAnim());
                     Die();
                 }
             }
@@ -582,7 +585,7 @@ public class Entity : MonoBehaviour
         Audio.clip = DeathSound;
         Audio.Play();
 
-        Anim.SetBool("Dying", true);
+        //StartCoroutine(DeathAnim());
 
         if (OnDeath != null)
         {
@@ -758,6 +761,15 @@ public class Entity : MonoBehaviour
         {
             return CurrentSpeed;
         }
+    }
+
+    IEnumerator DeathAnim()
+    {
+        Anim.SetBool("Dying",true);
+        yield return new WaitForSeconds(1f);
+        
+        //GetComponent<AudioSource>().Stop();   
+        
     }
 
 }
