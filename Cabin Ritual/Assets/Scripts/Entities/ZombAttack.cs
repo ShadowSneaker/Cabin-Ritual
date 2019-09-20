@@ -10,25 +10,17 @@ public class ZombAttack : MonoBehaviour
     [SerializeField]
     public int Damage = 10;
 
+    [Tooltip("The time before can attack again.")]
+    [SerializeField]
+    public int AttackCoolDown = 10;
+
     [Tooltip("Force applied on the hit object.")]
     [SerializeField]
     public float ImpactForce = 30.0f;
 
-    public GameObject Zombies;
+    public GameObject Zombies;    
 
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ZombieAttack()
     {

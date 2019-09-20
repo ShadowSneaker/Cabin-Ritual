@@ -11,6 +11,10 @@ public class ChaseAI : AIBase
     [SerializeField]
     public int Damage = 10;
 
+    [Tooltip("The time before can attack again.")]
+    [SerializeField]
+    public int AttackCoolDown = 10;
+
     //[Tooltip("Force applied on the hit object.")]
     //[SerializeField]
     //public float ImpactForce = 30.0f;
@@ -64,7 +68,11 @@ public class ChaseAI : AIBase
             Anim.SetBool("Walking", false);
             Anim.SetBool("Attacking", true);
 
-            //Attacking = true;
+
+            
+            Attacking = true;
+
+            
 
             //StartCoroutine(ZombieAttack());
             //ZombieAttack();
@@ -94,69 +102,74 @@ public class ChaseAI : AIBase
     }
 
 
-    //void OnTriggerEnter(Collider Other)
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((other.gameObject.tag == "Player"))
+        {            
+            other.gameObject.GetComponent<Entity>().Health -= Damage;            
+        }
+    }
+
+    //IEnumerator ZombiesAttackingAnim()
     //{
-    //    if (Other.gameObject.CompareTag("Player"))
+    //    yield return new WaitForSeconds(2);
+    //
+    //    if(Attacking == true)
     //    {
-    //        if (Attacking == true)
+    //
+    //    }
+    //}
+
+
+    // Touch insta kill?
+
+    // IEnumerator ZombieAttack()
+    // {
+    //     Anim.SetBool("Attacking", true);
+    //
+    //     yield return new WaitForSeconds(1);
+    //
+    //    if (Attacking == true)
+    //    {
+    //
+    //
+    //        
+    //
+    //        //RaycastHit Hit;
+    //        //if (Physics.Raycast(Zombie.transform.position, Zombie.transform.forward, out Hit))
+    //        //{
+    //        //    Debug.DrawRay(Zombie.transform.position, Zombie.transform.forward, Color.red);
+    //        //
+    //        //    Entity Target = transform.GetComponent<Entity>();
+    //        //    if (Target != null)
+    //        //    {
+    //        //        Target.TakeDamage(Damage);
+    //        //    }
+    //        //}
+    //    }
+    //      
+    // }
+    //
+    //public void ZombieAttack()
+    //{
+    //    RaycastHit Hit;
+    //    if (Physics.Raycast(Zombies.transform.position, Zombies.transform.forward, out Hit))
+    //    {
+    //        Debug.DrawRay(Zombies.transform.position, Zombies.transform.forward, Color.red);
+    //
+    //        Entity Target = Hit.transform.GetComponent<Entity>();
+    //        if (Target != null)
     //        {
-    //            Anim.SetBool("Attacking", true);
-    //            Entity Health = transform.GetComponent<Entity>();
-    //            Health.Health -= Damage;
+    //            Target.TakeDamage(Damage);
+    //        }
+    //
+    //        if (Hit.rigidbody != null)
+    //        {
+    //            Hit.rigidbody.AddForce(-Hit.normal * ImpactForce);
     //        }
     //    }
     //}
 
 
-        // Touch insta kill?
 
-        // IEnumerator ZombieAttack()
-        // {
-        //     Anim.SetBool("Attacking", true);
-        //
-        //     yield return new WaitForSeconds(1);
-        //
-        //    if (Attacking == true)
-        //    {
-        //
-        //
-        //        
-        //
-        //        //RaycastHit Hit;
-        //        //if (Physics.Raycast(Zombie.transform.position, Zombie.transform.forward, out Hit))
-        //        //{
-        //        //    Debug.DrawRay(Zombie.transform.position, Zombie.transform.forward, Color.red);
-        //        //
-        //        //    Entity Target = transform.GetComponent<Entity>();
-        //        //    if (Target != null)
-        //        //    {
-        //        //        Target.TakeDamage(Damage);
-        //        //    }
-        //        //}
-        //    }
-        //      
-        // }
-        //
-        //public void ZombieAttack()
-        //{
-        //    RaycastHit Hit;
-        //    if (Physics.Raycast(Zombies.transform.position, Zombies.transform.forward, out Hit))
-        //    {
-        //        Debug.DrawRay(Zombies.transform.position, Zombies.transform.forward, Color.red);
-        //
-        //        Entity Target = Hit.transform.GetComponent<Entity>();
-        //        if (Target != null)
-        //        {
-        //            Target.TakeDamage(Damage);
-        //        }
-        //
-        //        if (Hit.rigidbody != null)
-        //        {
-        //            Hit.rigidbody.AddForce(-Hit.normal * ImpactForce);
-        //        }
-        //    }
-        //}
-
-
-    
 }

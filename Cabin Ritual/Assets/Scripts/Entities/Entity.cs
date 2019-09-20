@@ -87,13 +87,13 @@ public class Entity : MonoBehaviour
     [Header("Health")]
 
     // Represents if this entity is dead.
-    [DisplayWithoutEdit()]
+    //[DisplayWithoutEdit()]
     public bool IsDead;
 
-    [DisplayWithoutEdit()]
+   // [DisplayWithoutEdit()]
     public bool IsDown;
 
-    [DisplayWithoutEdit()]
+  //  [DisplayWithoutEdit()]
     public int DownCount;
 
     [Tooltip("Should this entity be allowed to get knocked down.")]
@@ -135,22 +135,22 @@ public class Entity : MonoBehaviour
     [Header("Movement")]
 
     // Determines if this entity is currently sprinting.
-    [DisplayWithoutEdit()]
+   // [DisplayWithoutEdit()]
     [SerializeField]
     private bool Sprinting = false;
 
     // Determines if this entity is currently walking.
-    [DisplayWithoutEdit()]
+   // [DisplayWithoutEdit()]
     [SerializeField]
     private bool Walking = false;
 
     // Determines if this entity is currently crouching.
-    [DisplayWithoutEdit()]
+//[DisplayWithoutEdit()]
     [SerializeField]
     private bool Crouching = false;
 
     // The speed this entity is currently moving at.
-    [DisplayWithoutEdit()]
+  //  [DisplayWithoutEdit()]
     [SerializeField]
     private float CurrentSpeed;
 

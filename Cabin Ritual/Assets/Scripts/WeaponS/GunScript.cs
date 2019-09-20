@@ -7,7 +7,7 @@ public class GunScript : MonoBehaviour
 {
     [Header("Gun Stats")]
 
-    [DisplayWithoutEdit()]
+   // [DisplayWithoutEdit()]
     [SerializeField]
     private bool IsFiring = false;
 
@@ -60,7 +60,7 @@ public class GunScript : MonoBehaviour
 
 
     // The total ammo this gun has in reserve.
-    [DisplayWithoutEdit()]
+  //  [DisplayWithoutEdit()]
     [SerializeField]
     private int TotalAmmo = 0;
 

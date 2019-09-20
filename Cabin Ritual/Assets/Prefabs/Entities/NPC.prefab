@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841226836695856235}
   - component: {fileID: 8169276079302908993}
+  - component: {fileID: 7784389455051458617}
   m_Layer: 0
   m_Name: ZombieGirl_Body
   m_TagString: Untagged
@@ -174,6 +175,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.012008965, y: -0.039423287, z: 0.06382579}
     m_Extent: {x: 0.46912438, y: 1.0189898, z: 0.28944397}
   m_DirtyAABB: 0
+--- !u!65 &7784389455051458617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287754969074642248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18225563, y: 0.305748, z: 0.23368263}
+  m_Center: {x: -0.39000553, y: 1.0055676, z: 0.121497154}
 --- !u!1 &574913345433222365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,6 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 10
+  AttackCoolDown: 10
   Zombie: {fileID: 6758064729144739983}
   FollowObject: {fileID: 0}
   Key: Zombie
@@ -2536,12 +2551,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 4df22cd934128bf4aaec3cec67b2cfea, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c21708bdddb68845a083ad0c8559105, type: 3}
---- !u!95 &7506851829802462913 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2993256382876907849, guid: 7c21708bdddb68845a083ad0c8559105,
-    type: 3}
-  m_PrefabInstance: {fileID: 4730924916580390792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4857950576069763465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 201948855734597121, guid: 7c21708bdddb68845a083ad0c8559105,
@@ -2551,6 +2560,12 @@ Transform:
 --- !u!1 &6758064729144739983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2048829098978270983, guid: 7c21708bdddb68845a083ad0c8559105,
+    type: 3}
+  m_PrefabInstance: {fileID: 4730924916580390792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7506851829802462913 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2993256382876907849, guid: 7c21708bdddb68845a083ad0c8559105,
     type: 3}
   m_PrefabInstance: {fileID: 4730924916580390792}
   m_PrefabAsset: {fileID: 0}
