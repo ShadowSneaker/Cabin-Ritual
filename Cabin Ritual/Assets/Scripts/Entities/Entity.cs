@@ -559,8 +559,8 @@ public class Entity : MonoBehaviour
                 }
                 else
                 {
-                    //StartCoroutine(DeathAnim());
-                    Die();
+                    StartCoroutine(DeathAnim());
+                    //Die();
                 }
             }
             else
@@ -766,9 +766,10 @@ public class Entity : MonoBehaviour
     IEnumerator DeathAnim()
     {
         Anim.SetBool("Dying",true);
-        yield return new WaitForSeconds(1f);
-        
-        //GetComponent<AudioSource>().Stop();   
+        yield return new WaitForSeconds(4f);
+
+        //GetComponent<AudioSource>().Stop();  
+        Die();
         
     }
 

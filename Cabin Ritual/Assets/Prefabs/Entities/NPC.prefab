@@ -2447,17 +2447,17 @@ PrefabInstance:
     - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
         type: 3}
       propertyPath: Health
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
         type: 3}
       propertyPath: MaxHealth
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
         type: 3}
@@ -2492,6 +2492,31 @@ PrefabInstance:
     - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5159867384443965462}
+    - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2564870741225237977, guid: 7c21708bdddb68845a083ad0c8559105,

@@ -904,6 +904,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4787570401035502141}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnHurt:
@@ -930,8 +941,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a9b1b312e5d75429299d80475b70fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 10
+  Zombie: {fileID: 0}
   FollowObject: {fileID: 0}
   Key: Pouncer
+  Anim: {fileID: 0}
 --- !u!82 &8708132908621478178
 AudioSource:
   m_ObjectHideFlags: 0
