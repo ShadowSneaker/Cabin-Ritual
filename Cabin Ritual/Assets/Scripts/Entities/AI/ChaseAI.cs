@@ -97,8 +97,7 @@ public class ChaseAI : AIBase
 
     public void Return()
     {
-        GM.GetPlayer(0).GetComponent<PlayersPoints>().AddPoints(100);
-        //Anim.SetBool("Dying", true);
+        GM.GetPlayer(0).GetComponent<PlayersPoints>().AddPoints(100);       
         GM.Despawn(Key, this.gameObject);
 
     }

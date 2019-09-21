@@ -31,8 +31,7 @@ public struct Stat
     public float RegenDelay;
 
     [Tooltip("How fast this entity regenerates health per second.")]
-    public float RegenRate;
-
+    public float RegenRate;    
 
     // Determines if this stat is regenerating.
     public bool IsRegenerating;
@@ -765,6 +764,7 @@ public class Entity : MonoBehaviour
 
     IEnumerator DeathAnim()
     {
+        
         Anim.SetBool("Dying",true);
         yield return new WaitForSeconds(4f);
 
