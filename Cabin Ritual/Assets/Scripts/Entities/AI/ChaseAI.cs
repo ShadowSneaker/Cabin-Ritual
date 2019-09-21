@@ -36,6 +36,8 @@ public class ChaseAI : AIBase
 
     private bool Attacking;
 
+    private bool AttackAgain = false;
+
     //Entity Dying;
 
 
@@ -69,7 +71,7 @@ public class ChaseAI : AIBase
             Anim.SetBool("Attacking", true);
 
 
-            
+
             Attacking = true;
 
             
@@ -104,21 +106,20 @@ public class ChaseAI : AIBase
 
     private void OnTriggerEnter(Collider other)
     {
+        StartCoroutine(Invunrable());
+
         if ((other.gameObject.tag == "Player"))
         {            
             other.gameObject.GetComponent<Entity>().Health -= Damage;            
         }
     }
 
-    //IEnumerator ZombiesAttackingAnim()
-    //{
-    //    yield return new WaitForSeconds(2);
-    //
-    //    if(Attacking == true)
-    //    {
-    //
-    //    }
-    //}
+    IEnumerator Invunrable()
+    {
+        yield return new WaitForSeconds(2);
+
+        AttackAgain = true;
+    }
 
 
     // Touch insta kill?

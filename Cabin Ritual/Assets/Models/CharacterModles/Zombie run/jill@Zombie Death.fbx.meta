@@ -273,7 +273,37 @@ ModelImporter:
     13700010: Jill_HiRes_Head_Geo
     13700012: Jill_HiRes_Limbs_Geo
     13700014: Jill_HiRes_Teeth_Geo
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jill_HiMidRes_Body_MAT
+    second: {fileID: 2100000, guid: 8060e5c1982fa5649948a84d9a9214c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jill_HiMidRes_EyeSpec_MAT
+    second: {fileID: 2100000, guid: 8060e5c1982fa5649948a84d9a9214c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jill_HiMidRes_Eyes_MAT
+    second: {fileID: 2100000, guid: 8060e5c1982fa5649948a84d9a9214c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jill_HiMidRes_Gown_MAT
+    second: {fileID: 2100000, guid: 8060e5c1982fa5649948a84d9a9214c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jill_HiMidRes_Hair_MAT
+    second: {fileID: 2100000, guid: 8060e5c1982fa5649948a84d9a9214c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jill_HiMidRes_Teeth_MAT
+    second: {fileID: 2100000, guid: 8060e5c1982fa5649948a84d9a9214c1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

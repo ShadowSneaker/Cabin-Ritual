@@ -239,7 +239,7 @@ public class GunScript : MonoBehaviour
         {
 
             if (AmmoAmount)
-                AmmoAmount.text = CurrentAmmo.ToString() + ("/10");
+                AmmoAmount.text = CurrentAmmo.ToString() + ("/") + ClipSize;
 
                 if (ConsumeAmmo || CurrentAmmo > 0)
             {

@@ -47,10 +47,18 @@ MonoBehaviour:
   ShouldScaleSpawns: 1
   ObjectMultiplier: 1
   CreateObjects:
+  - Key: Walk Zombie
+    Prefab: {fileID: 2350857366142286648, guid: cd4258ebaa5fd6f40b535d0fefa6bc67,
+      type: 3}
+    InstanceCount: 25
   - Key: Zombie
     Prefab: {fileID: 4576255631562492582, guid: 6eb6b00aef530db43bbe38d68c33fd2e,
       type: 3}
-    InstanceCount: 50
+    InstanceCount: 25
+  - Key: Running
+    Prefab: {fileID: 1207780788122921546, guid: ba1f6e3d83152904cb2d418da2608865,
+      type: 3}
+    InstanceCount: 15
 --- !u!114 &1988450878742218066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,11 +80,11 @@ MonoBehaviour:
     ForceTransform: {fileID: 0}
   PlayerCount: 1
   StaticPlayers: []
-  MaxSpawnDistance: 200
-  TrySpawnAttempts: 200
+  MaxSpawnDistance: 25
+  TrySpawnAttempts: 25
   AllowSpawning: 1
   ZombieTypes: []
-  SpawnRate: 1.5
+  SpawnRate: 5
   SpawnRateCap: 0.001
   SpawnMultiplier: 1
   IncreaseRateInverval: 60
