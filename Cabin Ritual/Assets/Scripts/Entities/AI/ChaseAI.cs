@@ -105,7 +105,7 @@ public class ChaseAI : AIBase
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(Invunrable());
+        //StartCoroutine(Invunrable());
 
         if ((other.gameObject.tag == "Player"))
         {            
@@ -113,12 +113,12 @@ public class ChaseAI : AIBase
         }
     }
 
-    IEnumerator Invunrable()
-    {
-        yield return new WaitForSeconds(2);
-
-        AttackAgain = true;
-    }
+    //IEnumerator Invunrable()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //
+    //    AttackAgain = true;
+    //}
 
 
     // Touch insta kill?

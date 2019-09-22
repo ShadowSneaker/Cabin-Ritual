@@ -1999,6 +1999,7 @@ GameObject:
   - component: {fileID: 2350857365599062777}
   - component: {fileID: 2350857365599062776}
   - component: {fileID: 2350857365599062772}
+  - component: {fileID: 82332474119478948}
   m_Layer: 0
   m_Name: WalkingZombie
   m_TagString: Untagged
@@ -2182,6 +2183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 10
+  AttackCoolDown: 10
   Zombie: {fileID: 2350857366142286648}
   FollowObject: {fileID: 0}
   Key: Walk Zombie
@@ -2303,6 +2305,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &82332474119478948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350857366142286648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4477735, z: 0.3997574}
+  m_Center: {x: 0, y: 1.1009691, z: 0.83068514}
 --- !u!1 &2350857366142286650
 GameObject:
   m_ObjectHideFlags: 0
