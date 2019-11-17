@@ -156,6 +156,11 @@ public class Controller : MonoBehaviour
                 {
                     Gun.StopShooting();
                 }
+
+                if (Input.GetButtonDown("Reload"))
+                {
+                    Gun.Reload();
+                }
             }
             else
             {
