@@ -44,7 +44,7 @@ public class PulsingText : MonoBehaviour
 
                 // Update our text element
                 this.text.transform.localScale = Vector3.one * currentRatio;
-                this.text.text = "Press any button";
+                this.text.text = "Press Space";
 
                 yield return new WaitForEndOfFrame();
             }
@@ -57,7 +57,7 @@ public class PulsingText : MonoBehaviour
 
                 // Update our text element
                 this.text.transform.localScale = Vector3.one * currentRatio;
-                this.text.text = "Press any button";
+                this.text.text = "Press Space";
 
                 yield return new WaitForEndOfFrame();
             }
