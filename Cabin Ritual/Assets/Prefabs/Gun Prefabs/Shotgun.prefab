@@ -169,6 +169,7 @@ MonoBehaviour:
   FireSound: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
   ReloadSound: {fileID: 0}
   EmptyClipSound: {fileID: 0}
+  MuzzleFlash: {fileID: 0}
   FullAuto: 0
   PelletCount: 5
   UseLoopIndex: 0
