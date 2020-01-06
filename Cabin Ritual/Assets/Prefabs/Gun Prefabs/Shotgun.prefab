@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928473642713747147}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3928473642714239727}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &3928473642710848203
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -103,14 +103,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928473642713747151}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.3058548, y: -0.311, z: 0.6560669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.307}
   m_LocalScale: {x: 0.20000012, y: 0.2, z: 0.20000012}
   m_Children:
   - {fileID: 3928473642714239723}
+  - {fileID: 4088956009189154872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5486035020194792983
 Animator:
   serializedVersion: 3
@@ -142,33 +143,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5599608fae83f54ba105fc5f2bce6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsFiring: 0
+  InfiniteAmmo: 0
+  InfiniteClips: 0
   Active: 1
-  Damage: 10
-  Range: 100
-  FireRate: 15
-  WeaponSway: 0
-  ImpactForce: 30
-  Accuracy: 80
-  TotalAmmo: 48
-  ConsumeAmmo: 1
+  TotalAmmo: 24
+  CurrentAmmo: 8
   ClipSize: 8
-  CurrentAmmo: 0
-  Clips: 6
-  ReloadTime: 2
+  ClipCount: 3
+  Damage: 10
+  CriticalDamage: 1.5
+  Stability: 30
+  Recoil: 10
+  Range: 100
+  ReloadSpeed: 0.2
+  FireRate: 15
+  ADSAmount: 10
+  OnlyShootIndex: 1
+  ProjectileIndex: 0
+  ProjectileTypes:
+  - {fileID: 1856803937874901957, guid: 5127c6c3974943240bc3b3e1ebdfcb53, type: 3}
+  MuzzleLocation: {fileID: 4088956009189154872}
+  Accuracy: 50
+  SpreadIncreaseSpeed: 0.2
+  SpreadDecreaseSpeed: 0.001
   FireSound: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
   ReloadSound: {fileID: 0}
   EmptyClipSound: {fileID: 0}
-  CockSound: {fileID: 0}
-  FpsCam: {fileID: 0}
-  MuzzleFlash: {fileID: 0}
-  ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
-    type: 3}
-  AmmoAmount: {fileID: 0}
-  RandomPelletes: 0
+  FullAuto: 0
   PelletCount: 5
   UseLoopIndex: 0
-  FullAuto: 0
 --- !u!82 &1139131723199667540
 AudioSource:
   m_ObjectHideFlags: 0
@@ -189,8 +192,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 10
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -265,3 +268,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &9191994448202039983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4088956009189154872}
+  m_Layer: 0
+  m_Name: MuzzleLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4088956009189154872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9191994448202039983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0.7, z: 3.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3928473642714239727}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

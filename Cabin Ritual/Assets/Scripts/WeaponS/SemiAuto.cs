@@ -4,30 +4,13 @@ using UnityEngine;
 
 public class SemiAuto : GunScript
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Fire()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    public override void Shoot()
-    {
-        base.Shoot();
-
+        base.Fire();
         if (CanFire())
         {
             ShootBullet();
-            IncreaseSpread();
-            
-            Active = false;
-            FireDelay(GetFireRate());
+            StartFireDelay();
         }
     }
 }

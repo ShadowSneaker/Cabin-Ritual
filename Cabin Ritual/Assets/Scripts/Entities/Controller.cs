@@ -59,8 +59,8 @@ public class Controller : MonoBehaviour
     private Transform Cam = null;
 
 
-    //TEMPORARY, FIX THIS IDIOT
-    public GunScript Gun = null;
+    // A reference to the weapon holder.
+    public GunHolder Holder = null;
 
     
 
@@ -74,14 +74,9 @@ public class Controller : MonoBehaviour
         if (!Player) Debug.LogError("Error: Could not find the Entity component!");
 
         CamController = GetComponent<CameraController>();
-        
-        
-    }
 
-
-    private void Awake()
-    {
         Cursor.visible = ShowCursor;
+        Cursor.lockState = (ShowCursor) ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
 
@@ -149,17 +144,17 @@ public class Controller : MonoBehaviour
 
                 if (Input.GetButtonDown("Fire1"))
                 {
-                    Gun.Shoot();
+                    Holder.GetHeldWeapon().Fire();
                 }
 
                 if (Input.GetButtonUp("Fire1"))
                 {
-                    Gun.StopShooting();
+                    Holder.GetHeldWeapon().StopFiring();
                 }
 
                 if (Input.GetButtonDown("Reload"))
                 {
-                    Gun.Reload();
+                    Holder.GetHeldWeapon().Reload();
                 }
             }
             else

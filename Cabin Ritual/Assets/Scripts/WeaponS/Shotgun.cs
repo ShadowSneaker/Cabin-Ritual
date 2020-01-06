@@ -4,75 +4,61 @@ using UnityEngine;
 
 public class Shotgun : GunScript
 {
-    [Tooltip("Should the pellet index be randomized.")]
-    [SerializeField]
-    private bool RandomPelletes;
+    [Header("Shotgun")]
 
-    [Tooltip("How many pellets should be fired per shot.")]
-    [SerializeField]
-    private int PelletCount = 5;
-
-    private int Index = 0;
-
-    private bool FirstShot = false;
-
-    [Tooltip("Should each bullet follow the projectile index.")]
-    [SerializeField]
-    private bool UseLoopIndex = false;
 
     [Tooltip("Should this shotgun be fully automatic.")]
     [SerializeField]
     private bool FullAuto = false;
 
-    // Start is called before the first frame update
-    void Start()
+    [Tooltip("The amount of projectiles this shotgun fires per shot.")]
+    [SerializeField]
+    private int PelletCount = 5;
+
+    [Tooltip("Should the projectile index follow the pellet count.")]
+    [SerializeField]
+    private bool UseLoopIndex = false;
+
+
+
+    public override void Fire()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    public override void Shoot()
-    {
-        base.Shoot();
-
+        base.Fire();
         if (FullAuto)
         {
-            while (CanFire())
-            {
-                Fire();
-
-                new WaitForSeconds(GetFireRate());
-            }
+            StartCoroutine(StartFullAuto());
         }
         else
         {
             if (CanFire())
             {
-                Active = false;
-                Fire();                
+                FireShotgun();
+                StartFireDelay();
             }
         }
     }
 
 
-    private void Fire()
+    protected void FireShotgun()
     {
-        //Index = GetProjectileIndex();
+        bool FirstShot = true;
         for (int i = 0; i < PelletCount; ++i)
         {
-            ShootBullet(0, FirstShot);
+            ShootBullet((UseLoopIndex) ? i : -1, FirstShot);
             FirstShot = false;
         }
 
-        FirstShot = true;
-        Active = true;
-
         IncreaseSpread();
+    }
+
+
+    private IEnumerator StartFullAuto()
+    {
+        while (CanFire())
+        {
+            FireShotgun();
+            yield return new WaitForSeconds(GetFireRate());
+            Active = true;
+        }
     }
 }

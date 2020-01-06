@@ -319,8 +319,6 @@ public class GameMode : MonoBehaviour
     // @param Object - The object to be despawned.
     public void Despawn(string Key, GameObject Object)
     {
-
-        Debug.Log("DIE");
         Pool.ReturnObject(Key, Object);
 
     }

@@ -34,7 +34,7 @@ public class ChaseAI : AIBase
 
     public Animator Anim;
 
-    private bool Attacking;
+    private bool Attacking = false;
 
     private bool AttackAgain = false;
 

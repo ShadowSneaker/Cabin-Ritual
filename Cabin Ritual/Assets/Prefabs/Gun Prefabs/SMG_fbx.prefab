@@ -29,9 +29,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4014091780827854829}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.15185547, y: -0.19900048, z: 0.43206596}
+  m_LocalPosition: {x: 0, y: -0.022, z: 0.384}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1937628537528035818}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -92,29 +93,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2762f4632b1ee0d4581d56b2cda556cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsFiring: 0
+  InfiniteAmmo: 0
+  InfiniteClips: 0
   Active: 1
-  Damage: 10
-  Range: 100
-  FireRate: 15
-  WeaponSway: 0
-  ImpactForce: 30
-  Accuracy: 80
-  TotalAmmo: 150
-  ConsumeAmmo: 1
+  TotalAmmo: 75
+  CurrentAmmo: 25
   ClipSize: 25
-  CurrentAmmo: 0
-  Clips: 6
-  ReloadTime: 1
-  FireSound: {fileID: 0}
+  ClipCount: 3
+  Damage: 10
+  CriticalDamage: 1.5
+  Stability: 30
+  Recoil: 10
+  Range: 100
+  ReloadSpeed: 0.2
+  FireRate: 15
+  ADSAmount: 10
+  OnlyShootIndex: 1
+  ProjectileIndex: 0
+  ProjectileTypes:
+  - {fileID: 1856803937874901957, guid: 5127c6c3974943240bc3b3e1ebdfcb53, type: 3}
+  MuzzleLocation: {fileID: 1937628537528035818}
+  Accuracy: 80
+  SpreadIncreaseSpeed: 0.2
+  SpreadDecreaseSpeed: 0.001
+  FireSound: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
   ReloadSound: {fileID: 0}
   EmptyClipSound: {fileID: 0}
-  CockSound: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
-  FpsCam: {fileID: 0}
-  MuzzleFlash: {fileID: 0}
-  ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
-    type: 3}
-  AmmoAmount: {fileID: 0}
 --- !u!82 &8453490215489614452
 AudioSource:
   m_ObjectHideFlags: 0
@@ -230,3 +234,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &8955469329229773714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937628537528035818}
+  m_Layer: 0
+  m_Name: MuzzleLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1937628537528035818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955469329229773714}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.31100187, y: 0.0483, z: -0.0000013113022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4014091780827425741}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}

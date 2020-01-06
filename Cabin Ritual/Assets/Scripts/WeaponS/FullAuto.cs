@@ -4,31 +4,21 @@ using UnityEngine;
 
 public class FullAuto : GunScript
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Fire()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Fire();
+        StartCoroutine(LoopFire());
     }
 
 
-
-    public override void Shoot()
+    private IEnumerator LoopFire()
     {
-        base.Shoot();
-
         while (CanFire())
         {
             ShootBullet();
             IncreaseSpread();
-
-            Active = false;
-            new WaitForSeconds(GetFireRate());
+            yield return new WaitForSeconds(GetFireRate());
+            Active = true;
         }
     }
 }

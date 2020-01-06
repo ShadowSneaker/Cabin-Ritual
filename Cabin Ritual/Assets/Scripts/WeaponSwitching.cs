@@ -50,8 +50,7 @@ public class WeaponSwitching : MonoBehaviour
             {
                 weapon.gameObject.SetActive(true);
 
-                FindObjectOfType<Controller>().Gun = weapon.GetComponent<GunScript>();
-
+                //FindObjectOfType<Controller>().Holder.Get = weapon.GetComponent<GunScript>();
             }
                 
 

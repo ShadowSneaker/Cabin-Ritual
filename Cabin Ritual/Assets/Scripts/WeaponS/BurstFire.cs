@@ -4,45 +4,42 @@ using UnityEngine;
 
 public class BurstFire : GunScript
 {
-    [Tooltip("The amount of bullets that is shot.")]
+    [Header("Burst Fire Gun")]
+
+
+    [Tooltip("The amount of bullets this gun fires per shot.")]
     [SerializeField]
     private int BurstCount = 3;
 
-    [Tooltip("How long the gun should wait before allowing to fire again.")]
+    [Tooltip("Should each bullet in the burst be linked to the projectile index (so the first bullet shot will use ProjectileIndex 1, the second bullet will use ProjectileIndex2 and so on).")]
+    [SerializeField]
+    private bool IndexFollowBurst = false;
+
+    [Tooltip("The time between each bullet shot (In seconds).")]
     [SerializeField]
     private float BurstDelay = 0.1f;
 
 
-    // Start is called before the first frame update
-    void Start()
+
+    public override void Fire()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    public override void Shoot()
-    {
-        base.Shoot();
-
+        base.Fire();
         if (CanFire())
         {
-            Active = false;
+            StartCoroutine(StartBurst());
+        }
+    }
 
-            for (int i = 0; i < BurstCount; ++i)
-            {
-                ShootBullet();
 
-                new WaitForSeconds(GetFireRate());
-            }
+    private IEnumerator StartBurst()
+    {
+        for (int i = 0; i < BurstCount; ++i)
+        {
+            ShootBullet((IndexFollowBurst) ? i : -1);
+            IncreaseSpread();
+            yield return new WaitForSeconds(BurstDelay);
         }
 
-        IncreaseSpread();
-        FireDelay(BurstDelay);
+        StartFireDelay();
     }
 }
