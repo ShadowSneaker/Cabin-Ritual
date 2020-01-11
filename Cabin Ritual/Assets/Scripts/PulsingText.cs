@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PulsingText : MonoBehaviour
 {
 
+
+
     // Grow parameters
     public float approachSpeed = 0.02f;
     public float growthBound = 2f;
@@ -20,6 +22,7 @@ public class PulsingText : MonoBehaviour
     private Coroutine routine;
     private bool keepGoing = true;
     private bool closeEnough = false;
+
 
     // Attach the coroutine
     void Awake()

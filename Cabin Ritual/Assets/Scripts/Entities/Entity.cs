@@ -539,10 +539,10 @@ public class Entity : MonoBehaviour
         {
             Health -= Damage;
 
-            if (Health <= 0)
+            if (Health >= 0)
             {
                 //StartCoroutine(DeathAnim());
-
+                Die();
                 if (HasDownState)
                 {
                     if (DownCount > 0)
@@ -557,9 +557,8 @@ public class Entity : MonoBehaviour
                     }
                 }
                 else
-                {
-                    StartCoroutine(DeathAnim());
-                    //Die();
+                {                    
+                    Die();
                 }
             }
             else
