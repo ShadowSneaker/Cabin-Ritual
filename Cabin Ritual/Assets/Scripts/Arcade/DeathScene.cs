@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DeathScene : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class DeathScene : MonoBehaviour
     public Text TimeSurvived;
 
     //the integer to store the time the player survived
-    public int TimePlayerSurvived;
+    public float TimePlayerSurvived;
 
     //the text to display how many points the player had
     public Text Points;
@@ -17,10 +18,15 @@ public class DeathScene : MonoBehaviour
     // the text to display how many kills the player had
     public Text Kills;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        TimePlayerSurvived = StaticArcadeInfo.time;
+        Kills.text = "End Kills : " + StaticArcadeInfo.kills;
+        Points.text = "End Points : " + StaticArcadeInfo.score;
+        TimeSurvived.text = "Time Lasted : " + TimePlayerSurvived;
     }
 
     // Update is called once per frame
@@ -28,4 +34,10 @@ public class DeathScene : MonoBehaviour
     {
         
     }
+
+    public void LaodMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }

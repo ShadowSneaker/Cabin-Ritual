@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class StaticArcadeInfo 
 {
-    private int KILLS;
-    private float TIME;
-    private int SCORE;
+    private static int KILLS;
+    private static float TIME;
+    private static int SCORE;
 
 
-    public int kills
+    public static int kills
     {
         get
         {
@@ -22,7 +22,7 @@ public class StaticArcadeInfo
 
     }
 
-    public float time
+    public static float time
     {
         get
         {
@@ -34,7 +34,7 @@ public class StaticArcadeInfo
         }
     }
 
-    public int score
+    public static int score
     {
         get
         {
