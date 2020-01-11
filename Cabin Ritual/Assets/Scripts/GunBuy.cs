@@ -47,12 +47,10 @@ public class GunBuy : InteractableObject
             if (Holder)
             {
                 int GunIndex = Holder.GunExists(GunPrefab);
-                if (GunIndex > -1)
+                if (GunIndex == -1)
                 {
                     if (Points.PointsAquired >= Cost)
                     {
-                        Debug.Log("Ran");
-
                         // Add the gun to the gun holder.
                         Holder.InsertGun(GunPrefab);
                         Points.RemovePoints(Cost);
@@ -66,7 +64,6 @@ public class GunBuy : InteractableObject
                 {
                     if (Points.PointsAquired >= AmmoCost)
                     {
-                        Debug.Log("Refilling Ammo");
                         // Refill the gun with ammo.
                         Holder.ResetIndex(GunIndex);
                         Points.RemovePoints(AmmoCost);

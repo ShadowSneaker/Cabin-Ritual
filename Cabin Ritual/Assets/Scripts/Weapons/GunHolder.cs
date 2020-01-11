@@ -125,7 +125,7 @@ public class GunHolder : MonoBehaviour
         // If there are empty spots create the gun there.
         // If not then create the gun and replace the currently selected gun with the created gun.
 
-        GunScript GunInstance = Instantiate<GunScript>(Gun);
+        GunScript GunInstance = Instantiate<GunScript>(Gun, Hand);
         int Empty;
         if (HasEmptySlot(out Empty))
         {
