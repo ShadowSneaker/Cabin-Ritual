@@ -7,6 +7,8 @@ public class PlayersPoints : MonoBehaviour
     public int PointsAquired;
     public int KillCount;
 
+    public StaticArcadeInfo Info;
+
     public void RemovePoints(int points)
     {
         PointsAquired -= points;        
@@ -20,6 +22,14 @@ public class PlayersPoints : MonoBehaviour
     public void AddKill()
     {
         KillCount++; 
+    }
+
+
+    public void EndPoints()
+    {
+        Info.kills = KillCount;
+        Info.score = PointsAquired;
+        Info.time = Time.time;
     }
 
 }

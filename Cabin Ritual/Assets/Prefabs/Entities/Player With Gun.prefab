@@ -6345,7 +6345,6 @@ MonoBehaviour:
   ArcadeUI: {fileID: 5819511736851559650}
   PointUI: {fileID: 3281574474440467914}
   Cam: {fileID: 8258387573324111734}
-  Holder: {fileID: 0}
 --- !u!114 &257474608302512082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6443,11 +6442,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5923954676054372779}
-        m_MethodName: 
+        m_MethodName: EndPoints
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
