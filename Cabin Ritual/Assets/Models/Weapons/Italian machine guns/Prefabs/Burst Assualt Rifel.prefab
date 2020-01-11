@@ -164,15 +164,15 @@ GameObject:
   m_Component:
   - component: {fileID: 466178}
   - component: {fileID: 9541160}
+  - component: {fileID: 6021670323896165392}
   - component: {fileID: 1159397669}
-  - component: {fileID: 1159397670}
   m_Layer: 0
   m_Name: Burst Assualt Rifel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &466178
 Transform:
   m_ObjectHideFlags: 0
@@ -209,6 +209,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6021670323896165392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440bc45827f290f4489fe10dbee3bad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InfiniteAmmo: 0
+  InfiniteClips: 0
+  Active: 1
+  TotalAmmo: 30
+  CurrentAmmo: 10
+  ClipSize: 10
+  ClipCount: 3
+  Damage: 10
+  CriticalDamage: 1.5
+  Stability: 30
+  Recoil: 10
+  Range: 50
+  ReloadSpeed: 0.2
+  FireRate: 10
+  ADSAmount: 10
+  OnlyShootIndex: 1
+  ProjectileIndex: 0
+  ProjectileTypes: []
+  MuzzleLocation: {fileID: 0}
+  Accuracy: 50
+  SpreadIncreaseSpeed: 0.2
+  SpreadDecreaseSpeed: 0.001
+  FireSound: {fileID: 0}
+  ReloadSound: {fileID: 0}
+  EmptyClipSound: {fileID: 0}
+  MuzzleFlash: {fileID: 0}
+  BurstCount: 3
+  IndexFollowBurst: 0
+  BurstDelay: 0.1
 --- !u!82 &1159397669
 AudioSource:
   m_ObjectHideFlags: 0
@@ -305,39 +346,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1159397670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c9489ce8613e42a31393420590b67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ToggleFullAuto: 0
-  Damage: 10
-  Range: 100
-  FireRate: 15
-  ImpactForce: 30
-  TotalAmmo: 90
-  MaxAmmo: 10
-  CurrentAmmo: 0
-  Clips: 6
-  BulletsPerClip: 15
-  ReloadTime: 1
-  FireSound: {fileID: 8300000, guid: 423886f82864ccb4293409573452433a, type: 3}
-  ReloadSound: {fileID: 0}
-  EmptyClipSound: {fileID: 0}
-  CockSound: {fileID: 0}
-  FpsCam: {fileID: 0}
-  MuzzleFlash: {fileID: 0}
-  ImpactEffect: {fileID: 7206482893583312109, guid: e3bb0e5576e7aaa4197de01547571ed4,
-    type: 3}
-  Animator: {fileID: 9541160}
-  AmmoAmount: {fileID: 0}
 --- !u!1 &187692
 GameObject:
   m_ObjectHideFlags: 0
