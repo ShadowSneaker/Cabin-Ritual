@@ -20,7 +20,7 @@ public class PointUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Points = FindObjectOfType<PlayersPoints>();
     }
 
     // Update is called once per frame

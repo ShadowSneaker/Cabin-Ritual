@@ -193,16 +193,16 @@ public class DoorInteraction : MonoBehaviour
                     if(locked)
                     {
 
-                        if(TempPoint.GetPlayerPointsAquired() < (ZombieDoorMin + (TempPoint.ZombiedoorNumber * 100)))
+                        if(TempPoint.GetPlayerPointsAquired() < ZombieDoorMin )
                         {
                             if (temp.ReturnLookingAt())
                             {
-                                GetComponent<InteractableObject>().ScreenText = "the Door Costs : " + ((ZombieDoorMin + (TempPoint.ZombiedoorNumber * 100)).ToString());
+                                GetComponent<InteractableObject>().ScreenText = "the Door Costs : " + ZombieDoorMin.ToString();
                             }
                         }
                         else
                         {
-                            TempPoint.GetPlayerPoints().RemovePoints((ZombieDoorMin + (TempPoint.ZombiedoorNumber * 100)));
+                            TempPoint.GetPlayerPoints().RemovePoints(ZombieDoorMin);
                             TempPoint.ZombiedoorNumber += 1;
 
                             GetComponent<InteractableObject>().ScreenText = "Door unlocked";
