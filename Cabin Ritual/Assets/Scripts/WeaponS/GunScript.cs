@@ -164,6 +164,13 @@ public class GunScript : MonoBehaviour
 
 
 
+    public void Reset()
+    {
+        CurrentAmmo = ClipSize;
+        TotalAmmo = ClipSize * ClipCount;
+    }
+
+
     // Updates the value in the editor so you can see the values update in real time.
     private void OnValidate()
     {

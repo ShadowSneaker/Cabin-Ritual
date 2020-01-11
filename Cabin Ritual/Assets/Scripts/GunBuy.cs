@@ -2,8 +2,91 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunBuy : MonoBehaviour
+public class GunBuy : InteractableObject
 {
+    [Tooltip("The price to purchase this gun.")]
+    [SerializeField]
+    private int Cost = 500;
+
+    [Tooltip("The price to purchase ammo for this gun (Only used if the user already owns this gun.")]
+    [SerializeField]
+    private int AmmoCost = 250;
+
+    [Tooltip("The prefab gun type to buy.")]
+    [SerializeField]
+    private GunScript GunPrefab = null;
+
+
+
+    public void OnValidate()
+    {
+        ScreenText = "Press E to interact. Costs: " + Cost.ToString();
+    }
+
+
+    public override void Interact()
+    {
+        if (Interactable)
+        {
+            // Get the closest player (This is used incase we add multiplayer support).
+            int Index = 0;
+            float PrevDistance = Mathf.Infinity;
+            GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+            for (int i = 0; i < Players.Length; ++i)
+            {
+                float Distance = Vector3.Distance(transform.position, Players[i].transform.position);
+                if (Distance < PrevDistance)
+                {
+                    Index = i;
+                }
+                PrevDistance = Distance;
+            }
+
+            GunHolder Holder = Players[Index].GetComponent<GunHolder>();
+            PlayersPoints Points = Holder.GetComponent<PlayersPoints>();
+            if (Holder)
+            {
+                int GunIndex = Holder.GunExists(GunPrefab);
+                if (GunIndex > -1)
+                {
+                    if (Points.PointsAquired >= Cost)
+                    {
+                        Debug.Log("Ran");
+
+                        // Add the gun to the gun holder.
+                        Holder.InsertGun(GunPrefab);
+                        Points.RemovePoints(Cost);
+
+                        // This should really change to be a check when the player hovers the item but will work for now.
+                        // This won't work in multiplayer.
+                        ScreenText = "Press E to interact. Costs: " + AmmoCost.ToString();
+                    }
+                }
+                else
+                {
+                    if (Points.PointsAquired >= AmmoCost)
+                    {
+                        Debug.Log("Refilling Ammo");
+                        // Refill the gun with ammo.
+                        Holder.ResetIndex(GunIndex);
+                        Points.RemovePoints(AmmoCost);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Object interacting with: " + this + " does not have a GunHolder script attached!");
+            }
+        }
+
+
+        // Activate any other bound objects.
+        base.Interact();
+    }
+
+
+
+    /*
     // the minumum amount a Gun costs
     public int GunMin = 500;
     public int GunAmmoCost = 250;
@@ -136,7 +219,7 @@ public class GunBuy : MonoBehaviour
             }
     
         }
-    }
+    }*/
 
 
 

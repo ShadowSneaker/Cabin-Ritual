@@ -63,7 +63,7 @@ public class Controller : MonoBehaviour
 
 
     // A reference to the weapon holder.
-    public GunHolder Holder = null;
+    private GunHolder Holder = null;
 
     
 
@@ -75,6 +75,8 @@ public class Controller : MonoBehaviour
         Player = GetComponent<Entity>();
         PlayerInv = GetComponent<Inventory>();
         if (!Player) Debug.LogError("Error: Could not find the Entity component!");
+
+        Holder = GetComponent<GunHolder>();
 
         CamController = GetComponent<CameraController>();
 

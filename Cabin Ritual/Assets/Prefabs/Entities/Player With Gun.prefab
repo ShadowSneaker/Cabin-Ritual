@@ -6185,53 +6185,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &7327778375112362846
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6238304417703476663}
-  - component: {fileID: 3439891240310281903}
-  m_Layer: 0
-  m_Name: WeaponHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6238304417703476663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7327778375112362846}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5539999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8094895786865545766}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3439891240310281903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7327778375112362846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f80629072124449b00980edc2363d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Weapons:
-  - {fileID: 6099998341303197863, guid: d34ab373bcbb8e64f8b341cfc7bc7bad, type: 3}
-  CurrentWeapon: 0
-  Hand: {fileID: 1809263823262872709}
 --- !u!1 &7359979537117012575
 GameObject:
   m_ObjectHideFlags: 0
@@ -6345,6 +6298,7 @@ GameObject:
   - component: {fileID: 5923954676054372779}
   - component: {fileID: 7268341448083179954}
   - component: {fileID: 2352066017699770807}
+  - component: {fileID: 3062823823210749393}
   m_Layer: 0
   m_Name: Player With Gun
   m_TagString: Untagged
@@ -6366,7 +6320,6 @@ Transform:
   - {fileID: 8258387573324111734}
   - {fileID: 2883796843412039432}
   - {fileID: 544634801}
-  - {fileID: 6238304417703476663}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6392,7 +6345,7 @@ MonoBehaviour:
   ArcadeUI: {fileID: 5819511736851559650}
   PointUI: {fileID: 3281574474440467914}
   Cam: {fileID: 8258387573324111734}
-  Holder: {fileID: 3439891240310281903}
+  Holder: {fileID: 0}
 --- !u!114 &257474608302512082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6675,6 +6628,23 @@ CapsuleCollider:
   m_Height: 2.0513172
   m_Direction: 1
   m_Center: {x: 0, y: -0.02188015, z: 0}
+--- !u!114 &3062823823210749393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7995376477839522592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f80629072124449b00980edc2363d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapons:
+  - {fileID: 2424502503024188346, guid: 8e358d0df9bc68845858e98df56ffb02, type: 3}
+  - {fileID: 0}
+  CurrentWeapon: 0
+  Hand: {fileID: 1809263823262872709}
 --- !u!1 &8258387573324111723
 GameObject:
   m_ObjectHideFlags: 0

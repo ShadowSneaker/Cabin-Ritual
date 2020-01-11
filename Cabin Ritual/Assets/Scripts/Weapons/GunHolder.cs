@@ -87,7 +87,38 @@ public class GunHolder : MonoBehaviour
     }
 
 
+    // Checks to see if an inputted gun exists in this gun holder.
+    // @param Gun - The gun prefab to check.
+    // @return - Returns the index of the gun. Returns -1 if the gun does not exist.
+    public int GunExists(GunScript Gun)
+    {
+        for (int i = 0; i < Weapons.Count; ++i)
+        {
+            if (Weapons[i])
+            {
+                if (Weapons[i].name.Contains(Gun.name))
+                {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 
+
+    // Resets the ammo of a weapon based on the index.
+    // @param Index - The weapon index to reset.
+    public void ResetIndex(int Index)
+    {
+        Weapons[Index].Reset();
+    }
+
+
+    // Adds a specified gun into this gun holder.
+    // @note - Automatically swaps to the new gun.
+    // @param Gun - The gun prefab to spawn.
+    // @param IncreaseHolderSize - Should the Weapons array increase if it is already full.
+    // @return - The index that this gun was placed in.
     public int InsertGun(GunScript Gun, bool IncreaseHolderSize = false)
     {
         // Check for empty slots
