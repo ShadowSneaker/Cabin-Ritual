@@ -41,5 +41,4 @@ public static class PauseScript
     {
 
     }
-    
 }

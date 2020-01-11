@@ -64,9 +64,13 @@ public class GunBuy : InteractableObject
                 {
                     if (Points.PointsAquired >= AmmoCost)
                     {
+                        Debug.Log("Ran");
                         // Refill the gun with ammo.
-                        Holder.ResetIndex(GunIndex);
-                        Points.RemovePoints(AmmoCost);
+                        if (Holder.GetHeldWeapon().GetTotalAmmo() == Holder.GetHeldWeapon().GetMaximumAmmo())
+                        {
+                            Holder.ResetIndex(GunIndex);
+                            Points.RemovePoints(AmmoCost);
+                        }
                     }
                 }
             }
@@ -79,6 +83,20 @@ public class GunBuy : InteractableObject
 
         // Activate any other bound objects.
         base.Interact();
+    }
+
+
+    public override string GetFlavourText(Controller Player)
+    {
+        GunHolder Holder = Player.GetComponent<GunHolder>();
+        if (Holder)
+        {
+            if (Holder.GunExists(GunPrefab) > -1)
+            {
+                ScreenText = "Press E to interact. Costs: " + AmmoCost.ToString();
+            }
+        }
+        return base.GetFlavourText(Player);
     }
 
 

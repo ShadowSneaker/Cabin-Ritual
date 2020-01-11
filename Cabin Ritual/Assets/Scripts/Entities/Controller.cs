@@ -33,7 +33,7 @@ public class Controller : MonoBehaviour
 
 
     // A reference to the entity script.
-    private Entity Player;
+    private Entity Player = null;
 
     //a refernce to the InventoryUI script
     public InventoryUI InventoryUI;
@@ -47,17 +47,22 @@ public class Controller : MonoBehaviour
     // a refernce to the PauseUI
     public Image PauseScene;
 
+    // A reference to the game over UI.
+    public Image UIGameOver; 
+
     // The interactable objec the player is looking at.
-    private InteractableObject LookingAt;
+    private InteractableObject LookingAt = null;
 
     // The hit information for the interaction raycast.
-    private RaycastHit Hit;
+    private RaycastHit Hit = new RaycastHit();
 
     // This is the players inventory that is on this object.
-    private Inventory PlayerInv;
+    private Inventory PlayerInv = null;
 
     // A reference to the camera controller.
-    private CameraController CamController;
+    private CameraController CamController = null;
+
+    public Text AmmoCount;
 
     // A reference to the camera transform
     [Tooltip("A reference to the camera's transform, used to calculate the interaction raycast.")]
@@ -91,6 +96,7 @@ public class Controller : MonoBehaviour
     private void FixedUpdate()
     {
         ScanInteractable();
+        UpdateAmmo(Holder.GetHeldWeapon());
     }
 
 
@@ -239,7 +245,7 @@ public class Controller : MonoBehaviour
                 if (LookingAt && DisplayInteractable)
                 {
                     // Place code to draw to the screen.
-                    InventoryUI.ChangeFlavourText(LookingAt.ScreenText);
+                    InventoryUI.ChangeFlavourText(LookingAt.GetFlavourText(this));
                     InventoryUI.EnableFlavourText();
                 }
             }
@@ -273,5 +279,16 @@ public class Controller : MonoBehaviour
     public InteractableObject ReturnLookingAt()
     {
         return LookingAt;
+    }
+
+    public void UpdateAmmo(GunScript Gun)
+    {
+        AmmoCount.text = Gun.GetCurrentAmmo() + " / " + Gun.GetTotalAmmo().ToString();
+    }
+
+    public void GameOver()
+    {
+        PauseScript.Pause();
+        UIGameOver.gameObject.SetActive(true);
     }
 }

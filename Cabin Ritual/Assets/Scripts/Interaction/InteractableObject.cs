@@ -39,4 +39,9 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
+
+    public virtual string GetFlavourText(Controller Player)
+    {
+        return ScreenText;
+    }
 }

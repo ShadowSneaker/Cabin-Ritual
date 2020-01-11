@@ -6552,6 +6552,9 @@ MonoBehaviour:
   InventoryUI: {fileID: 8973167405372810545}
   ArcadeUI: {fileID: 5819511736851559650}
   PointUI: {fileID: 3281574474440467914}
+  PauseScene: {fileID: 0}
+  UIGameOver: {fileID: 0}
+  AmmoCount: {fileID: 1244530926}
   Cam: {fileID: 8258387573324111734}
 --- !u!114 &257474608302512082
 MonoBehaviour:
@@ -6649,8 +6652,8 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5923954676054372779}
-        m_MethodName: EndPoints
+      - m_Target: {fileID: 6681274066247886846}
+        m_MethodName: GameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

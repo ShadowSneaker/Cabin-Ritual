@@ -539,10 +539,9 @@ public class Entity : MonoBehaviour
         {
             Health -= Damage;
 
-            if (Health >= 0)
+            if (Health <= 0)
             {
                 //StartCoroutine(DeathAnim());
-                Die();
                 if (HasDownState)
                 {
                     if (DownCount > 0)
@@ -578,6 +577,10 @@ public class Entity : MonoBehaviour
     // Kills this entity.
     private void Die()
     {
+        if (OnDeath != null)
+        {
+            OnDeath.Invoke();
+        }
         IsDead = true;
 
         Audio.clip = DeathSound;
@@ -585,10 +588,7 @@ public class Entity : MonoBehaviour
 
         //StartCoroutine(DeathAnim());
 
-        if (OnDeath != null)
-        {
-            OnDeath.Invoke();
-        }
+        
     }
 
 

@@ -492,4 +492,13 @@ public class GunScript : MonoBehaviour
     {
         Owner = NewOwner;
     }
+
+
+    // Returns the maximum amount of ammo this gun has.
+    // (ClipSize * ClipCount)
+    // Used to determine if ammo has been used yet in this gun.
+    public int GetMaximumAmmo()
+    {
+        return ClipSize * ClipCount;
+    }
 }

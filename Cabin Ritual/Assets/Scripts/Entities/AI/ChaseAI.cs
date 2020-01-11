@@ -109,8 +109,9 @@ public class ChaseAI : AIBase
         //StartCoroutine(Invunrable());
 
         if ((other.gameObject.tag == "Player"))
-        {            
-            other.gameObject.GetComponent<Entity>().Health -= Damage;            
+        {
+            other.gameObject.GetComponent<Entity>().TakeDamage(Damage);
+            //other.gameObject.GetComponent<Entity>().Health -= Damage;            
         }
     }
 
