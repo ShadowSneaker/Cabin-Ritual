@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class ArcadeUI : MonoBehaviour
 {
     public Text PointsDisplay;
@@ -24,6 +24,16 @@ public class ArcadeUI : MonoBehaviour
     public void OpenCloseUI()
     {
         gameObject.SetActive(!gameObject.activeSelf);
+    }
+
+    public void LoadScene(string SceneName)
+    {
+        SceneManager.LoadScene(SceneName);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
 }

@@ -35,4 +35,11 @@ public static class PauseScript
             Pause();
         }
     }
+
+
+   public static void LoadScene()
+    {
+
+    }
+    
 }

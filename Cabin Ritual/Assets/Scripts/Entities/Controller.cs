@@ -44,6 +44,9 @@ public class Controller : MonoBehaviour
     //a refernce to the Points UI
     public Image PointUI;
 
+    // a refernce to the PauseUI
+    public Image PauseScene;
+
     // The interactable objec the player is looking at.
     private InteractableObject LookingAt;
 
@@ -204,7 +207,7 @@ public class Controller : MonoBehaviour
             if (Input.GetButtonDown("Cancel"))
             {
                 PauseScript.TogglePause();
-                // Insert open pause screen here.
+                PauseScene.gameObject.SetActive(!PauseScene.gameObject.activeSelf);
             }
         }
     }
