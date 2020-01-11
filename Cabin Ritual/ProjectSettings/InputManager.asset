@@ -124,7 +124,7 @@ InputManager:
     negativeButton: 
     positiveButton: i
     altNegativeButton: 
-    altPositiveButton: tab
+    altPositiveButton: 
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -245,3 +245,19 @@ InputManager:
     type: 1
     axis: 2
     joyNum: 16
+  - serializedVersion: 3
+    m_Name: ArcadePoints
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: tab
+    altNegativeButton: 
+    altPositiveButton: q
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0

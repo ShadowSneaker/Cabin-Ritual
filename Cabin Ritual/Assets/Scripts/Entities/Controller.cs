@@ -41,6 +41,9 @@ public class Controller : MonoBehaviour
     // a refernce to the arcadeUI script
     public ArcadeUI ArcadeUI;
 
+    //a refernce to the Points UI
+    public Image PointUI;
+
     // The interactable objec the player is looking at.
     private InteractableObject LookingAt;
 
@@ -115,6 +118,13 @@ public class Controller : MonoBehaviour
                 {
                     InventoryUI.Close_OpenUI();
                     PlayerInv.ChangeInventoryOpen();
+
+                }
+
+                if(Input.GetButtonDown("ArcadePoints"))
+                {
+                    Debug.Log("Pressed");
+                    PointUI.gameObject.SetActive(!PointUI.gameObject.activeSelf);
                 }
 
                 if(Input.GetButtonDown("Points"))

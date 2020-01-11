@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayersPoints : MonoBehaviour
 {
     public int PointsAquired;
-    
+    public int KillCount;
+
     public void RemovePoints(int points)
     {
         PointsAquired -= points;        
@@ -15,4 +16,10 @@ public class PlayersPoints : MonoBehaviour
     {
         PointsAquired += Points;
     }
+
+    public void AddKill()
+    {
+        KillCount++; 
+    }
+
 }
