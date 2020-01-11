@@ -95,88 +95,116 @@ public class Controller : MonoBehaviour
     {
         if (Player)
         {
-            if (AllowInputs)
+            if (!PauseScript.GamePaused)
             {
-                if (Input.GetButtonDown("Sprint"))
+                if (AllowInputs)
                 {
-                    Player.Sprint();
-                }
-
-                if (Input.GetButtonUp("Sprint"))
-                {
-                    Player.StopSprinting();
-                }
-
-                Player.Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveSideways"), Input.GetButtonDown("Jump"));
-
-
-                if (Input.GetButtonDown("Interact"))
-                {
-                    Interact();
-                    InventoryUI.DisableFlavourText();
-                }
-
-                if (Input.GetButtonDown("Inventory"))
-                {
-                    InventoryUI.Close_OpenUI();
-                    PlayerInv.ChangeInventoryOpen();
-
-                }
-
-                if(Input.GetButtonDown("ArcadePoints"))
-                {
-                    Debug.Log("Pressed");
-                    PointUI.gameObject.SetActive(!PointUI.gameObject.activeSelf);
-                }
-
-                if(Input.GetButtonDown("Points"))
-                {
-                    ArcadeUI.OpenCloseUI();
-                }
-
-                if (Input.GetButtonDown("Crouch"))
-                {
-                    if (ToggleCrouch && Player.IsCrouching)
+                    if (Input.GetButtonDown("Sprint"))
                     {
-                        Player.UnCrouch();
+                        Player.Sprint();
                     }
-                    else
+
+                    if (Input.GetButtonUp("Sprint"))
                     {
-                        Player.Crouch();
+                        Player.StopSprinting();
                     }
-                }
 
-                if (Input.GetButtonUp("Crouch"))
-                {
-                    if (!ToggleCrouch)
+                    Player.Move(Input.GetAxis("MoveForward"), Input.GetAxis("MoveSideways"), Input.GetButtonDown("Jump"));
+
+
+                    if (Input.GetButtonDown("Interact"))
                     {
-                        Player.UnCrouch();
+                        Interact();
+                        InventoryUI.DisableFlavourText();
                     }
+
+                    if (Input.GetButtonDown("Inventory"))
+                    {
+                        InventoryUI.Close_OpenUI();
+                        PlayerInv.ChangeInventoryOpen();
+
+                    }
+
+                    if (Input.GetButtonDown("ArcadePoints"))
+                    {
+                        PointUI.gameObject.SetActive(!PointUI.gameObject.activeSelf);
+                    }
+
+                    if (Input.GetButtonDown("Points"))
+                    {
+                        ArcadeUI.OpenCloseUI();
+                    }
+
+                    if (Input.GetButtonDown("Crouch"))
+                    {
+                        if (ToggleCrouch && Player.IsCrouching)
+                        {
+                            Player.UnCrouch();
+                        }
+                        else
+                        {
+                            Player.Crouch();
+                        }
+                    }
+
+                    if (Input.GetButtonUp("Crouch"))
+                    {
+                        if (!ToggleCrouch)
+                        {
+                            Player.UnCrouch();
+                        }
+                    }
+
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        Holder.GetHeldWeapon().Fire();
+                    }
+
+                    if (Input.GetButtonUp("Fire1"))
+                    {
+                        Holder.GetHeldWeapon().StopFiring();
+                    }
+
+                    if (Input.GetButtonDown("Reload"))
+                    {
+                        Holder.GetHeldWeapon().Reload();
+                    }
+
+                    if (Input.GetButtonDown("Weapon1"))
+                    {
+                        Holder.SwapTo(0);
+                    }
+
+                    if (Input.GetButtonDown("Weapon2"))
+                    {
+                        Holder.SwapTo(1);
+                    }
+
+                    /*if (Input.GetButtonDown("SwapUp"))
+                    {
+                        Holder.SwapUp();
+                    }
+
+                    if (Input.GetButtonDown("SwapDown"))
+                    {
+                        Holder.SwapDown()
+                    }*/
+                }
+                else
+                {
+                    Player.Move(0.0f, 0.0f, false);
                 }
 
-                if (Input.GetButtonDown("Fire1"))
+                if (CamController.enabled != AllowInputs)
                 {
-                    Holder.GetHeldWeapon().Fire();
-                }
-
-                if (Input.GetButtonUp("Fire1"))
-                {
-                    Holder.GetHeldWeapon().StopFiring();
-                }
-
-                if (Input.GetButtonDown("Reload"))
-                {
-                    Holder.GetHeldWeapon().Reload();
+                    CamController.enabled = AllowInputs;
                 }
             }
-            else
-            {
-                Player.Move(0.0f, 0.0f, false);
-            }
 
-            if (CamController.enabled != AllowInputs)
+            if (Input.GetButtonDown("Cancel"))
             {
-                CamController.enabled = AllowInputs;
+                PauseScript.TogglePause();
+                // Insert open pause screen here.
             }
         }
     }
