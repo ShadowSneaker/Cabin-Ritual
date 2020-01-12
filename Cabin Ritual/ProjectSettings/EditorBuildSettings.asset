@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Area2 - Basement.unity
     guid: 0ad3a8805069c924ca8398aa155d4c18
   - enabled: 1
-    path: Assets/Scenes/Arcade.unity
+    path: Assets/Scenes/Zombies Mode/Arcade.unity
     guid: 8d106d3c0e5097f4fa2046cfb669a309
   m_configObjects: {}

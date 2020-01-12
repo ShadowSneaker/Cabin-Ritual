@@ -66,7 +66,7 @@ public class GunBuy : InteractableObject
                     {
                         Debug.Log("Ran");
                         // Refill the gun with ammo.
-                        if (Holder.GetHeldWeapon().GetTotalAmmo() == Holder.GetHeldWeapon().GetMaximumAmmo())
+                        if (Holder.GetHeldWeapon().GetTotalAmmo() + Holder.GetHeldWeapon().GetCurrentAmmo() != Holder.GetHeldWeapon().GetMaximumAmmo())
                         {
                             Holder.ResetIndex(GunIndex);
                             Points.RemovePoints(AmmoCost);

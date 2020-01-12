@@ -499,6 +499,6 @@ public class GunScript : MonoBehaviour
     // Used to determine if ammo has been used yet in this gun.
     public int GetMaximumAmmo()
     {
-        return ClipSize * ClipCount;
+        return ClipSize + (ClipSize * ClipCount);
     }
 }
