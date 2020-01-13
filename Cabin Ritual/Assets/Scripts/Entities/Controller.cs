@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -43,6 +44,9 @@ public class Controller : MonoBehaviour
 
     //a refernce to the Points UI
     public Image PointUI;
+
+    // a refernce to the player points script
+    private PlayersPoints PlayerPoints;
 
     // a refernce to the PauseUI
     public Image PauseScene;
@@ -90,6 +94,9 @@ public class Controller : MonoBehaviour
 
         Cursor.visible = ShowCursor;
         Cursor.lockState = (ShowCursor) ? CursorLockMode.None : CursorLockMode.Locked;
+
+
+        PlayerPoints = FindObjectOfType<PlayersPoints>();
     }
 
 
@@ -289,6 +296,8 @@ public class Controller : MonoBehaviour
     public void GameOver()
     {
         PauseScript.Pause();
-        UIGameOver.gameObject.SetActive(true);
+        //UIGameOver.gameObject.SetActive(true);
+        PlayerPoints.EndPoints();
+        SceneManager.LoadScene("Death");
     }
 }

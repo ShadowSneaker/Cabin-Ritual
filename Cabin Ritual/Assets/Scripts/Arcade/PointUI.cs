@@ -28,7 +28,12 @@ public class PointUI : MonoBehaviour
     {
         PointsText.text = "Points : " + Points.PointsAquired;
         KillsText.text = "Kills : " + Points.KillCount;
-        InGameTime.text = "Survival Time : " + Time.time + "Seconds";
+        InGameTime.text = "Survival Time : " + Time.fixedTime + "Seconds";
+
+        StaticArcadeInfo.Kills = Points.KillCount;
+        StaticArcadeInfo.Score = Points.PointsAquired;
+        StaticArcadeInfo.Time = Time.fixedTime;
+
     }
 
 

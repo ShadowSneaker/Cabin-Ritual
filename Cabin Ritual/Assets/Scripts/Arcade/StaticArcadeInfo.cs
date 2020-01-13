@@ -9,7 +9,7 @@ public class StaticArcadeInfo
     private static int SCORE;
 
 
-    public static int kills
+    public static int Kills
     {
         get
         {
@@ -22,7 +22,7 @@ public class StaticArcadeInfo
 
     }
 
-    public static float time
+    public static float Time
     {
         get
         {
@@ -34,7 +34,7 @@ public class StaticArcadeInfo
         }
     }
 
-    public static int score
+    public static int Score
     {
         get
         {

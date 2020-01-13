@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zombies Mode/Arcade.unity
     guid: 8d106d3c0e5097f4fa2046cfb669a309
+  - enabled: 1
+    path: Assets/Scenes/Death.unity
+    guid: ba79f1635c33acb48a2ca5c6295c2a13
   m_configObjects: {}

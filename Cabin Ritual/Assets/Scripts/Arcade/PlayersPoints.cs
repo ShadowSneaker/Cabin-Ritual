@@ -27,9 +27,9 @@ public class PlayersPoints : MonoBehaviour
 
     public void EndPoints()
     {
-        StaticArcadeInfo.kills = KillCount;
-        StaticArcadeInfo.score = PointsAquired;
-        StaticArcadeInfo.time = Time.time;
+        StaticArcadeInfo.Kills = KillCount;
+        StaticArcadeInfo.Score = PointsAquired;
+        StaticArcadeInfo.Time = Time.fixedTime;
     }
 
 }

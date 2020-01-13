@@ -23,9 +23,9 @@ public class DeathScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimePlayerSurvived = StaticArcadeInfo.time;
-        Kills.text = "End Kills : " + StaticArcadeInfo.kills;
-        Points.text = "End Points : " + StaticArcadeInfo.score;
+        TimePlayerSurvived = StaticArcadeInfo.Time;
+        Kills.text = "End Kills : " + StaticArcadeInfo.Kills;
+        Points.text = "End Points : " + StaticArcadeInfo.Score;
         TimeSurvived.text = "Time Lasted : " + TimePlayerSurvived;
     }
 
