@@ -141,15 +141,15 @@ public class Controller : MonoBehaviour
 
                     }
 
-                    if (Input.GetButtonDown("ArcadePoints"))
-                    {
-                        PointUI.gameObject.SetActive(!PointUI.gameObject.activeSelf);
-                    }
-
-                    if (Input.GetButtonDown("Points"))
-                    {
-                        ArcadeUI.OpenCloseUI();
-                    }
+                    //if (Input.GetButtonDown("ArcadePoints"))
+                    //{
+                    //    PointUI.gameObject.SetActive(!PointUI.gameObject.activeSelf);
+                    //}
+                    //
+                    //if (Input.GetButtonDown("Points"))
+                    //{
+                    //    ArcadeUI.OpenCloseUI();
+                    //}
 
                     if (Input.GetButtonDown("Crouch"))
                     {
