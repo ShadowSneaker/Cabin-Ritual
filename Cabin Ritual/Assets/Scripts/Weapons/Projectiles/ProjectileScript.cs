@@ -18,10 +18,13 @@ public class ProjectileScript : MonoBehaviour
 
     protected bool Moving = true;
 
+    private GameMode GM = null;
+
     // Start is called before the first frame update
     void Start()
     {
         StartPos = transform.position;
+        GM = FindObjectOfType<GameMode>();
     }
 
     // Update is called once per frame
@@ -56,6 +59,7 @@ public class ProjectileScript : MonoBehaviour
             //    }
             //}
             Other.TakeDamage(Mathf.RoundToInt((Crit) ? Damage * CriticalDamage : Damage));
+            GM.GetPlayer(0).GetComponent<PlayersPoints>().AddPoints(10);
         }
         Destroy(gameObject);
     }

@@ -82,6 +82,16 @@ public class Entity : MonoBehaviour
 {
     /// Properties
 
+    public bool Reviveperk = false;
+    public bool Healthperk = false;
+
+
+
+    public bool Hurt = false;
+
+
+
+
 
     [Header("Health")]
 
@@ -104,11 +114,11 @@ public class Entity : MonoBehaviour
     public bool Invulnerable;
 
     [Tooltip("Represents how often this entity can be hit.")]
-    public int Health = 3;
+    public float Health = 1;
 
     [Tooltip("The maximum amount of health this entity has.")]
     [SerializeField]
-    private int MaxHealth = 3;
+    public int MaxHealth = 3;
 
     [Tooltip("How long this entity is immune from damage when attacked.")]
     public float ImmunityFrames = 0.5f;
@@ -304,7 +314,7 @@ public class Entity : MonoBehaviour
     public Animator Anim;
 
 
-
+    private BloodSplatter bloodsplatter;
 
     /// Overridables
 
@@ -327,6 +337,7 @@ public class Entity : MonoBehaviour
         Audio = GetComponent<AudioSource>();
         //if (!Audio) Debug.LogError("Error: Could not find the AudioSource component!");
 
+        bloodsplatter = GetComponent<BloodSplatter>();
 
         // Initialise startup values.
         CurrentSpeed = RunSpeed;
@@ -347,6 +358,17 @@ public class Entity : MonoBehaviour
         if (Stamina.IsRegenerating)
         {
             Stamina.RegenFrame();
+        }
+
+        if (gameObject.tag == "Player")
+        {
+            if (Health < MaxHealth)
+            {
+                if (!Hurt)
+                {
+                    Heal(5 * Time.deltaTime);
+                }
+            }
         }
 
 
@@ -395,7 +417,7 @@ public class Entity : MonoBehaviour
         ContactPoint = hit.point;
     }
 
-
+    #region move
     /// Functions
 
     // Moves this entity in a specified direction.
@@ -440,14 +462,14 @@ public class Entity : MonoBehaviour
                 }
 
 
-                if (Falling)
-                {
-                    Falling = false;
-                    if (transform.position.y < FallStartLevel - FallingThreshold)
-                    {
-                        OnGroundHit(FallStartLevel - transform.position.y);
-                    }
-                }
+                //if (Falling)
+                //{
+                //    Falling = false;
+                //    if (transform.position.y < FallStartLevel - FallingThreshold)
+                //    {
+                //        OnGroundHit(FallStartLevel - transform.position.y);
+                //    }
+                //}
 
 
                 if ((Sliding && SlideWhenOverSlopeLimit) || (SlideOnTaggedObjects && Hit.collider.tag == "Slide"))
@@ -518,17 +540,18 @@ public class Entity : MonoBehaviour
         Grounded = (Character.Move(MoveDirection * Time.deltaTime) & CollisionFlags.Below) != 0;
     }
 
+#endregion
 
-    private void OnGroundHit(float FallDistance)
-    {
-        // TODO: Create a terminal velocity property and a min velocity property to calculate fall damage.
-        // Should also create a TakeFallDamage bool property.
-
-        if (AllowFallDamage)
-        {
-            TakeDamage(Health * Mathf.RoundToInt((FallDistance - MinVelocity) / (TerminalVelocity - MinVelocity)));
-        }
-    }
+    //private void OnGroundHit(float FallDistance)
+    //{
+    //    // TODO: Create a terminal velocity property and a min velocity property to calculate fall damage.
+    //    // Should also create a TakeFallDamage bool property.
+    //
+    //    if (AllowFallDamage)
+    //    {
+    //        TakeDamage(Health * Mathf.RoundTofloat((FallDistance - MinVelocity) / (TerminalVelocity - MinVelocity)));
+    //    }
+    //}
 
 
     // Applies damage to this entity.
@@ -538,10 +561,48 @@ public class Entity : MonoBehaviour
         if (!Invulnerable && !IsImmune && Damage != 0)
         {
             Health -= Damage;
+            Hurt = true;
 
-            if (Health <= 0)
+            if (gameObject.tag == "Player")
             {
+                bloodsplatter.Hit = true;
+                StartCoroutine(HurtPause());
+            }
+
+
+            
+
+            if (Reviveperk && Health <= 0)
+            {
+                CurrentSpeed = 0;
+                Healthperk = false;
+                MaxHealth = 30;
+                
+
+                StartCoroutine(Reviving());
+
+
                 //StartCoroutine(DeathAnim());
+                //if (HasDownState)
+                //{
+                //    if (DownCount > 0)
+                //    {
+                //        Die();
+                //    }
+                //    else
+                //    {
+                //        IsDown = true;
+                //        CanMove = false;
+                //        // TODO: Set to down animation.
+                //    }
+                //}
+                //else
+                //{                    
+                //    Die();
+                //}
+            }
+            if(!Reviveperk && Health <= 0)
+            {
                 if (HasDownState)
                 {
                     if (DownCount > 0)
@@ -556,7 +617,7 @@ public class Entity : MonoBehaviour
                     }
                 }
                 else
-                {                    
+                {
                     Die();
                 }
             }
@@ -592,7 +653,7 @@ public class Entity : MonoBehaviour
     }
 
 
-    public void Heal(int Amount = 1)
+    public void Heal(float Amount)
     {
         if (!IsDead && Amount != 0)
         {
@@ -608,7 +669,7 @@ public class Entity : MonoBehaviour
 
     public void HelpUp()
     {
-        Heal();
+        Heal(1);
         IsDown = false;
         CanMove = true;
 
@@ -773,4 +834,23 @@ public class Entity : MonoBehaviour
         
     }
 
+    IEnumerator Reviving()
+    {
+        yield return new WaitForSeconds(5);
+        {
+            CurrentSpeed = WalkSpeed;
+            Health = MaxHealth;
+            Reviveperk = false;
+            IsImmune = true;
+            yield return new WaitForSeconds(2);
+            IsImmune = false;
+        }
+    }
+    IEnumerator HurtPause()
+    {
+        yield return new WaitForSeconds(3);
+
+        Hurt = false;
+        bloodsplatter.Hit = false;
+    }
 }

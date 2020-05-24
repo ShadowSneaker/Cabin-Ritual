@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &3374339396253455753
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4576255631562492582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.518219, z: 0.43751526}
-  m_Center: {x: 0, y: 1.3909655, z: 1.1125202}
 --- !u!1001 &7082851941829378601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28,17 +15,17 @@ PrefabInstance:
     - target: {fileID: 4857950576069763465, guid: 4c84b043959105b4a8e48f306c1be663,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38
+      value: -84.862015
       objectReference: {fileID: 0}
     - target: {fileID: 4857950576069763465, guid: 4c84b043959105b4a8e48f306c1be663,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 4.9990854
       objectReference: {fileID: 0}
     - target: {fileID: 4857950576069763465, guid: 4c84b043959105b4a8e48f306c1be663,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27
+      value: 19.501537
       objectReference: {fileID: 0}
     - target: {fileID: 4857950576069763465, guid: 4c84b043959105b4a8e48f306c1be663,
         type: 3}
@@ -80,42 +67,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7784389455051458617, guid: 4c84b043959105b4a8e48f306c1be663,
+    - target: {fileID: 5159867384443965462, guid: 4c84b043959105b4a8e48f306c1be663,
         type: 3}
-      propertyPath: m_Size.x
-      value: 0.19201279
+      propertyPath: m_StoppingDistance
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7784389455051458617, guid: 4c84b043959105b4a8e48f306c1be663,
+    - target: {fileID: 5159867384443965462, guid: 4c84b043959105b4a8e48f306c1be663,
+        type: 3}
+      propertyPath: m_Speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295759434407561300, guid: 4c84b043959105b4a8e48f306c1be663,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295759434407561300, guid: 4c84b043959105b4a8e48f306c1be663,
         type: 3}
       propertyPath: m_Center.x
-      value: 0.18309593
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7784389455051458617, guid: 4c84b043959105b4a8e48f306c1be663,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.19291496
-      objectReference: {fileID: 0}
-    - target: {fileID: 7784389455051458617, guid: 4c84b043959105b4a8e48f306c1be663,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.24897861
-      objectReference: {fileID: 0}
-    - target: {fileID: 7784389455051458617, guid: 4c84b043959105b4a8e48f306c1be663,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.25328732
-      objectReference: {fileID: 0}
-    - target: {fileID: 7784389455051458617, guid: 4c84b043959105b4a8e48f306c1be663,
+    - target: {fileID: 5295759434407561300, guid: 4c84b043959105b4a8e48f306c1be663,
         type: 3}
       propertyPath: m_Center.y
-      value: 1.0548902
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7784389455051458617, guid: 4c84b043959105b4a8e48f306c1be663, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4c84b043959105b4a8e48f306c1be663, type: 3}
---- !u!1 &4576255631562492582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6758064729144739983, guid: 4c84b043959105b4a8e48f306c1be663,
-    type: 3}
-  m_PrefabInstance: {fileID: 7082851941829378601}
-  m_PrefabAsset: {fileID: 0}

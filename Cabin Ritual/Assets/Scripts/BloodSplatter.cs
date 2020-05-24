@@ -6,26 +6,22 @@ using UnityEngine.UI;
 public class BloodSplatter : MonoBehaviour
 {
     public Image Image;
-    public float MinAlpha;
     public bool Hit;
 
     private void Start()
     {
-        Image = GetComponent<Image>();
         Image.enabled = false;
     }
 
     private void Update()
     {
-        if ((Hit) && (Image.color.a > 0))
+        if (Hit)
         {
             Image.enabled = true;
-            Image.color = new Color(Image.color.r, Image.color.g, Image.color.b, Image.color.a - Time.deltaTime);
+            //Image.color = new Color(Image.color.r, Image.color.g, Image.color.b, Image.color.a - Time.deltaTime);
         }
-        else if (Hit)
+        else
         {
-            Hit = false;
-            Image.color = new Color(Image.color.r, Image.color.g, Image.color.b, 1);
             Image.enabled = false;
         }
     }

@@ -1191,7 +1191,6 @@ GameObject:
   - component: {fileID: 1207780788563635503}
   - component: {fileID: 1207780788563635502}
   - component: {fileID: 1207780788563635539}
-  - component: {fileID: 8078957291845058529}
   m_Layer: 0
   m_Name: RunningZomb
   m_TagString: Untagged
@@ -1244,10 +1243,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.24638791
+  m_Radius: 0.5
   m_Height: 2.0163815
   m_Direction: 1
-  m_Center: {x: 0.040877864, y: 0.99602616, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &1207780788563635500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1376,7 +1375,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1414,6 +1413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d98ea9d604c154fae0a720ec3c5d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Revive: 0
+  Healthperk: 0
+  Hurt: 0
   IsDead: 0
   IsDown: 0
   DownCount: 0
@@ -1497,19 +1499,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Cam: {fileID: 0}
   Anim: {fileID: 1207780788113430912}
---- !u!65 &8078957291845058529
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207780788122921546}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5928545, z: 0.3528843}
-  m_Center: {x: 0, y: 0.9522495, z: 0.90643597}
 --- !u!1 &1207780788122921548
 GameObject:
   m_ObjectHideFlags: 0

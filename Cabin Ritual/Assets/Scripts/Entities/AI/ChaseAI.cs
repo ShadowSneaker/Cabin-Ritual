@@ -37,6 +37,7 @@ public class ChaseAI : AIBase
     private bool Attacking = false;
 
     private bool AttackAgain = false;
+    private bool PlayerInRange = false;
 
     //Entity Dying;
 
@@ -60,17 +61,17 @@ public class ChaseAI : AIBase
 
     protected override void FixedUpdate()
     {
+        float Distance = Vector3.Distance(FollowObject.position, transform.position);
 
-
-        if (Agent.remainingDistance <= Agent.stoppingDistance)
+        if (Distance <= Agent.stoppingDistance)
         {
             base.FixedUpdate();
             Agent.destination = FollowObject.transform.position;
 
             Anim.SetBool("Walking", false);
-            Anim.SetBool("Attacking", true);
+            Anim.SetTrigger("Attacking");
 
-
+            PlayerInRange = true;
 
             Attacking = true;
 
@@ -84,12 +85,9 @@ public class ChaseAI : AIBase
         {
             Attacking = false;
             Anim.SetBool("Walking", true);
-            Anim.SetBool("Attacking", false);
             Agent.destination = FollowObject.transform.position;
-
+            PlayerInRange = false;
         }
-
-
     }
 
     /// Functions
@@ -100,20 +98,31 @@ public class ChaseAI : AIBase
         GM.GetPlayer(0).GetComponent<PlayersPoints>().AddPoints(100);
         GM.GetPlayer(0).GetComponent<PlayersPoints>().AddKill();
         GM.Despawn(Key, this.gameObject);
-
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    void Attack()
     {
-        //StartCoroutine(Invunrable());
-
-        if ((other.gameObject.tag == "Player"))
+        Debug.Log ("here");
+        float Distance = Vector3.Distance(FollowObject.position, transform.position);
+        if (Distance <= Agent.stoppingDistance)
         {
-            other.gameObject.GetComponent<Entity>().TakeDamage(Damage);
-            //other.gameObject.GetComponent<Entity>().Health -= Damage;            
+            if (PlayerInRange)
+            {
+                FollowObject.transform.GetComponent<Entity>().TakeDamage(Damage);
+            }
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //StartCoroutine(Invunrable());
+    //
+    //    if ((other.gameObject.tag == "Player"))
+    //    {
+    //        other.gameObject.GetComponent<Entity>().TakeDamage(Damage);
+    //        //other.gameObject.GetComponent<Entity>().Health -= Damage;            
+    //    }
+    //}
 
     //IEnumerator Invunrable()
     //{

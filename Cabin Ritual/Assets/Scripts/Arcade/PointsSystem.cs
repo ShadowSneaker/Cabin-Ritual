@@ -22,6 +22,10 @@ public class PointsSystem : MonoBehaviour
     {        
         ThePlayer.PointsAquired += 100;
     }
+    public void AddHitPoints()
+    {
+        ThePlayer.PointsAquired += 10;
+    }
 
     public int GetPlayerPointsAquired()
     {

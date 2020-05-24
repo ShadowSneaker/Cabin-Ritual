@@ -5085,7 +5085,7 @@ MonoBehaviour:
   ProjectileTypes:
   - {fileID: 1856803937874901957, guid: 5127c6c3974943240bc3b3e1ebdfcb53, type: 3}
   MuzzleLocation: {fileID: 6673728526266305819}
-  Accuracy: 80
+  Accuracy: 100
   SpreadIncreaseSpeed: 0.2
   SpreadDecreaseSpeed: 0.001
   FireSound: {fileID: 0}
